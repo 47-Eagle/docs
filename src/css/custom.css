@@ -1,0 +1,482 @@
+/**
+ * Eagle Omnichain Vault Documentation
+ * Custom Styling with High Contrast for Accessibility
+ */
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables - Light Mode */
+:root {
+  /* Primary Eagle Brand Colors */
+  --ifm-color-primary: #4f46e5; /* Eagle Purple */
+  --ifm-color-primary-dark: #4338ca;
+  --ifm-color-primary-darker: #3730a3;
+  --ifm-color-primary-darkest: #312e81;
+  --ifm-color-primary-light: #6366f1;
+  --ifm-color-primary-lighter: #8b5cf6;
+  --ifm-color-primary-lightest: #a78bfa;
+
+  /* Success (Green) */
+  --ifm-color-success: #10b981;
+  --ifm-color-success-dark: #059669;
+  
+  /* Warning (Orange) */
+  --ifm-color-warning: #f59e0b;
+  --ifm-color-warning-dark: #d97706;
+  
+  /* Danger (Red) */
+  --ifm-color-danger: #ef4444;
+  --ifm-color-danger-dark: #dc2626;
+  
+  /* Info (Blue) */
+  --ifm-color-info: #3b82f6;
+  --ifm-color-info-dark: #1e40af;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.6;
+  --ifm-font-weight-bold: 600;
+
+  /* Layout */
+  --ifm-navbar-height: 70px;
+  --ifm-footer-background-color: #1f2937;
+  
+  /* High Contrast Text (per user preference) */
+  --ifm-heading-color: #111827;
+  --ifm-font-color-base: #374151;
+  --ifm-color-emphasis-800: #111827;
+  --ifm-color-emphasis-700: #374151;
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] {
+  /* Primary Colors in Dark Mode */
+  --ifm-color-primary: #8b5cf6;
+  --ifm-color-primary-dark: #7c3aed;
+  --ifm-color-primary-darker: #6d28d9;
+  --ifm-color-primary-darkest: #5b21b6;
+  --ifm-color-primary-light: #a78bfa;
+  --ifm-color-primary-lighter: #c4b5fd;
+  --ifm-color-primary-lightest: #ddd6fe;
+
+  /* Background Colors */
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  
+  /* High Contrast Text for Dark Mode */
+  --ifm-heading-color: #f8fafc;
+  --ifm-font-color-base: #e2e8f0;
+  --ifm-color-emphasis-800: #f8fafc;
+  --ifm-color-emphasis-700: #e2e8f0;
+  
+  /* Navbar Dark Mode */
+  --ifm-navbar-background-color: #1e293b;
+  --ifm-navbar-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 1rem;
+}
+
+/* Navigation Enhancements */
+.navbar {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  backdrop-filter: blur(10px);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.navbar__item {
+  font-weight: 500;
+}
+
+.dropdown__menu {
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Sidebar Enhancements */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  border-left: 3px solid transparent;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover {
+  border-left-color: var(--ifm-color-primary);
+  background: linear-gradient(90deg, var(--ifm-color-primary-lightest), transparent);
+}
+
+.menu__link--active {
+  border-left: 3px solid var(--ifm-color-primary);
+  background: linear-gradient(90deg, var(--ifm-color-primary-lightest), transparent);
+  font-weight: 600;
+}
+
+/* Content Enhancements */
+.markdown h1 {
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.markdown h2 {
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Code Block Enhancements */
+.prism-code {
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.theme-code-block {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+/* Admonition Enhancements */
+.alert {
+  border-radius: 12px;
+  border-left-width: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+.alert--tip {
+  border-left-color: var(--ifm-color-success);
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), transparent);
+}
+
+.alert--note {
+  border-left-color: var(--ifm-color-info);
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.alert--warning {
+  border-left-color: var(--ifm-color-warning);
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), transparent);
+}
+
+.alert--danger {
+  border-left-color: var(--ifm-color-danger);
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), transparent);
+}
+
+/* Button Enhancements */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.025em;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button--primary {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+  border: none;
+}
+
+.button--secondary {
+  border: 2px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: transparent;
+}
+
+.button--secondary:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+/* Table Enhancements */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table th {
+  background: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+table tbody tr:hover {
+  background: var(--ifm-color-primary-lightest);
+}
+
+[data-theme='dark'] table tbody tr:hover {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge--success {
+  background: var(--ifm-color-success);
+  color: white;
+}
+
+.badge--warning {
+  background: var(--ifm-color-warning);
+  color: white;
+}
+
+.badge--danger {
+  background: var(--ifm-color-danger);
+  color: white;
+}
+
+.badge--info {
+  background: var(--ifm-color-info);
+  color: white;
+}
+
+/* Mermaid Diagram Enhancements */
+.mermaid {
+  background: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* High contrast text for diagrams (user preference) */
+[data-theme='dark'] .mermaid {
+  /* Ensure diagram text is high contrast on dark background */
+  filter: brightness(1.1) contrast(1.2);
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer Enhancements */
+.footer {
+  background: linear-gradient(135deg, var(--ifm-footer-background-color), #111827);
+  padding: 3rem 0 2rem 0;
+}
+
+.footer__title {
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer__link-item {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
+}
+
+.footer__copyright {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .navbar__title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Custom Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--ifm-color-primary) !important;
+}
+
+.text-success {
+  color: var(--ifm-color-success) !important;
+}
+
+.text-warning {
+  color: var(--ifm-color-warning) !important;
+}
+
+.text-danger {
+  color: var(--ifm-color-danger) !important;
+}
+
+.bg-primary {
+  background-color: var(--ifm-color-primary) !important;
+}
+
+.border-primary {
+  border-color: var(--ifm-color-primary) !important;
+}
+
+.rounded {
+  border-radius: 8px;
+}
+
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mt-2 { margin-top: 1rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mx-2 { margin-left: 1rem; margin-right: 1rem; }
+.p-2 { padding: 1rem; }
+
+/* Animation Classes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Loading States */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+[data-theme='dark'] .loading::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Focus States for Accessibility */
+*:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --ifm-color-emphasis-800: #000000;
+    --ifm-color-emphasis-700: #1f2937;
+    --ifm-font-color-base: #111827;
+  }
+  
+  [data-theme='dark'] {
+    --ifm-color-emphasis-800: #ffffff;
+    --ifm-color-emphasis-700: #f8fafc;
+    --ifm-font-color-base: #f1f5f9;
+  }
+  
+  .mermaid {
+    /* Extra high contrast for diagrams */
+    filter: brightness(1.3) contrast(1.5);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .navbar,
+  .footer,
+  .theme-doc-sidebar-container,
+  .theme-doc-toc-desktop {
+    display: none !important;
+  }
+  
+  .main-wrapper {
+    margin-left: 0 !important;
+  }
+  
+  .markdown {
+    max-width: none !important;
+  }
+}
+
