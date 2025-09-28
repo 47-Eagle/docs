@@ -15,6 +15,7 @@ const sidebars: SidebarsConfig = {
         'dev/overview',
         'dev/quick-start',
         'dev/architecture',
+        'dev/deployment',
       ],
     },
     {

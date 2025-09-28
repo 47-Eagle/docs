@@ -4,32 +4,131 @@ title: System Architecture
 sidebar_label: Architecture
 ---
 
-# System Architecture
+# Eagle Vault System Architecture
 
-Deep dive into the **Eagle Omnichain Vault** architecture - a clean implementation of LayerZero's OVault pattern with enterprise-grade features.
+Comprehensive technical overview of the **Eagle Omnichain Vault** - a sophisticated implementation of LayerZero's OVault pattern with enterprise-grade cross-chain infrastructure.
 
-## 🎯 **Design Philosophy**
+## Project Structure Overview
 
-The Eagle Vault follows these core principles:
+<div class="animate-fade-in-up">
 
-- **🏗️ Standards Compliance**: Pure LayerZero OVault implementation
-- **🔒 Security First**: Production-ready security features
-- **⚡ Gas Efficiency**: Optimized for cross-chain operations
-- **🌐 Omnichain Native**: Seamless multi-chain experience
-- **💎 Value Maximization**: Dual-token Uniswap V3 LP strategy
+```
+eagle-ovault-clean/
+├── contracts/                     # Smart Contracts
+│   ├── layerzero-ovault/          # LayerZero Integration
+│   │   ├── adapters/              # Token Adapters (wrap existing tokens)
+│   │   │   ├── WLFIAdapter.sol    # WLFI token adapter
+│   │   │   └── USD1Adapter.sol    # USD1 token adapter
+│   │   ├── composers/             # Orchestration Contracts
+│   │   │   └── EagleOVaultComposer.sol
+│   │   └── oft/                   # Omnichain Fungible Tokens
+│   │       └── EagleShareOFT.sol  # Cross-chain vault shares
+│   └── interfaces/                # Contract Interfaces
+│       ├── IChainRegistry.sol     # Registry interface
+│       └── ICREATE2Factory.sol    # CREATE2 factory interface
+├── scripts/                       # Deployment & Utility Scripts
+│   ├── deploy-production-contracts.ts
+│   ├── configure-real-registry.ts
+│   ├── calculate-current-eagle-bytecode-hash.ts
+│   └── check-registry.ts
+├── vanity-generator/              # Rust Vanity Address Generator
+│   ├── Cargo.toml
+│   └── src/main.rs
+└── docs/                          # Technical Documentation
+```
 
-## 🏛️ **Hub-Spoke Architecture**
+</div>
 
-### **Hub Chain: Ethereum**
-The hub chain hosts the core vault logic and asset management:
+## Design Philosophy
+
+The Eagle Vault architecture is built on these foundational principles:
+
+<div class="animate-fade-in-up">
+
+:::tip **Registry-First Design**
+Universal registry (`0x472656c76f45e8a8a63fffd32ab5888898eea91e`) provides chain-specific configurations, enabling true deterministic addresses across all supported networks.
+:::
+
+</div>
+
+- **Standards Compliance**: Pure LayerZero OVault implementation
+- **Deterministic Addresses**: CREATE2 factory enables consistent addressing
+- **No Token Minting**: Respect existing token ecosystems via adapters
+- **Security First**: Production-ready security features
+- **Gas Efficiency**: Optimized for cross-chain operations
+
+## Core Architecture Components
+
+### 1. Registry-Based System
+
+The architecture centers around a universal registry that provides chain-specific LayerZero configurations:
+
+| Component | Address | Purpose |
+|-----------|---------|---------|
+| **Chain Registry** | `0x472656c76f45e8a8a63fffd32ab5888898eea91e` | LayerZero endpoint configuration |
+| **CREATE2 Factory** | `0x695d6B3628B4701E7eAfC0bc511CbAF23f6003eE` | Deterministic contract deployment |
+| **Target Address** | `0x47...EA91E` | Vanity address pattern (in progress) |
+
+### 2. Contract Categories
+
+#### **Adapters** (`contracts/layerzero-ovault/adapters/`)
+
+```solidity
+// Wraps existing WLFI/USD1 tokens for cross-chain functionality
+contract WLFIAdapter is OFTAdapter {
+    // No minting - only wraps existing tokens
+}
+
+contract USD1Adapter is OFTAdapter {
+    // No minting - only wraps existing tokens  
+}
+```
+
+**Purpose**: Enable cross-chain functionality for existing ERC20 tokens  
+**Usage**: Chains where WLFI/USD1 already deployed (Ethereum, BSC)  
+**Security**: No new token supply - only wraps/unwraps existing tokens
+
+#### **OFTs** (`contracts/layerzero-ovault/oft/`)
+
+```solidity
+// Registry-integrated cross-chain vault shares
+contract EagleShareOFT is OFT {
+    IChainRegistry public immutable registry;
+    
+    constructor(address _registry) {
+        registry = IChainRegistry(_registry);
+        // Uses registry for LayerZero endpoint discovery
+    }
+}
+```
+
+**Purpose**: Native omnichain tokens with deterministic addresses  
+**Registry Integration**: Uses `IChainRegistry` for endpoint configuration  
+**Deployment**: Targeting vanity address pattern `0x47...EA91E`
+
+#### **Composers** (`contracts/layerzero-ovault/composers/`)
+
+```solidity
+// Orchestrates cross-chain vault operations
+contract EagleOVaultComposer is VaultComposerSync {
+    // Coordinates Uniswap V3 liquidity strategies
+    // Handles cross-chain deposit/withdrawal flows
+}
+```
+
+## Hub-Spoke Architecture
+
+### Hub Chain: Ethereum
+
+The hub chain hosts core vault logic and asset management:
 
 ```mermaid
 graph TB
     subgraph "🏛️ Ethereum Hub Chain"
         subgraph "💰 Asset Management"
-            WLFI[WLFI Token<br/>AssetOFT Hub]
-            USD1[USD1 Token<br/>AssetOFT Hub]
-            UV3[Uniswap V3<br/>LP Pool]
+            WLFI[WLFI Adapter<br/>Existing Token Bridge]
+            USD1[USD1 Adapter<br/>Existing Token Bridge]
+            UV3[Uniswap V3 Pool<br/>0xf9f5e6f7a44ee10c72e67bded6654afaf4d0c85d]
         end
         
         subgraph "🏦 Vault Core"
@@ -50,83 +149,138 @@ graph TB
         USD1 <--> EC
     end
     
-    style EV fill:#4f46e5,stroke:#312e81,color:#fff
-    style SA fill:#059669,stroke:#047857,color:#fff
-    style EC fill:#dc2626,stroke:#991b1b,color:#fff
-    style UV3 fill:#ff6b9d,stroke:#d63384,color:#fff
+    style EV fill:#6366f1,stroke:#4f46e5,color:#fff
+    style SA fill:#10b981,stroke:#059669,color:#fff
+    style EC fill:#ef4444,stroke:#dc2626,color:#fff
+    style UV3 fill:#f59e0b,stroke:#d97706,color:#fff
 ```
 
-### **Spoke Chains: BSC, Arbitrum, Base, Avalanche**
+### Spoke Chains: BSC, Arbitrum, Base, Avalanche
+
 Spoke chains provide user access points and local token representations:
 
 ```mermaid
 graph TB
-    subgraph "🌐 Spoke Chain (BSC/Arbitrum/Base/Avalanche)"
-        subgraph "💰 Local Assets"
-            WO[WLFI OFT<br/>Local Representation]
-            UO[USD1 OFT<br/>Local Representation]
+    subgraph "🌐 BSC Spoke Chain (Deployed)"
+        subgraph "💰 Token Adapters"
+            WA[WLFI Adapter<br/>Existing WLFI Bridge]
+            UA[USD1 Adapter<br/>Existing USD1 Bridge]
         end
         
         subgraph "📜 Vault Shares"
-            SO[Share OFT<br/>Vault Ownership]
+            SO[EagleShareOFT<br/>0x0Ba80Ce1c8e4487C9EeA179150D09Ec2cbCb5Aa1]
         end
         
         subgraph "👤 User Interface"
-            USER[Users<br/>Deposits/Withdrawals]
+            USER[Users<br/>Cross-Chain Operations]
         end
         
-        USER --> WO
-        USER --> UO
+        USER --> WA
+        USER --> UA
         USER --> SO
     end
     
-    style WO fill:#10b981,stroke:#065f46,color:#fff
-    style UO fill:#3b82f6,stroke:#1e40af,color:#fff
-    style SO fill:#8b5cf6,stroke:#5b21b6,color:#fff
+    style WA fill:#f59e0b,stroke:#d97706,color:#fff
+    style UA fill:#3b82f6,stroke:#2563eb,color:#fff
+    style SO fill:#8b5cf6,stroke:#7c3aed,color:#fff
 ```
 
-## 🔄 **Cross-Chain Communication Flow**
+## Cross-Chain Communication Flow
 
-### **LayerZero Integration Pattern**
+### LayerZero Integration Pattern
 
 ```mermaid
 sequenceDiagram
     participant User
-    participant SpokeOFT as Spoke OFT
-    participant LZ as LayerZero
-    participant HubOFT as Hub OFT
+    participant BSC as BSC Adapter
+    participant LZ as LayerZero Network
+    participant ETH as Ethereum Hub
     participant Vault as Eagle Vault
     
-    Note over User, Vault: Cross-Chain Deposit Flow
+    Note over User, Vault: Cross-Chain Deposit via Adapter
     
-    User->>SpokeOFT: deposit(1000 WLFI)
-    SpokeOFT->>LZ: send(to: ethereum, payload)
-    LZ->>HubOFT: lzReceive(payload)
-    HubOFT->>Vault: deposit via Composer
-    Vault->>Vault: mint LP tokens
-    Vault->>HubOFT: mint shares
-    HubOFT->>LZ: send(to: spoke, shares)
-    LZ->>SpokeOFT: lzReceive(shares)
-    SpokeOFT->>User: transfer shares
+    User->>BSC: deposit(1000 WLFI)
+    BSC->>BSC: wrap existing WLFI
+    BSC->>LZ: send(to: ethereum, payload)
+    
+    Note over LZ: Cross-chain message delivery
+    
+    LZ->>ETH: lzReceive(wrapped WLFI)
+    ETH->>ETH: unwrap to native WLFI
+    ETH->>Vault: deposit via Composer
+    Vault->>Vault: mint Uniswap V3 LP
+    Vault->>ETH: mint vault shares
+    ETH->>LZ: send(to: bsc, shares)
+    LZ->>BSC: lzReceive(shares)
+    BSC->>User: transfer vault shares
 ```
 
-## 📋 **Contract Specifications**
+## Deployment Strategy & Status
 
-### **EagleOVault.sol** - Core Vault Logic
+### Current Deployment Status
+
+<div class="animate-fade-in-up">
+
+| Phase | Network | Status | Details |
+|-------|---------|--------|---------|
+| **Phase 1** | BSC | ✅ **Deployed** | Registry configured, contracts live |
+| **Phase 2** | Ethereum | 🔄 **In Progress** | Awaiting vanity address generation |
+| **Phase 3** | Multi-Chain | ⏳ **Pending** | Cross-chain wiring after Ethereum |
+
+</div>
+
+### BSC Deployment (Completed)
+
+```bash
+# Registry Configuration
+✅ Registry: 0x472656c76f45e8a8a63fffd32ab5888898eea91e
+✅ EagleShareOFT: 0x0Ba80Ce1c8e4487C9EeA179150D09Ec2cbCb5Aa1
+✅ WLFI/USD1 Adapters: Deployed with real token addresses
+✅ Cross-chain messaging: Configured for LayerZero V2
+```
+
+### Vanity Address Generation
+
+<div class="animate-fade-in-up">
+
+:::note **Performance Metrics**
+- **Target Pattern**: `0x47...EA91E` (7 hex characters)
+- **Attempts Processed**: 220M+ (and counting)  
+- **Generation Speed**: ~437,000 attempts/second
+- **Estimated Completion**: Anytime (luck-dependent)
+:::
+
+</div>
+
+```rust
+// Vanity generation targeting elegant address pattern
+// vanity-generator/src/main.rs
+fn generate_vanity_address(target: &str, factory: &str) {
+    // High-performance vanity address generation
+    // Targeting 0x47...EA91E pattern for brand consistency
+}
+```
+
+## Contract Specifications
+
+### EagleOVault.sol - Core Vault Logic
 
 ```solidity
 contract EagleOVault is ERC4626, Ownable, ReentrancyGuard, Pausable {
-    // Dual-token strategy implementation
+    // Dual-token strategy for WLFI + USD1
     IERC20 public immutable WLFI;
     IERC20 public immutable USD1;
     IUniswapV3Pool public immutable pool;
     
     // Strategy parameters
-    uint256 public maxSlippage = 500; // 5%
+    uint256 public maxSlippage = 500;        // 5%
     uint256 public rebalanceThreshold = 200; // 2%
-    uint32 public twapPeriod = 3600; // 1 hour
+    uint32 public twapPeriod = 3600;         // 1 hour
     
-    // Access control
+    // Registry integration for cross-chain operations
+    IChainRegistry public immutable registry;
+    
+    // No token minting - only manages existing WLFI/USD1
     mapping(address => bool) public managers;
     mapping(address => bool) public authorizedUsers;
 }
@@ -134,67 +288,80 @@ contract EagleOVault is ERC4626, Ownable, ReentrancyGuard, Pausable {
 
 **Key Features:**
 - **ERC4626 Compliance**: Standard tokenized vault interface
+- **Registry Integration**: Uses universal registry for configuration
 - **Dual-Token Strategy**: WLFI + USD1 Uniswap V3 LP management
 - **Security Features**: Reentrancy protection, slippage limits, TWAP validation
-- **Access Control**: Multi-tier permission system
+- **No Minting Policy**: Only manages existing token ecosystems
 
-### **EagleShareOFTAdapter.sol** - Cross-Chain Share Bridge
+### EagleShareOFT.sol - Registry-Based Cross-Chain Shares
 
 ```solidity
-contract EagleShareOFTAdapter is OFTAdapter {
-    EagleOVault public immutable vault;
+contract EagleShareOFT is OFT {
+    IChainRegistry public immutable registry;
     
-    constructor(
-        address _vault,
-        address _token,
-        address _lzEndpoint,
-        address _owner
-    ) OFTAdapter(_token, _lzEndpoint, _owner) {
-        vault = EagleOVault(_vault);
+    constructor(address _registry) OFT("Eagle Vault Shares", "EVS", msg.sender) {
+        registry = IChainRegistry(_registry);
     }
+    
+    function _lzEndpoint() internal view override returns (address) {
+        return registry.getEndpoint(block.chainid);
+    }
+    
+    // Deterministic deployment via CREATE2 for consistent addresses
 }
 ```
 
 **Purpose:**
-- **Lockbox Pattern**: Locks shares on hub, mints on spokes
-- **Accounting Integrity**: Preserves vault `totalSupply()` calculation
-- **Cross-Chain Access**: Enables spoke chain vault share management
+- **Registry-Based**: Dynamic LayerZero endpoint discovery
+- **Deterministic**: CREATE2 deployment for consistent addresses
+- **Native OFT**: New token representing vault ownership
+- **Cross-Chain**: Seamless transfer across all supported networks
 
-### **EagleOVaultComposer.sol** - Operation Orchestrator
+### Token Integration Strategy
 
-```solidity
-contract EagleOVaultComposer is VaultComposerSync {
-    EagleOVault public immutable vault;
-    EagleShareOFTAdapter public immutable shareAdapter;
-    WLFIAssetOFT public immutable wlfiOFT;
-    USD1AssetOFT public immutable usd1OFT;
-    
-    // Cross-chain operation coordination
-    function composeDeposit(ComposeDepositParams calldata params) external;
-    function composeWithdraw(ComposeWithdrawParams calldata params) external;
-}
+#### Real Token Addresses (Environment Configuration)
+
+```bash
+# Production token addresses (.env)
+WLFI_ETHEREUM=0x...    # Your deployed WLFI on Ethereum
+USD1_ETHEREUM=0x...    # Your deployed USD1 on Ethereum  
+WLFI_BSC=0x...         # Your deployed WLFI on BSC
+USD1_BSC=0x...         # Your deployed USD1 on BSC
 ```
 
-**Functions:**
-- **Cross-Chain Deposits**: Receives assets, deposits to vault, sends shares
-- **Cross-Chain Withdrawals**: Receives shares, redeems from vault, sends assets
-- **Batch Operations**: Efficient multi-step transaction coordination
+#### No Token Minting Policy
 
-## 💎 **Dual-Token Strategy**
+<div class="animate-fade-in-up">
 
-### **Uniswap V3 LP Management**
+:::warning **Token Policy**
+**Adapters**: Wrap existing tokens (no new supply created)  
+**Asset OFTs**: Not used (would mint new token supply)  
+**EagleShareOFT**: Native vault shares (new token representing ownership)
+:::
 
-The Eagle Vault implements a sophisticated LP strategy:
+</div>
+
+## Dual-Token Strategy
+
+### Uniswap V3 LP Management
+
+The Eagle Vault implements sophisticated LP strategy targeting the WLFI/USD1 pool:
+
+**Pool Details:**
+- **Address**: `0xf9f5e6f7a44ee10c72e67bded6654afaf4d0c85d`
+- **Fee Tier**: 1% (10000)
+- **Strategy**: Dynamic position management with automated rebalancing
 
 ```mermaid
 graph LR
-    subgraph "💰 Asset Flow"
+    subgraph "💰 Dual-Token Flow"
         WLFI_IN[WLFI Deposits] 
         USD1_IN[USD1 Deposits]
-        COMBINED[Combined Assets]
-        LP_MINT[Mint LP Tokens]
-        FEES[Collect Fees]
-        REBALANCE[Rebalance Position]
+        COMBINED[Asset Combination]
+        LP_MINT[Uniswap V3 LP]
+        FEES[Fee Collection]
+        REBALANCE[Position Rebalance]
+        SHARES[Vault Shares]
     end
     
     WLFI_IN --> COMBINED
@@ -203,19 +370,14 @@ graph LR
     LP_MINT --> FEES
     FEES --> REBALANCE
     REBALANCE --> LP_MINT
+    LP_MINT --> SHARES
     
-    style COMBINED fill:#fbbf24,stroke:#d97706,color:#000
-    style LP_MINT fill:#10b981,stroke:#065f46,color:#fff
-    style FEES fill:#3b82f6,stroke:#1e40af,color:#fff
+    style COMBINED fill:#f59e0b,stroke:#d97706,color:#fff
+    style LP_MINT fill:#10b981,stroke:#059669,color:#fff
+    style FEES fill:#3b82f6,stroke:#2563eb,color:#fff
 ```
 
-**Strategy Components:**
-- **Position Management**: Dynamic tick range optimization
-- **Fee Harvesting**: Automated fee collection and reinvestment
-- **Rebalancing**: Price-based position adjustments
-- **Slippage Protection**: TWAP-based price validation
-
-### **Price Oracle Integration**
+### Price Oracle Integration
 
 ```solidity
 function getTimeWeightedAveragePrice() internal view returns (uint256) {
@@ -232,24 +394,24 @@ function getTimeWeightedAveragePrice() internal view returns (uint256) {
 }
 ```
 
-## 🔒 **Security Architecture**
+## Security Architecture
 
-### **Multi-Layer Security Model**
+### Multi-Layer Security Model
 
 ```mermaid
 graph TD
     subgraph "🛡️ Security Layers"
         L1[Input Validation]
         L2[Reentrancy Protection] 
-        L3[Access Control]
-        L4[Slippage Protection]
+        L3[Registry-Based Access Control]
+        L4[TWAP Slippage Protection]
         L5[Emergency Controls]
     end
     
     subgraph "🔍 Validation Checks"
         V1[Zero Address Checks]
         V2[Amount Validation]
-        V3[Balance Verification]
+        V3[Registry Verification]
         V4[State Consistency]
     end
     
@@ -257,7 +419,7 @@ graph TD
         C1[Pause Mechanism]
         C2[Emergency Withdrawal]
         C3[Asset Recovery]
-        C4[Admin Override]
+        C4[Registry Updates]
     end
     
     L1 --> V1
@@ -268,126 +430,143 @@ graph TD
     L5 --> C2
     
     style L1 fill:#ef4444,stroke:#dc2626,color:#fff
+    style L3 fill:#6366f1,stroke:#4f46e5,color:#fff
     style L5 fill:#f59e0b,stroke:#d97706,color:#fff
 ```
 
-### **Access Control Matrix**
+### Access Control Matrix
 
-| Role | Deposit | Withdraw | Rebalance | Pause | Emergency |
-|------|---------|----------|-----------|-------|-----------|
+| Role | Deposit | Withdraw | Rebalance | Registry Update | Emergency |
+|------|---------|----------|-----------|-----------------|-----------|
 | **User** | ✅ | ✅ | ❌ | ❌ | ❌ |
 | **Manager** | ✅ | ✅ | ✅ | ❌ | ❌ |
 | **Owner** | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-## ⚡ **Gas Optimization Strategies**
+## Network Topology
 
-### **Batch Operations**
-```solidity
-struct BatchDepositParams {
-    uint256 wlfiAmount;
-    uint256 usd1Amount;
-    address recipient;
-    uint32 dstEid;
-    bytes calldata options;
-}
+### Supported Networks
 
-function batchDeposit(BatchDepositParams[] calldata params) external {
-    // Process multiple deposits in single transaction
-}
-```
+| Network | Chain ID | LayerZero EID | Status | Role |
+|---------|----------|---------------|---------|------|
+| **Ethereum** | 1 | 30101 | 🎯 **Target** | Hub |
+| **BSC** | 56 | 30102 | ✅ **Live** | Spoke |
+| **Arbitrum** | 42161 | 30110 | 🎯 **Target** | Spoke |
+| **Base** | 8453 | 30184 | 🎯 **Target** | Spoke |
+| **Avalanche** | 43114 | 30106 | 🎯 **Target** | Spoke |
 
-### **Efficient Cross-Chain Messaging**
-- **Payload Compression**: Minimize cross-chain message size
-- **Batched Transfers**: Multiple operations in single LayerZero message
-- **Gas Estimation**: Dynamic fee calculation for optimal costs
+### LayerZero V2 Integration
 
-### **Storage Optimization**
-- **Packed Structs**: Efficient storage layout
-- **Immutable Variables**: Gas-efficient deployment
-- **Event Indexing**: Optimized for frontend queries
+All networks use LayerZero V2 endpoints:
+- **Endpoint**: `0x1a44076050125825900e736c501f859c50fE728c`
+- **DVN Security**: Multi-validator configuration
+- **Enforced Options**: Gas safety and delivery guarantees
 
-## 🌐 **Network Topology**
+## Performance Characteristics
 
-### **LayerZero Endpoint Integration**
+### Gas Optimization
 
-| Network | Chain ID | LZ EID | Endpoint Address |
-|---------|----------|--------|------------------|
-| **Ethereum** | 1 | 30101 | `0x1a44076050125825900e736c501f859c50fE728c` |
-| **BSC** | 56 | 30102 | `0x1a44076050125825900e736c501f859c50fE728c` |
-| **Arbitrum** | 42161 | 30110 | `0x1a44076050125825900e736c501f859c50fE728c` |
-| **Base** | 8453 | 30184 | `0x1a44076050125825900e736c501f859c50fE728c` |
-| **Avalanche** | 43114 | 30106 | `0x1a44076050125825900e736c501f859c50fE728c` |
+- **Registry Caching**: Minimizes external calls for endpoint discovery
+- **CREATE2 Deployment**: Predictable gas costs across networks
+- **Adapter Pattern**: No token minting reduces gas overhead
+- **Batch Operations**: Multiple actions in single transaction
 
-### **Trust Configuration**
-```solidity
-// Example trusted remote configuration
-mapping(uint32 => bytes32) public trustedRemoteLookup;
+### Transaction Costs
 
-// Set trusted remotes for all chains
-function setTrustedRemotes() external onlyOwner {
-    trustedRemoteLookup[30102] = bytes32(uint256(uint160(bscAddress))); // BSC
-    trustedRemoteLookup[30110] = bytes32(uint256(uint160(arbAddress))); // Arbitrum
-    // ... other chains
-}
-```
+| Operation | Gas Estimate | Notes |
+|-----------|--------------|--------|
+| **Local Deposit** | ~150,000 gas | Direct vault interaction |
+| **Cross-Chain Deposit** | ~300,000 gas + LZ fees | Via adapter pattern |
+| **Rebalance** | ~250,000 gas | Uniswap V3 position management |
+| **Registry Update** | ~50,000 gas | Configuration changes |
 
-## 📊 **Performance Characteristics**
+### Cross-Chain Latency
 
-### **Transaction Costs**
-- **Local Deposit**: ~150,000 gas
-- **Cross-Chain Deposit**: ~300,000 gas + LayerZero fees
-- **Rebalance Operation**: ~250,000 gas
-- **Emergency Pause**: ~50,000 gas
-
-### **Cross-Chain Latency**
-- **Fast Path**: 1-3 minutes (normal conditions)
-- **Congested**: 5-15 minutes (high network load)
+- **Fast Path**: 1-3 minutes (normal network conditions)
+- **Congested**: 5-15 minutes (high network load)  
 - **Failed Retry**: Automatic retry with exponential backoff
 
-## 🔧 **Monitoring and Observability**
+## Development Tools
 
-### **Key Metrics**
+### Deployment Scripts
+
+```bash
+# Configure registry with chain-specific endpoints
+npx hardhat run scripts/configure-real-registry.ts --network bsc
+
+# Deploy production contracts with real token addresses
+npx hardhat run scripts/deploy-production-contracts.ts --network bsc
+
+# Calculate bytecode hash for vanity generation
+npx hardhat run scripts/calculate-current-eagle-bytecode-hash.ts
+
+# Verify registry configuration
+npx hardhat run scripts/check-registry.ts --network bsc
+```
+
+### Vanity Address Generation
+
+```bash
+# High-performance Rust-based vanity generation
+cd vanity-generator
+cargo run <bytecode_hash> <factory_address> 47 ea91e
+
+# Current performance: ~437k attempts/second
+# Target: 0x47...EA91E (Eagle brand consistency)
+```
+
+## Monitoring and Observability
+
+### Key Events
+
 ```solidity
 event VaultDeposit(address indexed user, uint256 assets, uint256 shares);
-event VaultWithdraw(address indexed user, uint256 assets, uint256 shares);
 event CrossChainTransfer(uint32 indexed dstEid, uint256 amount, bytes32 guid);
-event Rebalance(int24 newTick, uint256 wlfiAmount, uint256 usd1Amount);
+event RegistryUpdate(uint256 indexed chainId, address newEndpoint);
+event VanityDeployment(address indexed newAddress, bytes32 salt);
 event EmergencyPause(address indexed admin, string reason);
 ```
 
-### **Health Check Functions**
+### Health Check Functions
+
 ```solidity
-function getVaultHealth() external view returns (VaultHealth memory) {
-    return VaultHealth({
-        totalAssets: totalAssets(),
-        totalSupply: totalSupply(),
-        sharePrice: convertToAssets(1e18),
-        lpPosition: getCurrentLPPosition(),
-        crossChainBalances: getCrossChainBalances()
+function getSystemHealth() external view returns (SystemHealth memory) {
+    return SystemHealth({
+        registryAddress: address(registry),
+        totalVaultAssets: totalAssets(),
+        crossChainBalances: getCrossChainBalances(),
+        vanityAddressStatus: checkVanityGeneration(),
+        lpPositionHealth: getCurrentLPPosition()
     });
 }
 ```
 
-## 🚀 **Scalability Considerations**
+## Future Enhancements
 
-### **Future Enhancements**
-- **Multi-Pool Support**: Additional LP strategies
-- **Dynamic Fee Tiers**: Adaptive fee optimization
-- **Governance Integration**: Community-driven parameter updates
-- **Additional Chains**: Easy expansion to new networks
+### Scalability Roadmap
 
-### **Upgrade Path**
+- **Multi-Pool Support**: Additional Uniswap V3 strategies
+- **Dynamic Rebalancing**: AI-driven position optimization  
+- **Governance Integration**: Community parameter updates
+- **Additional Networks**: Easy expansion via registry updates
+
+### Upgrade Strategy
+
+The registry-based architecture enables seamless upgrades:
+
 ```solidity
-// Upgrade pattern for future enhancements
-contract EagleOVaultV2 is EagleOVault {
-    // New features while maintaining compatibility
-    function newFeature() external {
-        // Implementation
-    }
+// Registry enables dynamic endpoint updates
+function updateChainEndpoint(uint256 chainId, address newEndpoint) external onlyOwner {
+    registry.setEndpoint(chainId, newEndpoint);
+    emit RegistryUpdate(chainId, newEndpoint);
+}
+
+// CREATE2 enables predictable upgrade addresses
+function deployUpgrade(bytes32 salt) external returns (address) {
+    address newImplementation = create2Factory.deploy(salt, bytecode);
+    return newImplementation;
 }
 ```
 
 ---
 
-**This architecture provides a robust foundation for omnichain DeFi operations while maintaining security, efficiency, and user experience.**
-
+**This registry-based, deterministic architecture provides a robust foundation for omnichain DeFi operations while maintaining security, efficiency, and seamless cross-chain user experience.**
