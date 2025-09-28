@@ -61,10 +61,12 @@ const config: Config = {
       title: 'Eagle Vault',
       logo: {
         alt: 'Eagle Omnichain Vault Logo',
-        src: 'img/eagle-logo-new.png',
+        src: 'img/eagle-logo.svg',
         style: {
-          height: '40px',
+          height: '32px',
+          width: 'auto',
         },
+        srcDark: 'img/eagle-logo.svg', // Same logo for dark mode
       },
       items: [
         {
