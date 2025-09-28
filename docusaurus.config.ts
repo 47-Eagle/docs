@@ -8,12 +8,12 @@ const config: Config = {
   favicon: 'img/eagle-favicon.ico',
 
   // Set the production URL of your site here
-  url: 'https://47-Eagle.github.io',
+  url: 'https://47-eagle.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: '/docs/',
 
   // GitHub pages deployment config
-  organizationName: '47-Eagle',
+  organizationName: '47-eagle',
   projectName: 'docs',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
