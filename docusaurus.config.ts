@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Eagle Omnichain Vault',
-  tagline: 'Next-generation omnichain DeFi vault powered by LayerZero',
+  title: '47 Eagle Finance',
+  tagline: 'Omnichain DeFi infrastructure powered by LayerZero OVault Standard',
   favicon: 'img/eagle-favicon.ico',
 
   // Set the production URL of your site here
@@ -58,7 +58,7 @@ const config: Config = {
     respectPrefersColorScheme: false,
   },
     navbar: {
-      title: 'Eagle Vault',
+      title: '47 Eagle Finance',
       logo: {
         alt: 'Eagle Omnichain Vault Logo',
         src: 'img/eagle-logo.svg',
@@ -152,7 +152,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Eagle Protocol. Built with ❤️ using LayerZero OVault Standard.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 47 Eagle Finance. Built with LayerZero OVault Standard.`,
     },
     prism: {
       theme: prismThemes.github,

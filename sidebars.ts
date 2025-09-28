@@ -5,7 +5,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'index',
-      label: 'Welcome',
+      label: '47 Eagle Finance',
     },
     {
       type: 'category',
