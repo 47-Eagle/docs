@@ -52,16 +52,19 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/eagle-social-card.png',
-    colorMode: {
-      defaultMode: 'dark',
-      disableSwitch: false,
-      respectPrefersColorScheme: false,
-    },
+  colorMode: {
+    defaultMode: 'light',
+    disableSwitch: false,
+    respectPrefersColorScheme: true,
+  },
     navbar: {
       title: 'Eagle Vault',
       logo: {
         alt: 'Eagle Omnichain Vault Logo',
-        src: 'img/eagle-logo.svg',
+        src: 'img/eagle-logo-new.png',
+        style: {
+          height: '40px',
+        },
       },
       items: [
         {
