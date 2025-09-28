@@ -5,11 +5,11 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'index',
-      label: '👋 Welcome',
+      label: 'Welcome',
     },
     {
       type: 'category',
-      label: '📕 Developer Guide',
+      label: 'Developer Guide',
       collapsed: false,
       items: [
         'dev/overview',
@@ -19,7 +19,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🔧 Core Concepts',
+      label: 'Core Concepts',
       collapsed: true,
       items: [
         'concepts/layerzero-integration',
@@ -27,7 +27,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '📄 Smart Contracts',
+      label: 'Smart Contracts',
       collapsed: true,
       items: [
         'contracts/eagle-ovault',
@@ -35,7 +35,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🚀 API Reference',
+      label: 'API Reference',
       collapsed: true,
       items: [
         'api/overview',
