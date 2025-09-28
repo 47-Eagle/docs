@@ -1,21 +1,25 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
-  // Main sidebar - Technical documentation
   tutorialSidebar: [
     {
+      type: 'doc',
+      id: 'index',
+      label: '👋 Welcome',
+    },
+    {
       type: 'category',
-      label: 'Getting Started',
+      label: '📕 Developer Guide',
       collapsed: false,
       items: [
         'dev/overview',
-        'dev/quick-start', 
+        'dev/quick-start',
         'dev/architecture',
       ],
     },
     {
       type: 'category',
-      label: 'Core Concepts',
+      label: '🔧 Core Concepts',
       collapsed: true,
       items: [
         'concepts/layerzero-integration',
@@ -23,15 +27,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Smart Contracts',
+      label: '📄 Smart Contracts',
       collapsed: true,
       items: [
         'contracts/eagle-ovault',
       ],
     },
     {
-      type: 'category', 
-      label: 'API Reference',
+      type: 'category',
+      label: '🚀 API Reference',
       collapsed: true,
       items: [
         'api/overview',

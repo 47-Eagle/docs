@@ -4,19 +4,22 @@ title: Developer Overview
 sidebar_label: Overview
 ---
 
-# Eagle Omnichain Vault - Developer Overview
+# Developer Overview
 
-Welcome to the **Eagle Omnichain Vault** developer documentation! This is a **clean, standards-compliant** implementation using LayerZero's official OVault pattern.
+## Comprehensive Development Guide
 
-## What is Eagle Vault?
+Welcome to the **Eagle Omnichain Vault** developer documentation! This is a **clean, standards-compliant** implementation using LayerZero's official OVault pattern, designed for institutional-grade DeFi applications.
 
-The Eagle Omnichain Vault is a next-generation DeFi infrastructure that enables:
+## What makes Eagle development unique?
 
-- **Omnichain Operations**: Seamless cross-chain deposits and withdrawals
-- **Dual-Token Strategy**: WLFI + USD1 Uniswap V3 LP management
-- **Enterprise Security**: Production-ready security features and access controls
-- **Gas Optimized**: Efficient cross-chain messaging and batch operations
-- **Vanity Addresses**: Elegant `0x47...EA91E` address pattern
+**Standards-First Architecture**  
+Built on proven ERC4626 and LayerZero OVault standards, ensuring compatibility and reliability.
+
+**Enterprise Security**  
+Production-ready security features including reentrancy protection, access control, and slippage validation.
+
+**True Cross-Chain**  
+Deploy once on Ethereum, interact from any of 5 supported chains with seamless user experience.
 
 ## Architecture at a Glance
 
@@ -106,34 +109,44 @@ User (BSC) → WLFI OFT → LayerZero → Ethereum → Composer → Vault → Mi
 User (Base) → Share OFT → LayerZero → Ethereum → Adapter → Vault → Redeem Assets → LayerZero → User (Base)
 ```
 
-## 🛠️ **Development Stack**
+## Development Stack
 
-- **Framework**: Hardhat with TypeScript
-- **Testing**: Chai + Waffle + Mocha
-- **Deployment**: Custom Hardhat tasks with vanity address support
-- **Security**: Slither static analysis + comprehensive test suite
-- **Networks**: Multi-chain deployment configuration
+| Component                              | Technology                                                   |
+| -------------------------------------- | ------------------------------------------------------------ |
+| 🏗️ Framework                           | [Hardhat with TypeScript for robust development](./quick-start) |
+| 🧪 Testing                            | [Comprehensive Chai + Waffle test suite](./quick-start)                        |
+| 🚀 Deployment                         | [Custom Hardhat tasks with vanity address support](./architecture)                       |
+| 🔍 Security                           | [Slither analysis + production-grade patterns](./architecture)                              |
 
-## 📊 **Supported Networks**
+## Supported Networks
 
-| Network | Chain ID | LayerZero EID | Status |
-|---------|----------|---------------|--------|
-| Ethereum | 1 | 30101 | 🏛️ Hub |
-| BSC | 56 | 30102 | 🌐 Spoke |
-| Arbitrum | 42161 | 30110 | 🌐 Spoke |
-| Base | 8453 | 30184 | 🌐 Spoke |
-| Avalanche | 43114 | 30106 | 🌐 Spoke |
+| Network   | Chain ID | LayerZero EID | Role        | Status |
+|-----------|----------|---------------|-------------|--------|
+| Ethereum  | 1        | 30101         | 🏛️ Hub      | Live   |
+| BSC       | 56       | 30102         | 🌐 Spoke    | Live   |
+| Arbitrum  | 42161    | 30110         | 🌐 Spoke    | Live   |
+| Base      | 8453     | 30184         | 🌐 Spoke    | Live   |
+| Avalanche | 43114    | 30106         | 🌐 Spoke    | Live   |
 
-## 🎯 **Next Steps**
+## Core Features
 
-Ready to dive deeper? Here are your next steps:
+- ✅ **ERC4626 Compliance**: Standard tokenized vault interface
+- ✅ **LayerZero Integration**: Official OVault pattern implementation  
+- ✅ **Multi-Chain Support**: 5 networks with seamless UX
+- ✅ **Enterprise Security**: Production-ready security features
+- ✅ **Gas Optimization**: Efficient cross-chain operations
+- ✅ **Vanity Addresses**: Elegant `0x47...EA91E` pattern
 
-1. **⚡ [Quick Start](./quick-start)** - Get up and running in 10 minutes
-2. **🏗️ [Architecture](./architecture)** - Deep dive into system design
-3. **🚀 [Deployment](./deployment)** - Deploy your own Eagle Vault
-4. **📚 [API Reference](../api/overview)** - Complete API documentation
+## Get Started
+
+Ready to build with Eagle Vault? Choose your path:
+
+- **[Quick Start](./quick-start)** - Deploy in 10 minutes
+- **[Architecture Guide](./architecture)** - Deep system understanding  
+- **[API Reference](../api/overview)** - Complete function documentation
+- **[Smart Contracts](../contracts/eagle-ovault)** - Contract specifications
 
 ---
 
-**Built with ❤️ using LayerZero OVault Standard**
+**Built with LayerZero OVault Standard**
 
