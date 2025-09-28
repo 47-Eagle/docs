@@ -53,9 +53,9 @@ const config: Config = {
   themeConfig: {
     image: 'img/eagle-social-card.png',
   colorMode: {
-    defaultMode: 'light',
+    defaultMode: 'dark',
     disableSwitch: false,
-    respectPrefersColorScheme: true,
+    respectPrefersColorScheme: false,
   },
     navbar: {
       title: 'Eagle Vault',
