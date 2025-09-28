@@ -8,13 +8,13 @@ const config: Config = {
   favicon: 'img/eagle-favicon.ico',
 
   // Set the production URL of your site here
-  url: 'https://wlfi-usd1-eagle.github.io',
+  url: 'https://47-Eagle.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/eagle-docs/',
+  baseUrl: '/docs/',
 
   // GitHub pages deployment config
-  organizationName: 'wlfi-usd1-eagle',
-  projectName: 'eagle-docs',
+  organizationName: '47-Eagle',
+  projectName: 'docs',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
