@@ -68,7 +68,6 @@ Thumbs.db
 
 # Package manager lock files (choose one)
 # yarn.lock
-package-lock.json
 
 # Production builds
 dist/
