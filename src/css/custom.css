@@ -567,6 +567,23 @@ table tbody tr:hover {
   font-weight: var(--ifm-font-weight-medium);
 }
 
+/* Sidebar Section Dividers */
+.sidebar-divider {
+  font-size: 0.75rem;
+  font-weight: var(--ifm-font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ifm-color-emphasis-500);
+  margin: 1.5rem 1rem 0.5rem 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .sidebar-divider {
+  color: var(--ifm-color-emphasis-400);
+  border-bottom-color: var(--ifm-color-emphasis-200);
+}
+
 /* Responsive Design */
 @media (max-width: 996px) {
   .hero__title {

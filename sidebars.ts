@@ -7,6 +7,36 @@ const sidebars: SidebarsConfig = {
       id: 'index',
       label: '47 Eagle Finance',
     },
+    
+    // USER DOCUMENTATION
+    {
+      type: 'html',
+      value: '<div class="sidebar-divider">USER GUIDE</div>',
+    },
+    {
+      type: 'category',
+      label: 'Getting Started',
+      collapsed: false,
+      items: [
+        'users/getting-started',
+        'users/understanding-vaults',
+        'users/user-faq',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Core Concepts',
+      collapsed: true,
+      items: [
+        'concepts/layerzero-integration',
+      ],
+    },
+    
+    // DEVELOPER DOCUMENTATION
+    {
+      type: 'html',
+      value: '<div class="sidebar-divider">DEVELOPER DOCS</div>',
+    },
     {
       type: 'category',
       label: 'Developer Guide',
@@ -16,14 +46,6 @@ const sidebars: SidebarsConfig = {
         'dev/quick-start',
         'dev/architecture',
         'dev/deployment',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Core Concepts',
-      collapsed: true,
-      items: [
-        'concepts/layerzero-integration',
       ],
     },
     {
