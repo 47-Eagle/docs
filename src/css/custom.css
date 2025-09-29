@@ -168,6 +168,8 @@ h6 { font-size: 1rem; font-weight: 500; }
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
   box-shadow: var(--shadow-sm);
   padding: 0.75rem 0;
+  z-index: 1001;
+  position: relative;
 }
 
 [data-theme='dark'] .navbar {
@@ -251,6 +253,7 @@ h6 { font-size: 1rem; font-weight: 500; }
 .theme-doc-sidebar-container {
   background: var(--ifm-background-surface-color);
   border-right: 1px solid rgba(212, 175, 55, 0.12);
+  z-index: 200;
 }
 
 .sidebar_njMd {
@@ -650,7 +653,7 @@ table tbody tr:hover {
 }
 
 
-/* Responsive Design */
+/* Responsive Design - Enhanced Mobile */
 @media (max-width: 996px) {
   .hero__title {
     font-size: 2.25rem;
@@ -658,6 +661,42 @@ table tbody tr:hover {
   
   h1 { font-size: 1.875rem; }
   h2 { font-size: 1.5rem; }
+  
+  .navbar__title {
+    font-size: 1.1rem;
+  }
+  
+  .sidebar-divider {
+    margin: 1rem 1rem 0.5rem 1rem;
+  }
+  
+  /* Mobile Sidebar Overlay Fix */
+  .theme-doc-sidebar-container {
+    z-index: 1000 !important;
+    position: relative;
+  }
+  
+  /* Ensure mobile sidebar appears above content */
+  .navbar-sidebar {
+    z-index: 1000 !important;
+  }
+  
+  .navbar-sidebar__backdrop {
+    z-index: 999 !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(4px);
+  }
+  
+  .navbar-sidebar__brand {
+    background: var(--ifm-background-surface-color);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar-sidebar__items {
+    background: var(--ifm-background-surface-color);
+    padding-top: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -669,10 +708,71 @@ table tbody tr:hover {
     font-size: 1rem;
   }
   
+  .navbar__logo img, .navbar__logo svg {
+    height: 32px;
+  }
+  
+  .navbar__title {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+  
   table th,
   table td {
     padding: 0.75rem;
     font-size: 0.8125rem;
+  }
+  
+  /* Mobile-specific sidebar adjustments */
+  .sidebar-divider {
+    margin: 0.8rem 1rem 0.3rem 1rem;
+    font-size: 0.6rem;
+  }
+  
+  .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+  }
+  
+  .theme-doc-sidebar-item-link-level-2 .menu__link {
+    padding: 0.4rem 1.5rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Improve mobile content spacing */
+  .markdown h1 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .markdown h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small mobile devices */
+  .navbar__title {
+    display: none;
+  }
+  
+  .navbar__logo img, .navbar__logo svg {
+    height: 28px;
+  }
+  
+  .sidebar-divider {
+    margin: 0.6rem 0.8rem 0.2rem 0.8rem;
+  }
+  
+  .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+    padding: 0.4rem 1rem;
+  }
+  
+  .theme-doc-sidebar-item-link-level-2 .menu__link {
+    padding: 0.3rem 1.2rem;
+    font-size: 0.75rem;
   }
 }
 
