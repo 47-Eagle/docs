@@ -91,6 +91,11 @@ const config: Config = {
           position: 'right',
           items: [
             {
+              label: '📚 Documentation',
+              type: 'html',
+              value: '<div style="font-size: 0.75rem; font-weight: bold; color: var(--ifm-color-emphasis-600); padding: 0.25rem 0.75rem; text-transform: uppercase;">Documentation</div>',
+            },
+            {
               label: 'Charm Finance Integration',
               to: '/concepts/charm-finance-integration',
             },
@@ -104,10 +109,14 @@ const config: Config = {
             },
             {
               type: 'html',
-              value: '<hr style="margin: 0.3rem 0;">',
+              value: '<hr>',
             },
             {
-              label: 'Legal Documents',
+              type: 'html',
+              value: '<div style="font-size: 0.75rem; font-weight: bold; color: var(--ifm-color-emphasis-600); padding: 0.25rem 0.75rem; text-transform: uppercase;">Legal</div>',
+            },
+            {
+              label: 'Terms of Service',
               to: '/legal/terms-of-service',
             },
             {
@@ -120,7 +129,11 @@ const config: Config = {
             },
             {
               type: 'html',
-              value: '<hr style="margin: 0.3rem 0;">',
+              value: '<hr>',
+            },
+            {
+              type: 'html',
+              value: '<div style="font-size: 0.75rem; font-weight: bold; color: var(--ifm-color-emphasis-600); padding: 0.25rem 0.75rem; text-transform: uppercase;">External</div>',
             },
             {
               label: 'GitHub Repository',

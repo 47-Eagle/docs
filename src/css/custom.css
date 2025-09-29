@@ -161,15 +161,16 @@ h6 { font-size: 1rem; font-weight: 500; }
   margin-bottom: 2rem;
 }
 
-/* Elegant Navbar - LayerZero Inspired */
+/* Enhanced Professional Navbar */
 .navbar {
   backdrop-filter: saturate(180%) blur(20px);
   background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
   box-shadow: var(--shadow-sm);
   padding: 0.75rem 0;
-  z-index: 2001;
-  position: relative;
+  z-index: 1001;
+  position: sticky;
+  top: 0;
 }
 
 [data-theme='dark'] .navbar {
@@ -211,6 +212,8 @@ h6 { font-size: 1rem; font-weight: 500; }
   transition: all 0.2s ease;
   color: var(--ifm-color-emphasis-600);
   position: relative;
+  font-weight: var(--ifm-font-weight-medium);
+  white-space: nowrap;
 }
 
 .navbar__link:hover {
@@ -226,27 +229,46 @@ h6 { font-size: 1rem; font-weight: 500; }
   border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-/* Modern Dropdown */
+/* Professional Dropdown Menu */
 .dropdown__menu {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--ifm-color-emphasis-200);
-  box-shadow: var(--shadow-lg);
-  padding: 0.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.75rem;
   background: var(--ifm-background-color);
   backdrop-filter: saturate(180%) blur(20px);
+  min-width: 220px;
+  margin-top: 0.5rem;
+}
+
+[data-theme='dark'] .dropdown__menu {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border-color: var(--ifm-color-emphasis-300);
 }
 
 .dropdown__link {
   border-radius: 6px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.75rem;
   font-weight: var(--ifm-font-weight-medium);
   font-size: 0.875rem;
   transition: all 0.15s ease;
+  color: var(--ifm-color-emphasis-700);
+  display: flex;
+  align-items: center;
 }
 
 .dropdown__link:hover {
-  background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-heading-color);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--ifm-color-primary);
+  transform: translateX(2px);
+}
+
+/* Dropdown separators */
+.dropdown__menu hr {
+  border: none;
+  height: 1px;
+  background: var(--ifm-color-emphasis-200);
+  margin: 0.5rem 0;
 }
 
 /* Sophisticated Sidebar - LayerZero Style */
@@ -723,17 +745,36 @@ table tbody tr:hover {
     font-size: 1.1rem;
   }
   
-  /* Mobile navbar improvements */
+  /* Enhanced mobile navbar */
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  
   .navbar__toggle {
     margin-right: 0.5rem;
+    color: var(--ifm-color-primary);
   }
   
   .navbar__brand {
-    margin-right: 1rem;
+    margin-right: auto;
+    flex: 1;
   }
   
   .navbar__logo {
     margin-right: 0.5rem;
+  }
+  
+  .navbar__logo img, .navbar__logo svg {
+    height: 32px;
+  }
+  
+  .navbar__title {
+    font-size: 1.1rem;
+  }
+  
+  /* Hide navbar items on mobile - they appear in mobile menu */
+  .navbar__item:not(.navbar__item--show-mobile) {
+    display: none;
   }
   
   .sidebar-divider {
