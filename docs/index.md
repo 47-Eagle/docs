@@ -9,6 +9,8 @@ slug: /
 
 **47 Eagle Finance** extends the ERC-4626 tokenized vault standard with LayerZero's omnichain messaging, enabling users to **deposit assets from any chain** and **receive yield-bearing vault shares on their preferred network** in a single transaction.
 
+Our vault leverages **Charm Finance Alpha Vaults** to deliver **enhanced yield potential** through professional Uniswap V3 liquidity management in strategically selected market tiers.
+
 ## What Are Omnichain Vaults?
 
 - **Beyond single-chain vaults:**  
@@ -33,6 +35,7 @@ To understand 47 Eagle architecture, think of it as **two separate OFT meshes** 
 | Contract | Purpose | Standard |
 |----------|---------|----------|
 | **EagleOVault** | Core vault managing dual-token LP strategy | <span class="badge badge--warning">ERC4626</span> |
+| **CharmAlphaVaultStrategy** | Interfaces with Charm Finance Alpha Vaults (1% fee tier) | <span class="badge badge--danger">Strategy</span> |
 | **ShareOFTAdapter** | Cross-chain vault share lockbox | <span class="badge badge--info">LayerZero</span> |
 | **EagleComposer** | Omnichain operation orchestrator | <span class="badge badge--info">LayerZero</span> |
 | **Asset OFTs** | Cross-chain token bridges (WLFI/USD1) | <span class="badge badge--success">OFT</span> |
@@ -43,8 +46,8 @@ To understand 47 Eagle architecture, think of it as **two separate OFT meshes** 
    When a user deposits `assets` from a source chain, the OVault system:
    - Transfers the `assets` to the hub chain via **LayerZero's OFT standard**
    - Executes the deposit workflow via **LayerZero's Composer standard** which:
-     - Deposits `assets` into the `ERC-4626` vault
-     - Mints vault `shares`
+     - Deposits `assets` into **Charm Finance Alpha Vaults** for professional liquidity management
+     - Mints vault `shares` representing proportional ownership
      - Sends the `shares` to the user's desired destination chain address via the OFT standard
 
 2. **Share redemption flow:**  
@@ -73,6 +76,7 @@ To understand 47 Eagle architecture, think of it as **two separate OFT meshes** 
 ## Essential Resources
 
 - [Quick Start Guide](./dev/quick-start) - Deploy in 10 minutes
+- [Charm Finance Integration](./concepts/charm-finance-integration) - Professional liquidity management strategy
 - [Architecture Deep Dive](./dev/architecture) - Understanding the system
 - [API Reference](./api/overview) - Complete function documentation
 - [View on GitHub](https://github.com/47-Eagle/eagle-ovault-clean) - Source code & examples

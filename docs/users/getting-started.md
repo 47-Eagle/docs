@@ -13,9 +13,10 @@ Welcome to 47 Eagle Finance - the omnichain vault platform that lets you earn yi
 47 Eagle Finance is an omnichain DeFi platform that allows you to:
 
 - **Deposit assets from any supported blockchain**
-- **Earn yield through sophisticated dual-token strategies**
+- **Earn enhanced yields** through **Charm Finance Alpha Vaults**
+- **Access professional Uniswap V3 strategies** in strategically selected fee tiers
 - **Withdraw your rewards on any supported network**
-- **Access institutional-grade vault strategies**
+- **Benefit from institutional-grade liquidity management**
 
 Think of it as a vault that lives everywhere at once - you can interact with it from any blockchain, but your funds are working together in one unified strategy.
 
@@ -24,7 +25,7 @@ Think of it as a vault that lives everywhere at once - you can interact with it 
 1. **Connect Your Wallet** - Use any wallet on supported networks
 2. **Choose Your Assets** - Deposit WLFI, USD1, or other supported tokens
 3. **Select Deposit Network** - Choose which blockchain to deposit from
-4. **Earn Yield** - Your assets automatically work in Uniswap V3 strategies
+4. **Earn Enhanced Yields** - Your assets work in **Charm Finance Alpha Vaults** with professional liquidity management in strategically selected fee tiers
 5. **Withdraw Anywhere** - Take your profits on any supported network
 
 ## Supported Networks
@@ -49,7 +50,7 @@ Think of it as a vault that lives everywhere at once - you can interact with it 
 
 - **Vault Shares**: When you deposit, you receive shares representing your portion of the vault
 - **Cross-Chain**: You can deposit on one network and withdraw on another
-- **Yield Generation**: Your funds earn yield through automated Uniswap V3 strategies
+- **Enhanced Yield Generation**: Your funds earn superior returns through **Charm Finance Alpha Vaults** - professional Uniswap V3 management in strategically selected fee tiers
 - **No Lock-Up**: You can withdraw your funds anytime
 
 ## Quick Start Steps
