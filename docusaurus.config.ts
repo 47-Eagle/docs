@@ -91,7 +91,6 @@ const config: Config = {
           position: 'right',
           items: [
             {
-              label: '📚 Documentation',
               type: 'html',
               value: '<div style="font-size: 0.75rem; font-weight: bold; color: var(--ifm-color-emphasis-600); padding: 0.25rem 0.75rem; text-transform: uppercase;">Documentation</div>',
             },
