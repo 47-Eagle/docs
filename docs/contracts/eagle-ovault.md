@@ -8,7 +8,7 @@ sidebar_label: EagleOVault
 
 The **EagleOVault** is the core vault contract implementing ERC4626 with a sophisticated dual-token Uniswap V3 LP strategy.
 
-## 📋 **Contract Overview**
+## Contract Overview
 
 ```solidity
 contract EagleOVault is ERC4626, Ownable, ReentrancyGuard, Pausable {
@@ -28,7 +28,7 @@ contract EagleOVault is ERC4626, Ownable, ReentrancyGuard, Pausable {
 }
 ```
 
-## 🎯 **Key Features**
+## Key Features
 
 ### **ERC4626 Compliance**
 - **Standard Interface**: Full ERC4626 tokenized vault implementation
@@ -48,7 +48,7 @@ contract EagleOVault is ERC4626, Ownable, ReentrancyGuard, Pausable {
 - **Slippage Limits**: TWAP-based price validation with configurable limits
 - **Emergency Controls**: Pause mechanism and emergency withdrawal functions
 
-## 🔧 **Core Functions**
+## Core Functions
 
 ### **Deposit Operations**
 
@@ -173,7 +173,7 @@ function redeemDual(uint256 shares, address receiver, address owner)
 }
 ```
 
-## 🎯 **Strategy Implementation**
+## Strategy Implementation
 
 ### **Liquidity Management**
 
@@ -294,7 +294,7 @@ function emergencyWithdraw(address token, uint256 amount) external onlyOwner whe
 }
 ```
 
-## 📊 **View Functions**
+## View Functions
 
 ### **Asset Calculations**
 ```solidity
@@ -337,7 +337,7 @@ function getCurrentPosition() external view returns (
 }
 ```
 
-## 📈 **Events**
+## Events
 
 ```solidity
 event DualDeposit(

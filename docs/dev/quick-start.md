@@ -8,7 +8,7 @@ sidebar_label: Quick Start
 
 Get your Eagle Omnichain Vault up and running in **10 minutes**!
 
-## 🎯 **Prerequisites**
+## Prerequisites
 
 Before you begin, ensure you have:
 
@@ -58,7 +58,7 @@ BSCSCAN_API_KEY=DEF456
 ARBISCAN_API_KEY=GHI789
 ```
 
-## 🚀 **Step 2: Deploy Hub Chain (Ethereum)**
+## Step 2: Deploy Hub Chain (Ethereum)
 
 ### Deploy to Ethereum Mainnet
 ```bash
@@ -79,10 +79,10 @@ npx hardhat verify:all --network ethereum
 ✅ ShareOFTAdapter deployed: 0x47...EA921
 ✅ EagleComposer deployed: 0x47...EA922
 
-🎯 Deployment Complete! Total gas: 12.3 ETH
+Deployment Complete! Total gas: 12.3 ETH
 ```
 
-## 🌐 **Step 3: Deploy Spoke Chains**
+## Step 3: Deploy Spoke Chains
 
 Deploy to all spoke chains in parallel:
 
@@ -103,7 +103,7 @@ npx hardhat deploy:eagle-ovault --network avalanche &
 wait
 ```
 
-## 🔗 **Step 4: Configure Cross-Chain Connections**
+## Step 4: Configure Cross-Chain Connections
 
 ### Set Trusted Remotes
 ```bash
@@ -151,7 +151,7 @@ npx hardhat ovault:withdraw-dual \
   --network ethereum
 ```
 
-## 📊 **Step 6: Monitor Your Vault**
+## Step 6: Monitor Your Vault
 
 ### Get Vault Information
 ```bash
@@ -176,7 +176,7 @@ npx hardhat monitor:cross-chain --vault 0x47...EA920
 }
 ```
 
-## 🎯 **Common Operations**
+## Common Operations
 
 ### Vault Management
 ```bash
@@ -230,7 +230,7 @@ npx hardhat gas:estimate --operation deposit --network ethereum
 npx hardhat gas:price --network ethereum
 ```
 
-## 🔧 **Advanced Configuration**
+## Advanced Configuration
 
 ### Custom Vanity Addresses
 ```typescript
@@ -252,16 +252,16 @@ export const SLIPPAGE_CONFIG = {
 }
 ```
 
-## 📚 **Next Steps**
+## Next Steps
 
 Now that you have Eagle Vault running, explore these topics:
 
-1. **🏗️ [Architecture Deep Dive](./architecture)** - Understand the system design
+1. **[Architecture Deep Dive](./architecture)** - Understand the system design
 2. **🔒 [Security Guide](./security)** - Production security considerations  
-3. **📋 [API Reference](../api/overview)** - Complete function documentation
+3. **[API Reference](../api/overview)** - Complete function documentation
 4. **🧪 [Testing Guide](./testing)** - Comprehensive testing strategies
 
-## 💡 **Pro Tips**
+## Pro Tips
 
 - **Use vanity addresses** for professional deployments
 - **Test on testnets first** before mainnet deployment
@@ -271,5 +271,5 @@ Now that you have Eagle Vault running, explore these topics:
 
 ---
 
-**🎉 Congratulations! Your Eagle Omnichain Vault is now live and ready for use!**
+**Congratulations! Your Eagle Omnichain Vault is now live and ready for use!**
 

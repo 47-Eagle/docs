@@ -25,7 +25,7 @@ Deploy once on Ethereum, interact from any of 5 supported chains with seamless u
 
 ```mermaid
 graph TB
-    subgraph "🏛️ Hub Chain (Ethereum)"
+    subgraph "Hub Chain (Ethereum)"
         EV[EagleOVault<br/>ERC4626 Vault]
         SA[ShareOFTAdapter<br/>Lockbox]
         EC[EagleComposer<br/>Orchestrator]
@@ -33,7 +33,7 @@ graph TB
         UA[USD1 AssetOFT]
     end
     
-    subgraph "🌐 Spoke Chains"
+    subgraph "Spoke Chains"
         SO[Share OFT]
         WO[WLFI OFT]
         UO[USD1 OFT]
@@ -57,7 +57,7 @@ graph TB
     style EC fill:#dc2626,stroke:#991b1b,color:#fff
 ```
 
-## 🚀 **Key Features**
+## Key Features
 
 ### **Standards Compliance**
 - ✅ **ERC4626**: Tokenized Vault Standard
@@ -67,17 +67,17 @@ graph TB
 
 ### **Security Features**
 - 🔒 **Reentrancy Protection**: NonReentrant modifiers on all external functions
-- 🛡️ **Input Validation**: Comprehensive zero-address and amount checks
-- ⚖️ **Slippage Protection**: TWAP-based price validation with configurable limits
-- 🎯 **Access Control**: Multi-tier permission system
+- **Input Validation**: Comprehensive zero-address and amount checks
+- **Slippage Protection**: TWAP-based price validation with configurable limits
+- **Access Control**: Multi-tier permission system
 
 ### **Cross-Chain Capabilities**
-- 🌐 **5 Supported Chains**: Ethereum (hub) + BSC, Arbitrum, Base, Avalanche (spokes)
-- ⚡ **Instant Transfers**: Sub-minute cross-chain operations
-- 💰 **Asset Bridging**: Seamless WLFI and USD1 transfers
+- **5 Supported Chains**: Ethereum (hub) + BSC, Arbitrum, Base, Avalanche (spokes)
+- **Instant Transfers**: Sub-minute cross-chain operations
+- **Asset Bridging**: Seamless WLFI and USD1 transfers
 - 📜 **Share Distribution**: Cross-chain vault share management
 
-## 📋 **Contract Architecture**
+## Contract Architecture
 
 ### **Hub Chain Contracts (Ethereum)**
 
@@ -113,20 +113,20 @@ User (Base) → Share OFT → LayerZero → Ethereum → Adapter → Vault → R
 
 | Component                              | Technology                                                   |
 | -------------------------------------- | ------------------------------------------------------------ |
-| 🏗️ Framework                           | [Hardhat with TypeScript for robust development](./quick-start) |
+| Framework                           | [Hardhat with TypeScript for robust development](./quick-start) |
 | 🧪 Testing                            | [Comprehensive Chai + Waffle test suite](./quick-start)                        |
-| 🚀 Deployment                         | [Custom Hardhat tasks with vanity address support](./architecture)                       |
-| 🔍 Security                           | [Slither analysis + production-grade patterns](./architecture)                              |
+| Deployment                         | [Custom Hardhat tasks with vanity address support](./architecture)                       |
+| Security                           | [Slither analysis + production-grade patterns](./architecture)                              |
 
 ## Supported Networks
 
 | Network   | Chain ID | LayerZero EID | Role        | Status |
 |-----------|----------|---------------|-------------|--------|
-| Ethereum  | 1        | 30101         | 🏛️ Hub      | Live   |
-| BSC       | 56       | 30102         | 🌐 Spoke    | Live   |
-| Arbitrum  | 42161    | 30110         | 🌐 Spoke    | Live   |
-| Base      | 8453     | 30184         | 🌐 Spoke    | Live   |
-| Avalanche | 43114    | 30106         | 🌐 Spoke    | Live   |
+| Ethereum  | 1        | 30101         | Hub      | Live   |
+| BSC       | 56       | 30102         | Spoke    | Live   |
+| Arbitrum  | 42161    | 30110         | Spoke    | Live   |
+| Base      | 8453     | 30184         | Spoke    | Live   |
+| Avalanche | 43114    | 30106         | Spoke    | Live   |
 
 ## Core Features
 
