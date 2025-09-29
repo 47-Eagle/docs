@@ -732,6 +732,65 @@ table tbody tr:hover {
     z-index: 200;
     position: relative;
   }
+  
+  /* Mobile Chart & Table Optimization */
+  .markdown table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ifm-color-primary) transparent;
+  }
+  
+  .markdown table::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .markdown table::-webkit-scrollbar-track {
+    background: var(--ifm-color-emphasis-100);
+    border-radius: 3px;
+  }
+  
+  .markdown table::-webkit-scrollbar-thumb {
+    background: var(--ifm-color-primary);
+    border-radius: 3px;
+  }
+  
+  .markdown table::-webkit-scrollbar-thumb:hover {
+    background: var(--ifm-color-primary-dark);
+  }
+  
+  /* Code block mobile optimization */
+  .theme-code-block {
+    margin: 0 -1rem;
+    border-radius: 0;
+  }
+  
+  .prism-code {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Wide content containers */
+  .markdown pre,
+  .markdown .admonition,
+  .markdown .theme-code-block {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mermaid diagrams mobile fix */
+  .mermaid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0;
+  }
+  
+  .mermaid svg {
+    max-width: none;
+    height: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -752,10 +811,30 @@ table tbody tr:hover {
     margin-left: 0.5rem;
   }
   
+  /* Table mobile enhancements */
   table th,
   table td {
     padding: 0.75rem;
     font-size: 0.8125rem;
+    min-width: 120px; /* Prevent overly narrow columns */
+  }
+  
+  /* Scroll hint for wide tables */
+  .markdown table::after {
+    content: "← Scroll to see more →";
+    position: absolute;
+    right: 0;
+    top: -20px;
+    font-size: 0.75rem;
+    color: var(--ifm-color-emphasis-600);
+    pointer-events: none;
+    opacity: 0.7;
+    font-style: italic;
+  }
+  
+  /* Hide scroll hint when table is fully visible */
+  .markdown table:not([scrollWidth]) table::after {
+    display: none;
   }
   
   /* Mobile-specific sidebar adjustments */
@@ -784,6 +863,39 @@ table tbody tr:hover {
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
+  }
+  
+  /* General mobile wide content handling */
+  .markdown > div {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Chart containers and figures */
+  .markdown figure,
+  .markdown .chart-container,
+  .markdown .diagram {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+  }
+  
+  /* Prevent images from overflowing */
+  .markdown img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Alert/Admonition mobile optimization */
+  .alert,
+  .admonition {
+    margin: 1rem -0.5rem;
+    border-radius: 8px;
+  }
+  
+  /* Better mobile padding for main content */
+  .main-wrapper {
+    padding: 0 0.5rem;
   }
 }
 
