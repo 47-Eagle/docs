@@ -256,21 +256,60 @@ h6 { font-size: 1rem; font-weight: 500; }
   z-index: 200;
 }
 
-/* Clean Mobile Sidebar Fix */
+/* Aggressive Mobile Sidebar Fix */
 @media (max-width: 996px) {
-  /* Ensure mobile sidebar appears above content */
+  /* Force all mobile navigation elements to highest z-index */
+  .navbar-sidebar,
+  .navbar-sidebar__backdrop,
+  .navbar-sidebar__items,
+  .navbar-sidebar__brand,
+  .navbar-sidebar__item,
+  .navbar-sidebar .menu,
+  .navbar-sidebar .menu__list,
+  .navbar-sidebar .menu__list-item,
+  .navbar-sidebar .menu__link {
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+  
+  /* Ensure backdrop covers everything */
+  .navbar-sidebar__backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* Ensure sidebar container is positioned correctly */
   .navbar-sidebar {
-    z-index: 9999;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
   }
   
   /* Prevent page scrolling when mobile menu is open */
-  body.navbar-sidebar--show {
-    overflow: hidden;
+  body.navbar-sidebar--show,
+  html.navbar-sidebar--show {
+    overflow: hidden !important;
   }
   
-  /* Ensure main content stays below mobile menu */
-  .navbar-sidebar--show ~ .main-wrapper {
-    z-index: 1;
+  /* Force main content behind mobile menu */
+  body.navbar-sidebar--show .main-wrapper,
+  html.navbar-sidebar--show .main-wrapper,
+  body.navbar-sidebar--show main,
+  html.navbar-sidebar--show main {
+    z-index: 1 !important;
+    position: relative !important;
+  }
+  
+  /* Additional nuclear options for stubborn elements */
+  .navbar-sidebar--show ~ *,
+  body.navbar-sidebar--show .docusaurus-wrapper > *:not(.navbar-sidebar) {
+    z-index: 1 !important;
   }
 }
 
@@ -688,9 +727,9 @@ table tbody tr:hover {
     margin: 1rem 1rem 0.5rem 1rem;
   }
   
-  /* Legacy mobile sidebar fixes - keeping for compatibility */
+  /* Desktop sidebar - keep original z-index */
   .theme-doc-sidebar-container {
-    z-index: 2000 !important;
+    z-index: 200;
     position: relative;
   }
 }
