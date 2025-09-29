@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'users/getting-started',
         'users/understanding-vaults',
+        'users/withdrawals-and-liquidity',
         'users/user-faq',
       ],
     },
