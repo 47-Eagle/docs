@@ -83,7 +83,7 @@ Consider a hypothetical scenario where a user holds 50% of all vault shares:
 ```
 EAGLE VAULT STATUS
 ==================
-Total Shares: 1,000,000 EAGLE
+Total Shares: 1,000 EAGLE
 Total Assets: 15,000 tokens  
 Share Price: 15.0 tokens per EAGLE
 
@@ -95,7 +95,7 @@ Asset Allocation:
    ├─ Charm Alpha Vault: 10,000 tokens
    └─ Future Strategy: 2,000 tokens
 
-User Position: 500,000 EAGLE shares (50% of vault)
+User Position: 500 EAGLE shares (50% of vault)
 Withdrawal Entitlement: 7,500 tokens
 ```
 
@@ -127,7 +127,7 @@ Final Settlement:
 ```
 VAULT STATE AFTER WITHDRAWAL
 =============================
-Total Shares: 500,000 EAGLE (-50%)
+Total Shares: 500 EAGLE (-50%)
 Total Assets: 7,620 tokens (-49.2%)
 New Share Price: 15.24 tokens per EAGLE (+1.6%)
 
