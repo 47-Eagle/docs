@@ -163,7 +163,7 @@ const config: Config = {
           items: [
             {
               label: 'User Guide',
-              to: '/users',
+              to: '/users/getting-started',
             },
             {
               label: 'Developer Docs',
@@ -183,8 +183,8 @@ const config: Config = {
               to: '/dev/architecture',
             },
             {
-              label: 'Security',
-              to: '/dev/security',
+              label: 'Smart Contracts',
+              to: '/contracts/eagle-ovault',
             },
             {
               label: 'Deployment',
