@@ -29,6 +29,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'concepts/layerzero-integration',
+        'concepts/charm-finance-integration',
       ],
     },
     
