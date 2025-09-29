@@ -99,6 +99,26 @@ const config: Config = {
               to: '/contracts/eagle-ovault',
             },
             {
+              label: 'API Reference',
+              to: '/api/overview',
+            },
+            {
+              type: 'html',
+              value: '<hr style="margin: 0.3rem 0;">',
+            },
+            {
+              label: 'Legal Documents',
+              to: '/legal/terms-of-service',
+            },
+            {
+              label: 'Privacy Policy',
+              to: '/legal/privacy-policy',
+            },
+            {
+              label: 'Risk Disclosures',
+              to: '/legal/risk-disclosures',
+            },
+            {
               type: 'html',
               value: '<hr style="margin: 0.3rem 0;">',
             },
@@ -111,8 +131,8 @@ const config: Config = {
               href: 'https://layerzero.network/',
             },
             {
-              label: 'Uniswap V3',
-              href: 'https://uniswap.org/',
+              label: 'Charm Finance',
+              href: 'https://charm.fi/',
             },
           ],
         },

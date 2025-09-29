@@ -710,7 +710,7 @@ table tbody tr:hover {
 }
 
 
-/* Responsive Design - Enhanced Mobile */
+/* Enhanced Mobile Navbar */
 @media (max-width: 996px) {
   .hero__title {
     font-size: 2.25rem;
@@ -721,6 +721,19 @@ table tbody tr:hover {
   
   .navbar__title {
     font-size: 1.1rem;
+  }
+  
+  /* Mobile navbar improvements */
+  .navbar__toggle {
+    margin-right: 0.5rem;
+  }
+  
+  .navbar__brand {
+    margin-right: 1rem;
+  }
+  
+  .navbar__logo {
+    margin-right: 0.5rem;
   }
   
   .sidebar-divider {

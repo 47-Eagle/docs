@@ -67,6 +67,22 @@ const sidebars: SidebarsConfig = {
         'api/overview',
       ],
     },
+    
+    // LEGAL DOCUMENTATION
+    {
+      type: 'html',
+      value: '<div class="sidebar-divider">LEGAL</div>',
+    },
+    {
+      type: 'category',
+      label: 'Legal Documentation',
+      collapsed: true,
+      items: [
+        'legal/terms-of-service',
+        'legal/privacy-policy',
+        'legal/risk-disclosures',
+      ],
+    },
   ],
 };
 
