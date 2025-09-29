@@ -55,6 +55,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'contracts/eagle-ovault',
+        'contracts/charm-alpha-vault-strategy',
       ],
     },
     {
