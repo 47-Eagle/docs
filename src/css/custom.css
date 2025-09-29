@@ -256,117 +256,21 @@ h6 { font-size: 1rem; font-weight: 500; }
   z-index: 200;
 }
 
-/* Ultimate Mobile Sidebar Fix - Multiple Approaches */
+/* Clean Mobile Sidebar Fix */
 @media (max-width: 996px) {
-  
-  /* Force main content below mobile nav when open */
-  html[data-has-hydrated="true"] .main-wrapper {
-    z-index: 1 !important;
-  }
-  
-  /* Docusaurus mobile sidebar - all possible classes */
-  .navbar-sidebar,
-  [class*="navbar-sidebar"] {
-    z-index: 99999 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-    transform: translateZ(0) !important;
-  }
-  
-  .navbar-sidebar__backdrop,
-  [class*="navbar-sidebar__backdrop"] {
-    z-index: 99998 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background: rgba(0, 0, 0, 0.6) !important;
-    backdrop-filter: blur(4px) !important;
-    transform: translateZ(0) !important;
-  }
-  
-  .navbar-sidebar__items,
-  .navbar-sidebar .navbar-sidebar__items,
-  [class*="navbar-sidebar__items"] {
-    z-index: 99999 !important;
-    position: relative !important;
-    background: var(--ifm-background-surface-color) !important;
-    height: 100vh !important;
-    width: 280px !important;
-    overflow-y: auto !important;
-    transform: translateZ(0) !important;
-    border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
-    box-shadow: var(--shadow-xl) !important;
-  }
-  
-  .navbar-sidebar__brand,
-  [class*="navbar-sidebar__brand"] {
-    z-index: 99999 !important;
-    background: var(--ifm-background-surface-color) !important;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15) !important;
-    padding: 1rem 1.5rem !important;
-  }
-  
-  /* Additional mobile menu overrides */
-  .navbar__toggle,
-  [class*="navbar__toggle"] {
-    z-index: 99999 !important;
-    position: relative !important;
-  }
-  
-  /* Force mobile menu above everything */
-  body:has(.navbar-sidebar--show) {
-    overflow: hidden !important;
-  }
-  
-  /* Alternative approach - global override */
-  body .navbar-sidebar--show {
-    z-index: 99999 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-  
-  /* Nuclear option - cover everything when mobile menu is active */
-  body[class*="sidebar--show"] .main-wrapper,
-  body.navbar-sidebar--show .main-wrapper,
-  html.navbar-sidebar--show .main-wrapper {
-    z-index: -1 !important;
-    position: relative !important;
-  }
-  
-  /* Additional nuclear CSS overrides */
-  .navbar-sidebar--show ~ * {
-    z-index: -1 !important;
-  }
-  
-  /* Ensure mobile sidebar is always on top */
-  * {
-    position: relative;
-  }
-  
-  .navbar-sidebar * {
-    z-index: inherit !important;
-  }
-}
-
-/* Global mobile sidebar override - outside media query */
-@media (max-width: 996px) {
+  /* Ensure mobile sidebar appears above content */
   .navbar-sidebar {
-    position: fixed !important;
-    z-index: 999999 !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
+    z-index: 9999;
+  }
+  
+  /* Prevent page scrolling when mobile menu is open */
+  body.navbar-sidebar--show {
+    overflow: hidden;
+  }
+  
+  /* Ensure main content stays below mobile menu */
+  .navbar-sidebar--show ~ .main-wrapper {
+    z-index: 1;
   }
 }
 
