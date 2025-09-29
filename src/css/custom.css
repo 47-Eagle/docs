@@ -168,7 +168,7 @@ h6 { font-size: 1rem; font-weight: 500; }
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
   box-shadow: var(--shadow-sm);
   padding: 0.75rem 0;
-  z-index: 1001;
+  z-index: 2001;
   position: relative;
 }
 
@@ -254,6 +254,38 @@ h6 { font-size: 1rem; font-weight: 500; }
   background: var(--ifm-background-surface-color);
   border-right: 1px solid rgba(212, 175, 55, 0.12);
   z-index: 200;
+}
+
+/* Critical Mobile Sidebar Fix - Force Above Content */
+@media (max-width: 996px) {
+  .navbar-sidebar {
+    z-index: 9999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .navbar-sidebar__backdrop {
+    z-index: 9998 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+  }
+  
+  .navbar-sidebar .navbar-sidebar__items {
+    z-index: 9999 !important;
+    position: relative !important;
+    background: var(--ifm-background-surface-color) !important;
+    height: 100% !important;
+    width: 300px !important;
+    overflow-y: auto !important;
+  }
 }
 
 .sidebar_njMd {
@@ -670,32 +702,47 @@ table tbody tr:hover {
     margin: 1rem 1rem 0.5rem 1rem;
   }
   
-  /* Mobile Sidebar Overlay Fix */
+  /* Mobile Sidebar Overlay Fix - Comprehensive */
   .theme-doc-sidebar-container {
-    z-index: 1000 !important;
+    z-index: 2000 !important;
     position: relative;
   }
   
-  /* Ensure mobile sidebar appears above content */
+  /* Docusaurus mobile sidebar classes */
   .navbar-sidebar {
-    z-index: 1000 !important;
+    z-index: 2000 !important;
+    position: fixed !important;
   }
   
   .navbar-sidebar__backdrop {
-    z-index: 999 !important;
+    z-index: 1999 !important;
     background: rgba(0, 0, 0, 0.6) !important;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px) !important;
+    position: fixed !important;
   }
   
   .navbar-sidebar__brand {
-    background: var(--ifm-background-surface-color);
+    background: var(--ifm-background-surface-color) !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
     padding: 1rem 1.5rem;
+    z-index: 2001 !important;
   }
   
   .navbar-sidebar__items {
-    background: var(--ifm-background-surface-color);
+    background: var(--ifm-background-surface-color) !important;
     padding-top: 1rem;
+    z-index: 2001 !important;
+  }
+  
+  /* Additional mobile overlay fixes */
+  .navbar-sidebar .menu {
+    z-index: 2001 !important;
+  }
+  
+  /* Ensure main content stays below mobile sidebar */
+  .main-wrapper {
+    z-index: 1 !important;
+    position: relative;
   }
 }
 
