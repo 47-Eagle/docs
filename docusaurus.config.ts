@@ -73,13 +73,35 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Docs',
+        },
+        {
+          to: '/users/getting-started',
+          label: 'Get Started',
+          position: 'left',
+        },
+        {
+          to: '/users/understanding-vaults',
+          label: 'User Guide',
+          position: 'left',
         },
         {
           type: 'dropdown',
-          label: 'Links',
+          label: 'Resources',
           position: 'right',
           items: [
+            {
+              label: 'Charm Finance Integration',
+              to: '/concepts/charm-finance-integration',
+            },
+            {
+              label: 'Smart Contracts',
+              to: '/contracts/eagle-ovault',
+            },
+            {
+              type: 'html',
+              value: '<hr style="margin: 0.3rem 0;">',
+            },
             {
               label: 'GitHub Repository',
               href: 'https://github.com/47-Eagle/eagle-ovault-clean',
