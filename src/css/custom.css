@@ -218,10 +218,10 @@ h6 { font-size: 1rem; font-weight: 500; }
 }
 
 .navbar__link--active {
-  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
-  color: white !important;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--ifm-color-primary-darker) !important;
   font-weight: var(--ifm-font-weight-semibold);
-  box-shadow: var(--shadow-golden);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 /* Modern Dropdown */
@@ -303,20 +303,20 @@ h6 { font-size: 1rem; font-weight: 500; }
   background: linear-gradient(90deg, var(--ifm-color-primary), transparent);
 }
 
-/* Active Menu Items - Elegant Golden */
+/* Active Menu Items - Subtle LayerZero Style */
 .menu__link--active {
-  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
-  color: white !important;
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--ifm-color-primary-darker) !important;
   font-weight: var(--ifm-font-weight-semibold);
-  border-radius: 10px;
+  border-radius: 8px;
   margin: 0 1rem;
-  box-shadow: var(--shadow-golden);
+  border-left: 3px solid var(--ifm-color-primary);
   transform: translateX(2px);
 }
 
 .menu__link--active:hover {
-  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--ifm-color-primary));
-  color: white !important;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--ifm-color-primary-darkest) !important;
   transform: translateX(2px) translateY(-1px);
 }
 
@@ -399,20 +399,24 @@ h6 { font-size: 1rem; font-weight: 500; }
   overflow: hidden;
 }
 
-/* Copy Button */
+/* Sophisticated Copy Button */
 .clean-btn[aria-label*="Copy"] {
-  background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-emphasis-600);
-  border-radius: 4px;
-  padding: 0.375rem;
-  transition: all 0.15s ease;
-  border: 1px solid var(--ifm-color-emphasis-200);
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--ifm-color-primary-darker);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .clean-btn[aria-label*="Copy"]:hover {
   background: var(--ifm-color-primary);
-  color: white;
+  color: var(--eagle-neutral-950);
   border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  font-weight: var(--ifm-font-weight-bold);
 }
 
 /* Modern Admonitions */
@@ -431,8 +435,8 @@ h6 { font-size: 1rem; font-weight: 500; }
 }
 
 .alert--note {
-  border-left: 4px solid var(--ifm-color-info);
-  background: var(--ifm-background-surface-color);
+  border-left: 4px solid var(--ifm-color-primary);
+  background: rgba(212, 175, 55, 0.03);
 }
 
 .alert--warning {
@@ -463,16 +467,17 @@ h6 { font-size: 1rem; font-weight: 500; }
 }
 
 .button--primary {
-  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+  background: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
-  color: white;
-  box-shadow: var(--shadow-golden);
+  color: var(--eagle-neutral-950);
+  font-weight: var(--ifm-font-weight-bold);
+  box-shadow: var(--shadow-md);
 }
 
 .button--primary:hover {
-  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--ifm-color-primary));
+  background: var(--ifm-color-primary-dark);
   border-color: var(--ifm-color-primary-dark);
-  color: white;
+  color: var(--eagle-neutral-950);
 }
 
 .button--secondary {
@@ -500,13 +505,14 @@ table {
 }
 
 table th {
-  background: var(--ifm-color-emphasis-100);
+  background: rgba(212, 175, 55, 0.08);
   color: var(--ifm-heading-color);
-  font-weight: var(--ifm-font-weight-semibold);
+  font-weight: var(--ifm-font-weight-bold);
   text-align: left;
-  padding: 1rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding: 1.25rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
 }
 
 [data-theme='dark'] table th {
@@ -521,7 +527,8 @@ table td {
 }
 
 table tbody tr:hover {
-  background: var(--ifm-color-emphasis-100);
+  background: rgba(212, 175, 55, 0.04);
+  transform: translateX(1px);
 }
 
 /* Modern Badges */
@@ -553,8 +560,9 @@ table tbody tr:hover {
 }
 
 .badge--info {
-  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
-  color: white;
+  background: var(--ifm-color-primary);
+  color: var(--eagle-neutral-950);
+  font-weight: var(--ifm-font-weight-bold);
 }
 
 /* Mermaid Diagrams - Golden Theme */
