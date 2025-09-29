@@ -124,19 +124,19 @@ The hub chain hosts core vault logic and asset management:
 
 ```mermaid
 graph TB
-    subgraph "🏛️ Ethereum Hub Chain"
-        subgraph "💰 Asset Management"
+    subgraph "Ethereum Hub Chain"
+        subgraph "Asset Management"
             WLFI[WLFI Adapter<br/>Existing Token Bridge]
             USD1[USD1 Adapter<br/>Existing Token Bridge]
             UV3[Uniswap V3 Pool<br/>0xf9f5e6f7a44ee10c72e67bded6654afaf4d0c85d]
         end
         
-        subgraph "🏦 Vault Core"
+        subgraph "Vault Core"
             EV[EagleOVault<br/>ERC4626 + Strategy]
             SA[ShareOFTAdapter<br/>Lockbox Pattern]
         end
         
-        subgraph "🎭 Orchestration"
+        subgraph "Orchestration"
             EC[EagleComposer<br/>Cross-Chain Coordinator]
         end
         
@@ -161,8 +161,8 @@ Spoke chains provide user access points and local token representations:
 
 ```mermaid
 graph TB
-    subgraph "🌐 BSC Spoke Chain (Deployed)"
-        subgraph "💰 Token Adapters"
+    subgraph "BSC Spoke Chain (Deployed)"
+        subgraph "Token Adapters"
             WA[WLFI Adapter<br/>Existing WLFI Bridge]
             UA[USD1 Adapter<br/>Existing USD1 Bridge]
         end
@@ -354,7 +354,7 @@ The Eagle Vault implements sophisticated LP strategy targeting the WLFI/USD1 poo
 
 ```mermaid
 graph LR
-    subgraph "💰 Dual-Token Flow"
+    subgraph "Dual-Token Flow"
         WLFI_IN[WLFI Deposits] 
         USD1_IN[USD1 Deposits]
         COMBINED[Asset Combination]
@@ -400,7 +400,7 @@ function getTimeWeightedAveragePrice() internal view returns (uint256) {
 
 ```mermaid
 graph TD
-    subgraph "🛡️ Security Layers"
+    subgraph "Security Layers"
         L1[Input Validation]
         L2[Reentrancy Protection] 
         L3[Registry-Based Access Control]
@@ -408,14 +408,14 @@ graph TD
         L5[Emergency Controls]
     end
     
-    subgraph "🔍 Validation Checks"
+    subgraph "Validation Checks"
         V1[Zero Address Checks]
         V2[Amount Validation]
         V3[Registry Verification]
         V4[State Consistency]
     end
     
-    subgraph "⚡ Circuit Breakers"
+    subgraph "Circuit Breakers"
         C1[Pause Mechanism]
         C2[Emergency Withdrawal]
         C3[Asset Recovery]
@@ -448,11 +448,11 @@ graph TD
 
 | Network | Chain ID | LayerZero EID | Status | Role |
 |---------|----------|---------------|---------|------|
-| **Ethereum** | 1 | 30101 | 🎯 **Target** | Hub |
-| **BSC** | 56 | 30102 | ✅ **Live** | Spoke |
-| **Arbitrum** | 42161 | 30110 | 🎯 **Target** | Spoke |
-| **Base** | 8453 | 30184 | 🎯 **Target** | Spoke |
-| **Avalanche** | 43114 | 30106 | 🎯 **Target** | Spoke |
+| **Ethereum** | 1 | 30101 | **Target** | Hub |
+| **BSC** | 56 | 30102 | **Live** | Spoke |
+| **Arbitrum** | 42161 | 30110 | **Target** | Spoke |
+| **Base** | 8453 | 30184 | **Target** | Spoke |
+| **Avalanche** | 43114 | 30106 | **Target** | Spoke |
 
 ### LayerZero V2 Integration
 

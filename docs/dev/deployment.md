@@ -59,7 +59,7 @@ The deployment follows a registry-based pattern enabling deterministic addresses
 
 ```mermaid
 graph TD
-    subgraph "🏗️ Deployment Flow"
+    subgraph "Deployment Flow"
         R[Registry Configuration]
         V[Vanity Address Generation] 
         D[Deterministic Deployment]
@@ -67,13 +67,13 @@ graph TD
         T[Testing & Verification]
     end
     
-    subgraph "📋 Registry Setup"
+    subgraph "Registry Setup"
         RC[Configure Chain Endpoints]
         RV[Verify Registry State]
         RT[Test Registry Calls]
     end
     
-    subgraph "🎯 Vanity Generation"
+    subgraph "Vanity Generation"
         VG[Generate CREATE2 Salt]
         VA[Validate Address Pattern]
         VD[Deploy with Vanity]
@@ -203,7 +203,7 @@ fn main() {
         );
         
         if address_matches_pattern(&computed_address, target_prefix, target_suffix) {
-            println!("🎯 Found vanity address!");
+            println!("Found vanity address!");
             println!("Address: {}", computed_address);
             println!("Salt: 0x{}", hex::encode(salt));
             println!("Attempts: {}", attempts);
@@ -298,7 +298,7 @@ async function deployProduction() {
         timestamp: new Date().toISOString()
     };
     
-    console.log("🚀 Deployment complete:", deployment);
+    console.log("Deployment complete:", deployment);
 }
 ```
 
@@ -470,7 +470,7 @@ npx hardhat enable-public-access --network ethereum --network bsc
 npx hardhat monitor-health --all-networks
 
 # 4. Announce launch
-echo "🚀 Eagle Vault omnichain infrastructure is live!"
+echo "Eagle Vault omnichain infrastructure is live!"
 ```
 
 ## Monitoring and Maintenance

@@ -8,18 +8,18 @@ sidebar_label: LayerZero Integration
 
 Learn how Eagle Vault leverages **LayerZero V2** for seamless omnichain operations.
 
-## 🎯 **What is LayerZero?**
+## What is LayerZero?
 
 LayerZero is a **full-stack interoperability protocol** that enables omnichain applications to move data and value across different blockchains with native-like user experiences.
 
 ### **Key Benefits for Eagle Vault**
-- **🔐 Security**: Immutable smart contracts, no trusted validators
-- **⚡ Speed**: Messages delivered in 1-3 minutes
-- **💰 Cost Effective**: Optimized gas usage and message fees  
-- **🌐 Universal**: Works across 50+ blockchains
-- **🛠️ Developer Friendly**: Simple, standardized interfaces
+- **Security**: Immutable smart contracts, no trusted validators
+- **Speed**: Messages delivered in 1-3 minutes
+- **Cost Effective**: Optimized gas usage and message fees  
+- **Universal**: Works across 50+ blockchains
+- **Developer Friendly**: Simple, standardized interfaces
 
-## 🏗️ **LayerZero OVault Pattern**
+## LayerZero OVault Pattern
 
 Eagle Vault implements the **official LayerZero OVault pattern** - a standardized approach for omnichain vaults.
 
@@ -27,14 +27,14 @@ Eagle Vault implements the **official LayerZero OVault pattern** - a standardize
 
 ```mermaid
 graph TB
-    subgraph "🏛️ Hub Chain (Ethereum)"
+    subgraph "Hub Chain (Ethereum)"
         OV[OVault<br/>ERC4626 Vault]
         SA[ShareOFTAdapter<br/>Lockbox]
         OC[OVaultComposer<br/>Orchestrator]
         AOH[AssetOFT Hub]
     end
     
-    subgraph "🌐 Spoke Chains"
+    subgraph "Spoke Chains"
         SO[ShareOFT<br/>Representations]
         AOS[AssetOFT Spokes]
     end
@@ -55,7 +55,7 @@ graph TB
     style OC fill:#dc2626,stroke:#991b1b,color:#fff
 ```
 
-## 📋 **OFT (Omnichain Fungible Token) Standard**
+## OFT (Omnichain Fungible Token) Standard
 
 ### **What are OFTs?**
 OFTs are tokens that exist natively across multiple blockchains, maintaining a unified total supply while allowing seamless cross-chain transfers.
@@ -100,10 +100,10 @@ contract EagleShareOFT is OFT {
 sequenceDiagram
     participant User as 👤 User (BSC)
     participant WLFI_BSC as WLFI OFT (BSC)
-    participant LZ as 🌐 LayerZero
+    participant LZ as LayerZero
     participant WLFI_ETH as WLFI OFT (ETH)
-    participant Composer as 🎭 Composer (ETH)
-    participant Vault as 🏦 Vault (ETH)
+    participant Composer as Composer (ETH)
+    participant Vault as Vault (ETH)
     participant Share_ETH as ShareAdapter (ETH)
     participant Share_BSC as Share OFT (BSC)
     
@@ -129,10 +129,10 @@ sequenceDiagram
 sequenceDiagram
     participant User as 👤 User (Base)
     participant Share_BASE as Share OFT (Base)
-    participant LZ as 🌐 LayerZero
+    participant LZ as LayerZero
     participant Share_ETH as ShareAdapter (ETH)
-    participant Composer as 🎭 Composer (ETH)
-    participant Vault as 🏦 Vault (ETH)
+    participant Composer as Composer (ETH)
+    participant Vault as Vault (ETH)
     participant WLFI_ETH as WLFI OFT (ETH)
     participant WLFI_BASE as WLFI OFT (Base)
     
@@ -151,7 +151,7 @@ sequenceDiagram
     WLFI_BASE->>User: mint(520 WLFI)
 ```
 
-## ⚙️ **LayerZero Configuration**
+## LayerZero Configuration
 
 ### **Endpoint Addresses**
 ```typescript
@@ -192,7 +192,7 @@ bytes memory options = OptionsBuilder.newOptions()
     .addExecutorNativeDropOption(0.01 ether, recipient); // Native drop
 ```
 
-## 💰 **Fee Structure & Economics**
+## Fee Structure & Economics
 
 ### **LayerZero Fee Calculation**
 ```solidity
@@ -291,7 +291,7 @@ describe('LayerZero Integration', () => {
 });
 ```
 
-## 📊 **Monitoring & Analytics**
+## Monitoring & Analytics
 
 ### **Cross-Chain Metrics**
 ```solidity
@@ -323,7 +323,7 @@ const scannerConfig = {
 };
 ```
 
-## 🚀 **Advanced Features**
+## Advanced Features
 
 ### **Composed Calls**
 ```solidity
@@ -353,7 +353,7 @@ const executorOptions = {
 };
 ```
 
-## 🛠️ **Development Tools**
+## Development Tools
 
 ### **LayerZero Devtools**
 ```bash
