@@ -8,7 +8,7 @@ sidebar_label: CharmAlphaVaultStrategy
 
 The **CharmAlphaVaultStrategy** is a sophisticated adapter contract that integrates 47 Eagle Finance with Charm Finance Alpha Vaults, enabling professional Uniswap V3 liquidity management with enhanced yield generation capabilities.
 
-## 📋 **Contract Overview**
+## Contract Overview
 
 ```solidity
 contract CharmAlphaVaultStrategy is ReentrancyGuard, Ownable {
@@ -30,15 +30,15 @@ contract CharmAlphaVaultStrategy is ReentrancyGuard, Ownable {
 }
 ```
 
-## 🏗️ **Architecture Integration**
+## Architecture Integration
 
-### **Role in the Ecosystem**
+### Role in the Ecosystem
 
 The CharmAlphaVaultStrategy serves as a **strategic adapter layer** between:
 
 - **EagleOVault (ERC4626)** ← Interface → **CharmAlphaVaultStrategy** ← Interface → **Charm Alpha Vault**
 
-### **Integration Flow**
+### Integration Flow
 
 ```mermaid
 graph LR
@@ -49,9 +49,9 @@ graph LR
     E --> F[WLFI/USD1 Liquidity]
 ```
 
-## 🔌 **Charm Finance Interfaces**
+## Charm Finance Interfaces
 
-### **IAlphaProVault Interface**
+### IAlphaProVault Interface
 
 ```solidity
 interface IAlphaProVault {
@@ -82,7 +82,7 @@ interface IAlphaProVault {
 }
 ```
 
-### **IAlphaProVaultFactory Interface**
+### IAlphaProVaultFactory Interface
 
 ```solidity
 interface IAlphaProVaultFactory {
@@ -101,9 +101,9 @@ interface IAlphaProVaultFactory {
 }
 ```
 
-## ⚙️ **Core Functions**
+## Core Functions
 
-### **Strategy Initialization**
+### Strategy Initialization
 
 ```solidity
 function initializeVault(uint256 maxTotalSupply) external onlyOwner {
@@ -134,7 +134,7 @@ function initializeVault(uint256 maxTotalSupply) external onlyOwner {
 }
 ```
 
-### **Strategic Deposit Function**
+### Strategic Deposit Function
 
 ```solidity
 function deposit(
@@ -176,7 +176,7 @@ function deposit(
 }
 ```
 
-### **Strategic Withdrawal Function**
+### Strategic Withdrawal Function
 
 ```solidity
 function withdraw(
@@ -208,7 +208,7 @@ function withdraw(
 }
 ```
 
-### **Professional Rebalancing**
+### Professional Rebalancing
 
 ```solidity
 function rebalance() external onlyVault whenActive nonReentrant {
@@ -222,9 +222,9 @@ function rebalance() external onlyVault whenActive nonReentrant {
 }
 ```
 
-## 📊 **View Functions**
+## View Functions
 
-### **Strategy Value Calculation**
+### Strategy Value Calculation
 
 ```solidity
 function getTotalAmounts() external view returns (uint256 wlfiAmount, uint256 usd1Amount) {
@@ -245,7 +245,7 @@ function getTotalAmounts() external view returns (uint256 wlfiAmount, uint256 us
 }
 ```
 
-### **Share Balance Tracking**
+### Share Balance Tracking
 
 ```solidity
 function getShares() external view returns (uint256) {
@@ -256,7 +256,7 @@ function getShares() external view returns (uint256) {
 }
 ```
 
-### **Initialization Status**
+### Initialization Status
 
 ```solidity
 function isInitialized() external view returns (bool) {
@@ -264,9 +264,9 @@ function isInitialized() external view returns (bool) {
 }
 ```
 
-## 🛡️ **Security Features**
+## Security Features
 
-### **Access Control**
+### Access Control
 
 ```solidity
 modifier onlyVault() {
@@ -280,7 +280,7 @@ modifier whenActive() {
 }
 ```
 
-### **Slippage Protection**
+### Slippage Protection
 
 The contract implements comprehensive slippage protection:
 
@@ -293,7 +293,7 @@ uint256 amount0Min = (expectedAmount0 * (10000 - maxSlippage)) / 10000;
 uint256 amount1Min = (expectedAmount1 * (10000 - maxSlippage)) / 10000;
 ```
 
-### **Emergency Controls**
+### Emergency Controls
 
 ```solidity
 function pause() external onlyOwner {
@@ -310,9 +310,9 @@ function rescueToken(address token, uint256 amount, address to) external onlyOwn
 }
 ```
 
-## ⚡ **Events**
+## Events
 
-### **Strategy Events**
+### Strategy Events
 
 ```solidity
 event VaultCreated(
@@ -340,9 +340,9 @@ event StrategyRebalanced(
 );
 ```
 
-## 🔧 **Configuration Parameters**
+## Configuration Parameters
 
-### **Strategic Parameters**
+### Strategic Parameters
 
 ```solidity
 struct StrategyConfig {
@@ -352,7 +352,7 @@ struct StrategyConfig {
 }
 ```
 
-### **Parameter Updates**
+### Parameter Updates
 
 ```solidity
 function updateParameters(
@@ -367,9 +367,9 @@ function updateParameters(
 }
 ```
 
-## 💼 **Integration Examples**
+## Integration Examples
 
-### **EagleOVault Integration**
+### EagleOVault Integration
 
 ```solidity
 // In EagleOVault contract
@@ -388,7 +388,7 @@ function _deployToStrategy(uint256 wlfiAmount, uint256 usd1Amount) internal {
 }
 ```
 
-### **External Integration Pattern**
+### External Integration Pattern
 
 ```solidity
 // For external contracts integrating with the strategy
@@ -408,16 +408,16 @@ contract ExternalIntegrator {
 }
 ```
 
-## 🎯 **Best Practices**
+## Best Practices
 
-### **For Developers**
+### For Developers
 
 1. **Always check initialization** before calling strategy functions
 2. **Monitor slippage parameters** for optimal execution
 3. **Handle emergency states** gracefully in integrating contracts
 4. **Use view functions** to validate strategy state before operations
 
-### **For Integrators**
+### For Integrators
 
 ```solidity
 // Example integration pattern
@@ -439,21 +439,21 @@ function integrateWithCharmStrategy() external {
 }
 ```
 
-## 📚 **Related Documentation**
+## Related Documentation
 
 - **[Charm Finance Integration](../concepts/charm-finance-integration)** - Complete integration overview
 - **[EagleOVault Contract](./eagle-ovault)** - Main vault contract documentation
 - **[Architecture Deep Dive](../dev/architecture)** - System architecture details
 - **[LayerZero Integration](../concepts/layerzero-integration)** - Cross-chain functionality
 
-## 🔗 **External Resources**
+## External Resources
 
 - **[Charm Finance Alpha Vaults](https://learn.charm.fi/charm/products-overview/alpha-vaults)** - Official documentation
 - **[Charm Finance Contracts](https://learn.charm.fi/charm/links/contracts)** - Contract addresses
 - **[Uniswap V3 Documentation](https://docs.uniswap.org/protocol/V3/introduction)** - Underlying protocol
 - **[OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/)** - Security libraries used
 
-## 🎬 **Conclusion**
+## Conclusion
 
 The CharmAlphaVaultStrategy contract represents a sophisticated integration between 47 Eagle Finance and Charm Finance Alpha Vaults, providing:
 
