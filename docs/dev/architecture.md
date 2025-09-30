@@ -85,7 +85,7 @@ contract USD1Adapter is OFTAdapter {
 ```
 
 **Purpose**: Enable cross-chain functionality for existing ERC20 tokens  
-**Usage**: Chains where WLFI/USD1 already deployed (Ethereum, BSC)  
+**Usage**: Chains where WLFI/USD1 are deployed (Ethereum mainnet)  
 **Security**: No new token supply - only wraps/unwraps existing tokens
 
 #### **OFTs** (`contracts/layerzero-ovault/oft/`)
@@ -155,7 +155,7 @@ graph TB
     style UV3 fill:#f59e0b,stroke:#d97706,color:#fff
 ```
 
-### Spoke Chains: BSC, Arbitrum, Base, Avalanche
+### Spoke Chains: Arbitrum, Base, Avalanche
 
 Spoke chains provide user access points and local token representations:
 
@@ -223,9 +223,9 @@ sequenceDiagram
 
 | Phase | Network | Status | Details |
 |-------|---------|--------|---------|
-| **Phase 1** | BSC | ✅ **Deployed** | Registry configured, contracts live |
+| **Phase 1** | Infrastructure | ✅ **Completed** | Registry and factory contracts deployed |
 | **Phase 2** | Ethereum | 🔄 **In Progress** | Awaiting vanity address generation |
-| **Phase 3** | Multi-Chain | ⏳ **Pending** | Cross-chain wiring after Ethereum |
+| **Phase 3** | Multi-Chain | ⏳ **Pending** | Cross-chain network deployment |
 
 </div>
 
@@ -325,8 +325,7 @@ contract EagleShareOFT is OFT {
 # Production token addresses (.env)
 WLFI_ETHEREUM=0x...    # Your deployed WLFI on Ethereum
 USD1_ETHEREUM=0x...    # Your deployed USD1 on Ethereum  
-WLFI_BSC=0x...         # Your deployed WLFI on BSC
-USD1_BSC=0x...         # Your deployed USD1 on BSC
+# Additional token addresses configured per deployment network
 ```
 
 #### No Token Minting Policy
@@ -449,7 +448,7 @@ graph TD
 | Network | Chain ID | LayerZero EID | Status | Role |
 |---------|----------|---------------|---------|------|
 | **Ethereum** | 1 | 30101 | **Target** | Hub |
-| **BSC** | 56 | 30102 | **Live** | Spoke |
+| **[Network 1]** | [REDACTED] | [REDACTED] | **Infrastructure** | Foundation |
 | **Arbitrum** | 42161 | 30110 | **Target** | Spoke |
 | **Base** | 8453 | 30184 | **Target** | Spoke |
 | **Avalanche** | 43114 | 30106 | **Target** | Spoke |
