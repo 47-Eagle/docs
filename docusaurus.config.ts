@@ -158,9 +158,9 @@ const config: Config = {
             },
           ],
         },
+        // Team login button
         {
-          href: 'https://github.com/47-Eagle/docs',
-          label: 'GitHub',
+          type: 'custom-teamLogin',
           position: 'right',
         },
       ],
