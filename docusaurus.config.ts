@@ -11,7 +11,7 @@ const config: Config = {
   favicon: 'img/eagle-favicon.ico',
 
   // Set the production URL of your site here
-  url: 'https://47-Eagle.github.io',
+  url: 'https://docs.47eagle.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: '/',
 
