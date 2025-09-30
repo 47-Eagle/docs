@@ -1019,24 +1019,24 @@ table tbody tr:hover {
   }
 }
 
-/* ==== MODERN ELEGANT NAVIGATION ==== */
+/* ==== DARK GOLDEN NAVIGATION ==== */
 .navbar {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+  backdrop-filter: blur(25px) saturate(200%) !important;
   border: none !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  border-bottom: 1px solid rgba(180, 131, 61, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(180, 131, 61, 0.15) !important;
   padding: 0.75rem 2rem !important;
   height: 64px !important;
 }
 
 .navbar:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(180, 131, 61, 0.25) !important;
 }
 
 .navbar-link-elegant {
   font-weight: 400 !important;
-  color: #374151 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
   padding: 0.5rem 1rem !important;
   border-radius: 8px !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1047,22 +1047,22 @@ table tbody tr:hover {
 }
 
 .navbar-link-elegant:hover {
-  color: #111827 !important;
-  background: rgba(0, 0, 0, 0.04) !important;
+  color: #d4a574 !important;
+  background: rgba(180, 131, 61, 0.15) !important;
   text-decoration: none !important;
   transform: translateY(-1px) !important;
 }
 
 .navbar-link-elegant--active,
 .navbar__link--active {
-  color: #111827 !important;
+  color: #d4a574 !important;
   font-weight: 500 !important;
-  background: rgba(0, 0, 0, 0.06) !important;
+  background: rgba(180, 131, 61, 0.2) !important;
   border-radius: 8px !important;
 }
 
 .navbar-github-elegant {
-  color: #6b7280 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
   padding: 0.6rem !important;
   border-radius: 8px !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1073,31 +1073,105 @@ table tbody tr:hover {
 }
 
 .navbar-github-elegant:hover {
-  color: #111827 !important;
-  background: rgba(0, 0, 0, 0.06) !important;
+  color: #d4a574 !important;
+  background: rgba(180, 131, 61, 0.15) !important;
   transform: translateY(-1px) scale(1.05) !important;
 }
 
 .team-access-btn {
-  background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
-  color: white !important;
+  background: linear-gradient(135deg, #b4833d 0%, #d4a574 100%) !important;
+  color: #1a1a1a !important;
   border: none !important;
   padding: 0.5rem 1.25rem !important;
   border-radius: 10px !important;
   font-size: 0.85rem !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   cursor: pointer !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
   display: flex !important;
   align-items: center !important;
   gap: 0.5rem !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 6px rgba(180, 131, 61, 0.3) !important;
   letter-spacing: 0.01em !important;
 }
 
 .team-access-btn:hover {
-  background: linear-gradient(135deg, #000000 0%, #111827 100%) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(135deg, #a07435 0%, #c49966 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(180, 131, 61, 0.4) !important;
 }
+
+
+
+/* ==== CONSISTENT GOLDEN THEME FOR ALL COMPONENTS ==== */
+
+/* Status badges with golden theme */
+.badge--success {
+  background: linear-gradient(135deg, #b4833d, #d4a574) !important;
+  color: white !important;
+}
+
+.badge--warning {
+  background: linear-gradient(135deg, #d69e2e, #f6d55c) !important;
+  color: #744210 !important;
+}
+
+.badge--danger {
+  background: linear-gradient(135deg, #c53030, #e53e3e) !important;
+  color: white !important;
+}
+
+/* Code blocks with golden accents */
+.prism-code {
+  border-left: 4px solid #b4833d !important;
+}
+
+/* Admonitions with golden theme */
+.alert--info {
+  border-left: 4px solid #b4833d !important;
+  background: rgba(180, 131, 61, 0.05) !important;
+}
+
+.alert--tip {
+  border-left: 4px solid #d4a574 !important;
+  background: rgba(212, 165, 116, 0.05) !important;
+}
+
+.alert--warning {
+  border-left: 4px solid #d69e2e !important;
+  background: rgba(214, 158, 46, 0.05) !important;
+}
+
+/* Mermaid diagram containers */
+.mermaid {
+  background: rgba(180, 131, 61, 0.02) !important;
+  border: 1px solid rgba(180, 131, 61, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 1rem !important;
+}
+
+/* Breadcrumbs with golden theme */
+.breadcrumbs__link {
+  color: #b4833d !important;
+}
+
+.breadcrumbs__link:hover {
+  color: #a07435 !important;
+}
+
+/* Pagination with golden theme */
+.pagination-nav__link:hover {
+  border-color: #b4833d !important;
+  color: #b4833d !important;
+}
+
+/* Scrollbars with golden theme */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #b4833d, #d4a574) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #a07435, #c49966) !important;
+}
+
 

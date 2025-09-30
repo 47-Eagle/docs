@@ -68,9 +68,10 @@ const config: Config = {
       title: '',
       logo: {
         alt: '47 Eagle Finance',
-        src: 'img/eagle-logo.svg',
+        src: 'img/eagle-logo-new.svg',
         style: {
           height: '32px',
+          filter: 'brightness(0) invert(1)', // Makes logo white for dark navbar
         },
       },
       items: [
@@ -185,7 +186,31 @@ const config: Config = {
       additionalLanguages: ['solidity', 'javascript', 'typescript', 'bash'],
     },
     mermaid: {
-      theme: {light: 'neutral', dark: 'dark'},
+      theme: {light: 'base', dark: 'dark'},
+      options: {
+        theme: 'base',
+        themeVariables: {
+          primaryColor: '#d4a574',
+          primaryTextColor: '#2d3748',
+          primaryBorderColor: '#b4833d',
+          lineColor: '#b4833d',
+          secondaryColor: '#f7fafc',
+          tertiaryColor: '#edf2f7',
+          background: '#ffffff',
+          mainBkg: '#ffffff',
+          secondBkg: '#f7fafc',
+          tertiaryBkg: '#edf2f7',
+          primaryTextColor: '#2d3748',
+          secondaryTextColor: '#4a5568',
+          tertiaryTextColor: '#718096',
+          primaryBorderColor: '#b4833d',
+          secondaryBorderColor: '#d4a574',
+          tertiaryBorderColor: '#e2e8f0',
+          noteBkgColor: '#fff5e1',
+          noteTextColor: '#744210',
+          noteBorderColor: '#d69e2e',
+        }
+      },
     },
   } satisfies Preset.ThemeConfig,
 };
