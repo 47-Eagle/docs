@@ -48,6 +48,7 @@ const sidebars: SidebarsConfig = {
         'dev/quick-start',
         'dev/architecture',
         'dev/deployment',
+        'dev/ci-cd',
       ],
     },
     {
