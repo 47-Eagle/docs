@@ -32,12 +32,13 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
     
     - name: Install dependencies
       run: |
-        npm ci --legacy-peer-deps
+        rm -f package-lock.json
+        npm install --legacy-peer-deps
         forge install
     
     - name: Compile contracts
@@ -136,12 +137,13 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
         
     - name: Install dependencies
       run: |
-        npm ci --legacy-peer-deps
+        rm -f package-lock.json
+        npm install --legacy-peer-deps
         forge install
         
     - name: Generate contract documentation
