@@ -77,11 +77,8 @@ const config: Config = {
         alt: '47 Eagle Finance',
         src: 'img/eagle-logo.svg',
         style: {
-          height: '36px',
-          width: 'auto',
-          marginRight: '8px',
+          height: '32px',
         },
-        srcDark: 'img/eagle-logo.svg',
       },
       items: [
         {
