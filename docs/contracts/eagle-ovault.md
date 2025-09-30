@@ -122,8 +122,8 @@ function redeem(uint256 shares, address receiver, address owner)
     require(receiver != address(0), "Invalid receiver");
     
     // Check allowance if not owner
-    if (msg.sender != owner) {
-        _spendAllowance(owner, msg.sender, shares);
+    if (msg.sender != owner()) {
+        _spendAllowance(owner(), msg.sender, shares);
     }
     
     // Calculate assets to return
@@ -152,8 +152,8 @@ function redeemDual(uint256 shares, address receiver, address owner)
 {
     require(shares > 0, "Invalid shares");
     
-    if (msg.sender != owner) {
-        _spendAllowance(owner, msg.sender, shares);
+    if (msg.sender != owner()) {
+        _spendAllowance(owner(), msg.sender, shares);
     }
     
     // Calculate proportional withdrawal
@@ -163,7 +163,7 @@ function redeemDual(uint256 shares, address receiver, address owner)
     _removeDualLiquidity(shares);
     
     // Burn shares
-    _burn(owner, shares);
+    _burn(owner(), shares);
     
     // Transfer both tokens
     WLFI.safeTransfer(receiver, wlfiAmount);
@@ -319,7 +319,7 @@ function getVaultPerformance() external view returns (
     totalValue = totalAssets();
     sharePrice = totalSupply() > 0 ? convertToAssets(1e18) : 1e18;
     apy = _calculateCurrentAPY();
-    totalFeees = _getTotalFeesCollected();
+    totalFees = _getTotalFeesCollected();
 }
 ```
 
