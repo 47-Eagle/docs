@@ -2,6 +2,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Load environment variables
+require('dotenv').config();
+
 const config: Config = {
   title: '47 Eagle Finance',
   tagline: 'Omnichain DeFi infrastructure powered by LayerZero OVault Standard',
@@ -45,6 +48,12 @@ const config: Config = {
 
   plugins: [],
 
+  // Custom fields for Google OAuth
+  customFields: {
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    allowedDomain: process.env.ALLOWED_DOMAIN || '47eagle.com',
+  },
+
   themes: ['@docusaurus/theme-mermaid'],
   markdown: {
     mermaid: true,
@@ -58,15 +67,16 @@ const config: Config = {
     respectPrefersColorScheme: false,
   },
     navbar: {
-      title: '47 Eagle Finance',
+      title: '', // Remove redundant title - logo is self-explanatory
       logo: {
-        alt: 'Eagle Omnichain Vault Logo',
+        alt: '47 Eagle Finance',
         src: 'img/eagle-logo.svg',
         style: {
-          height: '32px',
+          height: '36px',
           width: 'auto',
+          marginRight: '8px',
         },
-        srcDark: 'img/eagle-logo.svg', // Same logo for dark mode
+        srcDark: 'img/eagle-logo.svg',
       },
       items: [
         {

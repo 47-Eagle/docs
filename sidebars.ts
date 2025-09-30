@@ -49,6 +49,7 @@ const sidebars: SidebarsConfig = {
         'dev/architecture',
         'dev/deployment',
         'dev/ci-cd',
+        'dev/ci-cd-protected',
       ],
     },
     {

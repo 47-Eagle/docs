@@ -1,6 +1,6 @@
 ---
 id: ci-cd
-title: CI/CD Pipeline
+title: CI/CD Pipeline (Public)
 sidebar_label: CI/CD Pipeline
 ---
 
