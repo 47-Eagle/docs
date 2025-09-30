@@ -116,6 +116,14 @@ export function GoogleAuthLogin() {
   
   const clientId = siteConfig.customFields?.googleClientId as string;
   const allowedDomain = siteConfig.customFields?.allowedDomain as string || '47eagle.com';
+  
+  // Debug logging (temporary)
+  console.log('🔍 Google Auth Debug:', {
+    customFields: siteConfig.customFields,
+    clientId: clientId ? `${clientId.substring(0, 20)}...` : 'MISSING',
+    allowedDomain,
+    hasClientId: !!clientId
+  });
 
   const handleSuccess = (response: any) => {
     try {

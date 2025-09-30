@@ -5,6 +5,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 // Load environment variables
 require('dotenv').config();
 
+// Debug: Log environment loading
+console.log('🔧 Docusaurus Config Debug:');
+console.log('  GOOGLE_CLIENT_ID:', process.env.GOOGLE_CLIENT_ID ? `LOADED (${process.env.GOOGLE_CLIENT_ID.substring(0, 20)}...)` : 'NOT FOUND');
+console.log('  ALLOWED_DOMAIN:', process.env.ALLOWED_DOMAIN || 'NOT SET');
+
 const config: Config = {
   title: '47 Eagle Finance',
   tagline: 'Omnichain DeFi infrastructure powered by LayerZero OVault Standard',
@@ -50,7 +55,7 @@ const config: Config = {
 
   // Custom fields for Google OAuth
   customFields: {
-    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    googleClientId: process.env.GOOGLE_CLIENT_ID || '210963243141-bkljoqjrhcm6spjgmhprhlmro59eiacr.apps.googleusercontent.com',
     allowedDomain: process.env.ALLOWED_DOMAIN || '47eagle.com',
   },
 

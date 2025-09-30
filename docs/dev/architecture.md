@@ -85,7 +85,7 @@ contract USD1Adapter is OFTAdapter {
 ```
 
 **Purpose**: Enable cross-chain functionality for existing ERC20 tokens  
-**Usage**: Chains where WLFI/USD1 are deployed (Ethereum mainnet)  
+**Usage**: Chains where WLFI/USD1 are deployed (Ethereum, BNB Chain)  
 **Security**: No new token supply - only wraps/unwraps existing tokens
 
 #### **OFTs** (`contracts/layerzero-ovault/oft/`)
@@ -155,13 +155,13 @@ graph TB
     style UV3 fill:#f59e0b,stroke:#d97706,color:#fff
 ```
 
-### Spoke Chains: Arbitrum, Base, Avalanche
+### Spoke Chains: BNB Chain, Arbitrum, Base, Avalanche
 
 Spoke chains provide user access points and local token representations:
 
 ```mermaid
 graph TB
-    subgraph "Spoke Chain Architecture"
+    subgraph "BNB Chain Spoke"
         subgraph "Token Adapters"
             WA[WLFI Adapter<br/>Cross-chain Bridge]
             UA[USD1 Adapter<br/>Cross-chain Bridge]
@@ -192,16 +192,16 @@ graph TB
 ```mermaid
 sequenceDiagram
     participant User
-    participant SPOKE as Spoke Adapter
+    participant BNB as BNB Chain Adapter
     participant LZ as LayerZero Network
     participant ETH as Ethereum Hub
     participant Vault as Eagle Vault
     
     Note over User, Vault: Cross-Chain Deposit via Adapter
     
-    User->>SPOKE: deposit(1000 WLFI)
-    SPOKE->>SPOKE: wrap existing WLFI
-    SPOKE->>LZ: send(to: ethereum, payload)
+    User->>BNB: deposit(1000 WLFI)
+    BNB->>BNB: wrap existing WLFI
+    BNB->>LZ: send(to: ethereum, payload)
     
     Note over LZ: Cross-chain message delivery
     
@@ -210,9 +210,9 @@ sequenceDiagram
     ETH->>Vault: deposit via Composer
     Vault->>Vault: mint Uniswap V3 LP
     Vault->>ETH: mint vault shares
-    ETH->>LZ: send(to: spoke, shares)
-    LZ->>SPOKE: lzReceive(shares)
-    SPOKE->>User: transfer vault shares
+    ETH->>LZ: send(to: bnb, shares)
+    LZ->>BNB: lzReceive(shares)
+    BNB->>User: transfer vault shares
 ```
 
 ## Deployment Strategy & Status
@@ -223,20 +223,21 @@ sequenceDiagram
 
 | Phase | Network | Status | Details |
 |-------|---------|--------|---------|
-| **Phase 1** | Infrastructure | ✅ **Completed** | Registry and factory contracts deployed |
+| **Phase 1** | Infrastructure | ✅ **Completed** | Foundation contracts and registry deployed |
 | **Phase 2** | Ethereum | 🔄 **In Progress** | Awaiting vanity address generation |
 | **Phase 3** | Multi-Chain | ⏳ **Pending** | Cross-chain network deployment |
 
 </div>
 
-### Infrastructure Status (Foundation Deployed)
+### Infrastructure Status (Foundation Ready)
 
 ```bash
-# Registry Configuration
+# Registry and Factory Foundation
 ✅ EagleRegistry: 0x472656c76f45e8a8a63fffd32ab5888898eea91e
-✅ CREATE2FactoryWithOwnership: [DEPLOYED]
-⏳ Cross-chain Components: Awaiting Ethereum deployment
-⏳ Multi-chain Messaging: Ready for network activation
+✅ CREATE2FactoryWithOwnership: Foundation deployed
+⏳ BNB Chain Integration: Planned deployment
+⏳ Ethereum Hub: Awaiting vanity address completion
+⏳ Cross-chain Activation: Ready for full network deployment
 ```
 
 ### Vanity Address Generation
@@ -448,7 +449,7 @@ graph TD
 | Network | Chain ID | LayerZero EID | Status | Role |
 |---------|----------|---------------|---------|------|
 | **Ethereum** | 1 | 30101 | **Target** | Hub |
-| **[Network 1]** | [REDACTED] | [REDACTED] | **Infrastructure** | Foundation |
+| **BNB Chain** | 56 | 30102 | **Target** | Spoke |
 | **Arbitrum** | 42161 | 30110 | **Target** | Spoke |
 | **Base** | 8453 | 30184 | **Target** | Spoke |
 | **Avalanche** | 43114 | 30106 | **Target** | Spoke |
