@@ -161,17 +161,17 @@ Spoke chains provide user access points and local token representations:
 
 ```mermaid
 graph TB
-    subgraph "BSC Spoke Chain (Deployed)"
+    subgraph "Spoke Chain Architecture"
         subgraph "Token Adapters"
-            WA[WLFI Adapter<br/>Existing WLFI Bridge]
-            UA[USD1 Adapter<br/>Existing USD1 Bridge]
+            WA[WLFI Adapter<br/>Cross-chain Bridge]
+            UA[USD1 Adapter<br/>Cross-chain Bridge]
         end
         
-        subgraph "📜 Vault Shares"
-            SO[EagleShareOFT<br/>0x0Ba80Ce1c8e4487C9EeA179150D09Ec2cbCb5Aa1]
+        subgraph "Vault Shares"
+            SO[EagleShareOFT<br/>Omnichain Token]
         end
         
-        subgraph "👤 User Interface"
+        subgraph "User Interface"
             USER[Users<br/>Cross-Chain Operations]
         end
         
@@ -192,16 +192,16 @@ graph TB
 ```mermaid
 sequenceDiagram
     participant User
-    participant BSC as BSC Adapter
+    participant SPOKE as Spoke Adapter
     participant LZ as LayerZero Network
     participant ETH as Ethereum Hub
     participant Vault as Eagle Vault
     
     Note over User, Vault: Cross-Chain Deposit via Adapter
     
-    User->>BSC: deposit(1000 WLFI)
-    BSC->>BSC: wrap existing WLFI
-    BSC->>LZ: send(to: ethereum, payload)
+    User->>SPOKE: deposit(1000 WLFI)
+    SPOKE->>SPOKE: wrap existing WLFI
+    SPOKE->>LZ: send(to: ethereum, payload)
     
     Note over LZ: Cross-chain message delivery
     
@@ -210,9 +210,9 @@ sequenceDiagram
     ETH->>Vault: deposit via Composer
     Vault->>Vault: mint Uniswap V3 LP
     Vault->>ETH: mint vault shares
-    ETH->>LZ: send(to: bsc, shares)
-    LZ->>BSC: lzReceive(shares)
-    BSC->>User: transfer vault shares
+    ETH->>LZ: send(to: spoke, shares)
+    LZ->>SPOKE: lzReceive(shares)
+    SPOKE->>User: transfer vault shares
 ```
 
 ## Deployment Strategy & Status
@@ -229,14 +229,14 @@ sequenceDiagram
 
 </div>
 
-### BSC Deployment (Completed)
+### Infrastructure Status (Foundation Deployed)
 
 ```bash
 # Registry Configuration
-✅ Registry: 0x472656c76f45e8a8a63fffd32ab5888898eea91e
-✅ EagleShareOFT: 0x0Ba80Ce1c8e4487C9EeA179150D09Ec2cbCb5Aa1
-✅ WLFI/USD1 Adapters: Deployed with real token addresses
-✅ Cross-chain messaging: Configured for LayerZero V2
+✅ EagleRegistry: 0x472656c76f45e8a8a63fffd32ab5888898eea91e
+✅ CREATE2FactoryWithOwnership: [DEPLOYED]
+⏳ Cross-chain Components: Awaiting Ethereum deployment
+⏳ Multi-chain Messaging: Ready for network activation
 ```
 
 ### Vanity Address Generation
