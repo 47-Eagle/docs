@@ -1,0 +1,177 @@
+name: Contract Validation & Documentation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'contracts/**'
+      - 'docs/contracts/**'
+      - '.github/workflows/contracts-validation.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'contracts/**'
+      - 'docs/contracts/**'
+
+jobs:
+  validate-contracts:
+    name: Validate Smart Contracts
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Install Foundry
+      uses: foundry-rs/foundry-toolchain@v1
+      with:
+        version: nightly
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        forge install
+    
+    - name: Compile contracts
+      run: |
+        echo "🔨 Compiling Smart Contracts..."
+        forge build --sizes
+        
+    - name: Run contract tests
+      run: |
+        echo "🧪 Running Smart Contract Tests..."
+        forge test -vvv
+        
+    - name: Check contract sizes
+      run: |
+        echo "📊 Contract Size Analysis..."
+        forge build --sizes | tee contract-sizes.txt
+        
+    - name: Generate ABI files
+      run: |
+        echo "📋 Generating ABI Documentation..."
+        mkdir -p docs/abi
+        
+        # Extract ABIs from compiled contracts
+        find out -name "*.sol" -path "*/out/*" | while read contract_dir; do
+          contract_name=$(basename "$contract_dir" .sol)
+          if [ -f "$contract_dir/$contract_name.json" ]; then
+            echo "Extracting ABI for $contract_name"
+            jq '.abi' "$contract_dir/$contract_name.json" > "docs/abi/${contract_name}.json"
+          fi
+        done
+        
+    - name: Validate documentation examples
+      run: |
+        echo "📚 Validating Documentation Examples..."
+        # Check that all Solidity code blocks in docs compile
+        ./scripts/validate-docs-code.sh
+        
+    - name: Security analysis
+      run: |
+        echo "🔍 Running Security Analysis..."
+        # Install slither for security analysis
+        pip3 install slither-analyzer
+        slither contracts/ --print human-summary || true
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: contract-artifacts
+        path: |
+          out/
+          docs/abi/
+          contract-sizes.txt
+          
+    - name: Comment PR with contract info
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let comment = '## 🦅 Contract Validation Results\n\n';
+          
+          // Add contract sizes if available
+          if (fs.existsSync('contract-sizes.txt')) {
+            const sizes = fs.readFileSync('contract-sizes.txt', 'utf8');
+            comment += '### 📊 Contract Sizes\n```\n' + sizes + '\n```\n\n';
+          }
+          
+          comment += '### ✅ Validation Status\n';
+          comment += '- Compilation: ✅ Passed\n';
+          comment += '- Tests: ✅ Passed\n';  
+          comment += '- ABI Generation: ✅ Complete\n';
+          comment += '- Documentation: ✅ Validated\n';
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+  generate-docs:
+    name: Generate Contract Documentation
+    runs-on: ubuntu-latest
+    needs: validate-contracts
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install Foundry
+      uses: foundry-rs/foundry-toolchain@v1
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm ci
+        forge install
+        
+    - name: Generate contract documentation
+      run: |
+        echo "📖 Generating Contract Documentation..."
+        
+        # Use forge doc to generate documentation
+        forge doc --build
+        
+        # Generate ABI documentation
+        ./scripts/generate-abi-docs.sh
+        
+        # Update contract interfaces in docs
+        ./scripts/update-contract-docs.sh
+        
+    - name: Commit documentation updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Contract Documentation Bot"
+        
+        git add docs/abi/ docs/contracts/
+        
+        if git diff --cached --quiet; then
+          echo "No documentation changes to commit"
+        else
+          git commit -m "📖 Auto-update contract documentation and ABIs
+          
+          - Updated ABI files from latest contract compilation
+          - Synchronized contract interface documentation  
+          - Generated by GitHub Actions on $(date)"
+          
+          git push
+        fi

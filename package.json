@@ -1,34 +1,56 @@
 {
-  "name": "eagle-omnichain-docs",
+  "name": "eagle-omnichain-vault-docs",
   "version": "1.0.0",
-  "private": true,
+  "description": "47 Eagle Finance - Omnichain DeFi Infrastructure Documentation",
+  "keywords": ["defi", "layerzero", "omnichain", "vault", "ethereum", "documentation"],
+  "homepage": "https://47-eagle.github.io/docs/",
+  "repository": {
+    "type": "git", 
+    "url": "https://github.com/47-Eagle/docs"
+  },
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "npm run contracts:validate && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "contracts:compile": "forge build",
+    "contracts:test": "forge test",
+    "contracts:validate": "npm run contracts:compile && npm run contracts:test && npm run docs:validate-code",
+    "contracts:coverage": "forge coverage --report lcov",
+    "contracts:gas-report": "forge test --gas-report",
+    "contracts:size": "forge build --sizes",
+    "docs:validate-code": "./scripts/validate-docs-code.sh",
+    "docs:generate-abi": "./scripts/generate-abi-docs.sh",
+    "docs:sync-contracts": "./scripts/update-contract-docs.sh",
+    "docs:build-full": "npm run contracts:validate && npm run docs:sync-contracts && npm run build",
+    "security:slither": "slither contracts/ --print human-summary",
+    "security:mythril": "myth analyze contracts/ --solv 0.8.22",
+    "ci:full-pipeline": "npm run contracts:validate && npm run docs:sync-contracts && npm run security:slither && npm run build"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
-    "@docusaurus/theme-mermaid": "3.8.1",
+    "@docusaurus/core": "3.0.1",
+    "@docusaurus/preset-classic": "3.0.1",
+    "@docusaurus/theme-mermaid": "^3.0.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "prism-react-renderer": "^2.1.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.1",
-    "@docusaurus/tsconfig": "3.8.1",
-    "@docusaurus/types": "3.8.1",
-    "typescript": "~5.6.2"
+    "@docusaurus/module-type-aliases": "3.0.1",
+    "@docusaurus/tsconfig": "3.0.1",
+    "@docusaurus/types": "3.0.1",
+    "@types/node": "^20.0.0",
+    "typescript": "~5.2.2"
   },
   "browserslist": {
     "production": [
@@ -37,13 +59,26 @@
       "not op_mini all"
     ],
     "development": [
-      "last 3 chrome version",
-      "last 3 firefox version",
-      "last 5 safari version"
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "author": {
+    "name": "47 Eagle Finance",
+    "email": "contact@47eagle.finance"
+  },
+  "contributors": [
+    {
+      "name": "47 Eagle Development Team",
+      "email": "dev@47eagle.finance"
+    }
+  ],
+  "funding": {
+    "type": "protocol",
+    "url": "https://47eagle.finance"
   }
 }
-

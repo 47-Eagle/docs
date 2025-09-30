@@ -1,9 +1,24 @@
 # Dependencies
 node_modules/
+*/node_modules/
+
+# Production builds
+/build
+/dist
+/.docusaurus
+.docusaurus/
+
+# Generated files
+.docusaurus/
+.cache/
+public/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.pnpm-debug.log*
 
 # Runtime data
 pids
@@ -15,80 +30,117 @@ pids
 coverage/
 *.lcov
 
-# nyc test coverage
-.nyc_output
-
 # Dependency directories
+node_modules/
 jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
 
-# Optional eslint cache
-.eslintcache
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
 
 # Yarn Integrity file
 .yarn-integrity
 
 # dotenv environment variables file
 .env
-.env.test
-.env.production
-.env.local
-
-# Docusaurus
-.docusaurus/
-build/
-.DS_Store
-.cache/
-
-# IDE / Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Logs
-logs
-*.log
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
-
-# Package manager lock files (choose one)
-# yarn.lock
-
-# Production builds
-dist/
-out/
-
-# Deployment
-.vercel
-.netlify
-.firebase/
-
-# Local development
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Debug
-debug.log
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
 
-# Miscellaneous
-*.tgz
-*.tar.gz
+# Foundry/Forge artifacts
+cache/
+out/
+broadcast/
+deployments/
 
-repo-setup-guide.md
+# Foundry local environment
+.env.local
+foundry.toml.local
+
+# Hardhat artifacts (if using Hardhat alongside Foundry)
+artifacts/
+typechain/
+typechain-types/
+
+# Coverage reports
+coverage.json
+lcov.info
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# Documentation backup
+docs/contracts-backup/
+
+# Generated ABI files (these will be auto-generated)
+docs/abi/*.json
+docs/contract-interfaces/*.md
+docs/forge-docs/
+
+# Test artifacts
+test-results/
+.nyc_output/
+
+# Security scan results
+slither-report/
+mythril-report/
