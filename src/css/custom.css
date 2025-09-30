@@ -1018,3 +1018,86 @@ table tbody tr:hover {
     max-width: none !important;
   }
 }
+
+/* ==== MODERN ELEGANT NAVIGATION ==== */
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  padding: 0.75rem 2rem !important;
+  height: 64px !important;
+}
+
+.navbar:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+.navbar-link-elegant {
+  font-weight: 400 !important;
+  color: #374151 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.01em !important;
+  text-decoration: none !important;
+  margin: 0 0.25rem !important;
+}
+
+.navbar-link-elegant:hover {
+  color: #111827 !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+  text-decoration: none !important;
+  transform: translateY(-1px) !important;
+}
+
+.navbar-link-elegant--active,
+.navbar__link--active {
+  color: #111827 !important;
+  font-weight: 500 !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-radius: 8px !important;
+}
+
+.navbar-github-elegant {
+  color: #6b7280 !important;
+  padding: 0.6rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 0.75rem !important;
+}
+
+.navbar-github-elegant:hover {
+  color: #111827 !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+}
+
+.team-access-btn {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 10px !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  letter-spacing: 0.01em !important;
+}
+
+.team-access-btn:hover {
+  background: linear-gradient(135deg, #000000 0%, #111827 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
