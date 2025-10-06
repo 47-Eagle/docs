@@ -24,9 +24,11 @@ function HomePage() {
     const [scrollY, setScrollY] = useState(0);
     const { setScroll } = useScroll();
     
-    // Redirect to standalone page
+    // Redirect to standalone page immediately (server-side for SEO)
     useEffect(() => {
-        window.location.replace('/home.html');
+        if (typeof window !== 'undefined' && window.location.pathname === '/') {
+            window.location.replace('/home.html');
+        }
     }, []);
 
 

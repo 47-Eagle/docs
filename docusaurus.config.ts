@@ -27,6 +27,9 @@ const config: Config = {
     locales: ['en'],
   },
   
+  // Serve home.html at root instead of index
+  trailingSlash: false,
+  
   // Enable static assets optimization
   staticDirectories: ['static'],
   

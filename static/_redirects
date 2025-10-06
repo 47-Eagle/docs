@@ -1,0 +1,3 @@
+# Netlify/Vercel redirects
+# Serve home.html at root
+/  /home.html  200
