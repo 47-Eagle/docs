@@ -594,7 +594,7 @@
     
     <!-- Fixed button that appears at the end -->
     <div class="explore-button-container" id="explore-button-container">
-        <button class="explore-button" onclick="navigateToPage('/user')">
+        <button class="explore-button" id="explore-docs-button">
             Explore Docs
         </button>
     </div>
@@ -1135,11 +1135,6 @@
                 });
                 
                 
-                // Skip Intro button functionality - go straight to docs
-                document.getElementById('skip-intro-button').addEventListener('click', () => {
-                    navigateToPage('/user');
-                });
-                
                 // Smooth page transition function
                 function navigateToPage(url) {
                     document.body.classList.add('page-exit');
@@ -1147,6 +1142,16 @@
                         window.location.href = url;
                     }, 500);
                 }
+                
+                // Skip Intro button functionality - go straight to docs
+                document.getElementById('skip-intro-button').addEventListener('click', () => {
+                    navigateToPage('/user');
+                });
+                
+                // Explore Docs button functionality
+                document.getElementById('explore-docs-button').addEventListener('click', () => {
+                    navigateToPage('/user');
+                });
                 
                 // Hide Skip Intro button after scrolling starts
                 let hideSkipButton = false;
