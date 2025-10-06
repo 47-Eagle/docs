@@ -740,15 +740,44 @@
             }, 30); // 3 seconds total fade-in
         }
         
-        // Start audio when loading begins (with fade-in)
-        audio.play().then(() => {
-            fadeInAudio();
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        }).catch(err => {
-            // Autoplay might be blocked, user will need to click play
-            console.log('Autoplay blocked, waiting for user interaction');
-        });
+        // Track if audio has started
+        let audioStarted = false;
+        
+        // Function to start audio with fade-in
+        function startAudio() {
+            if (audioStarted) return;
+            
+            audio.play().then(() => {
+                audioStarted = true;
+                fadeInAudio();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }).catch(err => {
+                console.log('Autoplay blocked, waiting for user interaction');
+            });
+        }
+        
+        // Try to start immediately
+        startAudio();
+        
+        // If blocked, start on ANY user interaction
+        const tryAutoplay = () => {
+            if (!audioStarted) {
+                startAudio();
+                // Remove listeners after first successful play
+                if (audioStarted) {
+                    document.removeEventListener('click', tryAutoplay);
+                    document.removeEventListener('touchstart', tryAutoplay);
+                    document.removeEventListener('keydown', tryAutoplay);
+                    document.removeEventListener('scroll', tryAutoplay);
+                }
+            }
+        };
+        
+        document.addEventListener('click', tryAutoplay);
+        document.addEventListener('touchstart', tryAutoplay);
+        document.addEventListener('keydown', tryAutoplay);
+        document.addEventListener('scroll', tryAutoplay);
         
         // Play/Pause button
         playPauseBtn.addEventListener('click', () => {
