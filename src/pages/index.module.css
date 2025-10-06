@@ -1,0 +1,139 @@
+.layoutWrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+
+.homePage {
+    background: #000;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+
+.canvasContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none !important;
+}
+
+.canvasContainer canvas {
+    pointer-events: none !important;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.main {
+    width: 100%;
+}
+
+.section {
+    height: 150vh;
+    width: 100%;
+    display: block;
+}
+
+.buttonContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.docsButton {
+    position: relative;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    overflow: visible;
+}
+
+.buttonOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.docsButton:hover .buttonOverlay {
+    opacity: 1;
+}
+
+.buttonBorder {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 9999px;
+    transition: border-color 0.5s;
+}
+
+.docsButton:hover .buttonBorder {
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.buttonText {
+    position: relative;
+    font-size: 1.125rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.5s;
+}
+
+.docsButton:hover .buttonText {
+    color: rgba(255, 255, 255, 1);
+}
+
+.darkOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.loadingScreen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.loadingContent {
+    text-align: center;
+}
+
+.loadingProgress {
+    font-size: 3.75rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+

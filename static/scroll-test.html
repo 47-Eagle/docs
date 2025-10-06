@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scroll Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: white;
+            font-family: monospace;
+        }
+        .box {
+            height: 500px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            border: 5px solid black;
+        }
+        #debug {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: yellow;
+            padding: 20px;
+            font-size: 24px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div id="debug">
+        <div>SCROLL TEST</div>
+        <div>Scroll Y: <span id="scroll">0</span></div>
+        <div>Can you scroll? Try mouse wheel or spacebar!</div>
+    </div>
+    
+    <div class="box" style="background: red;">BOX 1</div>
+    <div class="box" style="background: orange;">BOX 2</div>
+    <div class="box" style="background: yellow;">BOX 3</div>
+    <div class="box" style="background: green;">BOX 4</div>
+    <div class="box" style="background: blue;">BOX 5</div>
+    <div class="box" style="background: purple;">BOX 6</div>
+    
+    <script>
+        setInterval(() => {
+            document.getElementById('scroll').textContent = window.scrollY;
+        }, 100);
+        
+        window.addEventListener('scroll', () => {
+            console.log('SCROLL EVENT FIRED! ScrollY:', window.scrollY);
+        });
+        
+        console.log('Page loaded. Body height:', document.body.scrollHeight);
+        console.log('Try scrolling with mouse wheel, spacebar, or Page Down key');
+    </script>
+</body>
+</html>

@@ -23,7 +23,7 @@ export function TeamLoginButton() {
         className="team-access-btn" 
         onClick={() => setShowLogin(true)}
       >
-        🔒 Team Login
+        Team Login
       </button>
       
       {showLogin && (

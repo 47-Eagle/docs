@@ -1,0 +1,19 @@
+/* Elegant button styles for "Ready to Start?" section */
+a[href="/user/getting-started"]:hover {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+a[href="/dev"]:hover {
+  background-color: rgba(212, 175, 55, 0.12) !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+}
+
+a[href="/user/getting-started"]:active,
+a[href="/dev"]:active {
+  transform: translateY(0);
+}

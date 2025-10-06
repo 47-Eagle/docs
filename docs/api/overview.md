@@ -69,7 +69,7 @@ graph TB
         UA[USD1 AssetOFT<br/>Token Hub]
     end
     
-    subgraph "👤 User Interactions"
+    subgraph "User Interactions"
         DEP[deposit()<br/>depositDual()]
         WITH[withdraw()<br/>redeemDual()]
         BRIDGE[send()<br/>sendFrom()]
@@ -83,9 +83,11 @@ graph TB
     BRIDGE --> UA
     COMPOSE --> EC
     
-    style EV fill:#4f46e5,stroke:#312e81,color:#fff
-    style SA fill:#059669,stroke:#047857,color:#fff
-    style EC fill:#dc2626,stroke:#991b1b,color:#fff
+    style EV fill:#4f46e5,stroke:#312e81,stroke-width:3px,color:#fff
+    style SA fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
+    style EC fill:#dc2626,stroke:#991b1b,stroke-width:2px,color:#fff
+    style WA fill:#fbbf24,stroke:#f59e0b,stroke-width:2px,color:#1a1a1a
+    style UA fill:#fbbf24,stroke:#f59e0b,stroke-width:2px,color:#1a1a1a
 ```
 
 ### **Spoke Chain Contracts**
@@ -98,7 +100,7 @@ graph TB
         UO[USD1 OFT<br/>Asset Token]
     end
     
-    subgraph "👤 User Functions"
+    subgraph "User Functions"
         SEND[send()<br/>Cross-chain transfer]
         BAL[balanceOf()<br/>Check balances]
         ALLOW[approve()<br/>Allowances]
@@ -114,9 +116,12 @@ graph TB
     ALLOW --> WO
     ALLOW --> UO
     
-    style SO fill:#8b5cf6,stroke:#5b21b6,color:#fff
-    style WO fill:#10b981,stroke:#059669,color:#fff
-    style UO fill:#3b82f6,stroke:#1e40af,color:#fff
+    style SO fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff
+    style WO fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff
+    style UO fill:#3b82f6,stroke:#1e40af,stroke-width:2px,color:#fff
+    style SEND fill:#fbbf24,stroke:#f59e0b,color:#1a1a1a
+    style BAL fill:#eab308,stroke:#ca8a04,color:#1a1a1a
+    style ALLOW fill:#eab308,stroke:#ca8a04,color:#1a1a1a
 ```
 
 ## Common Usage Patterns
@@ -244,7 +249,7 @@ interface MessageStatus {
 }
 ```
 
-## 🔒 **Security Considerations**
+##  **Security Considerations**
 
 ### **Access Control**
 - **Owner Functions**: Restricted to contract owner

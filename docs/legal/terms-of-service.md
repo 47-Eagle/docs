@@ -8,7 +8,7 @@ sidebar_label: Terms of Service
 
 **THE TOKENS HAVE NOT BEEN REGISTERED WITH ANY U.S. OR OTHER AUTHORITY AND ARE ONLY OFFERED IN THE UNITED STATES TO PERSONS WHO QUALIFY AS ACCREDITED INVESTORS.**
 
-*Last Updated: [Date]*
+*Effective Date: October 1, 2025*
 
 ## 1. Introduction
 

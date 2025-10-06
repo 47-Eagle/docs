@@ -79,17 +79,12 @@ docs/                           # Developer Documentation
     ├── monitoring.md        # Monitoring and analytics
     └── troubleshooting.md   # Common issues and solutions
 
-docs-users/                    # User-Friendly Documentation
-├── index.md                  # Welcome page for users
-├── what-is-eagle.md         # What is Eagle explanation
-├── supported-chains.md      # Supported blockchain networks
-├── how-to-deposit.md        # Deposit tutorial
-├── how-to-withdraw.md       # Withdrawal tutorial
-├── cross-chain-transfers.md # Cross-chain operations
-├── understanding-yields.md  # Yield explanations
-├── faq.md                   # Frequently asked questions
-├── troubleshooting.md       # User troubleshooting
-└── security-tips.md         # Security best practices
+docs/users/                    # User-Friendly Documentation
+├── index.mdx                # Welcome page for users
+├── charm-finance-integration.mdx  # 3D visualization
+├── vault-operations.md      # How to use the vault
+├── withdrawals-and-liquidity.md   # Withdrawals
+└── user-faq.md              # Frequently asked questions
 ```
 
 ## 🎯 **Documentation Philosophy**

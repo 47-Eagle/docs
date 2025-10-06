@@ -384,7 +384,7 @@ The integration with Charm Finance Alpha Vaults targeting **strategically select
 - **Professional optimization** - Charm's algorithms maximize returns 24/7
 - **Market development participation** - Benefit from strategic tier growth
 
-This partnership combines:
+This integration combines:
 - **47 Eagle Finance's** omnichain architecture and LayerZero integration
 - **Charm Finance's** best-in-class Uniswap V3 liquidity management  
 - **Strategic market positioning** in high-yield, underserved 1% fee tier

@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Optimize crawl budget
+Crawl-delay: 0
+
+# Sitemaps
+Sitemap: https://docs.47eagle.com/sitemap.xml
+
+# Exclude admin/private areas
+Disallow: /team/
+Disallow: /_next/

@@ -39,7 +39,7 @@ graph TB
         UO[USD1 OFT]
     end
     
-    subgraph "🔄 LayerZero Network"
+    subgraph " LayerZero Network"
         LZ[LayerZero<br/>Protocol]
     end
     
@@ -52,21 +52,27 @@ graph TB
     WA --> EC
     UA --> EC
     
-    style EV fill:#4f46e5,stroke:#312e81,color:#fff
-    style SA fill:#059669,stroke:#047857,color:#fff
-    style EC fill:#dc2626,stroke:#991b1b,color:#fff
+    style EV fill:#4f46e5,stroke:#312e81,stroke-width:3px,color:#fff
+    style SA fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
+    style EC fill:#dc2626,stroke:#991b1b,stroke-width:2px,color:#fff
+    style SO fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff
+    style WO fill:#eab308,stroke:#ca8a04,color:#1a1a1a
+    style UO fill:#eab308,stroke:#ca8a04,color:#1a1a1a
+    style WA fill:#fbbf24,stroke:#f59e0b,color:#1a1a1a
+    style UA fill:#fbbf24,stroke:#f59e0b,color:#1a1a1a
+    style LZ fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#000
 ```
 
 ## Key Features
 
 ### **Standards Compliance**
-- ✅ **ERC4626**: Tokenized Vault Standard
-- ✅ **LayerZero OVault**: Official omnichain vault pattern
-- ✅ **ERC20**: Fungible token standard for assets
-- ✅ **AccessControl**: Role-based permissions
+-  **ERC4626**: Tokenized Vault Standard
+-  **LayerZero OVault**: Official omnichain vault pattern
+-  **ERC20**: Fungible token standard for assets
+-  **AccessControl**: Role-based permissions
 
 ### **Security Features**
-- 🔒 **Reentrancy Protection**: NonReentrant modifiers on all external functions
+-  **Reentrancy Protection**: NonReentrant modifiers on all external functions
 - **Input Validation**: Comprehensive zero-address and amount checks
 - **Slippage Protection**: TWAP-based price validation with configurable limits
 - **Access Control**: Multi-tier permission system
@@ -97,7 +103,7 @@ graph TB
 | **WLFIAssetOFT** | WLFI token spoke | BSC, Arbitrum, Base, Avalanche |
 | **USD1AssetOFT** | USD1 token spoke | BSC, Arbitrum, Base, Avalanche |
 
-## 🔄 **Operation Flows**
+##  **Operation Flows**
 
 ### **Cross-Chain Deposit**
 ```
@@ -130,12 +136,12 @@ User (Base) → Share OFT → LayerZero → Ethereum → Adapter → Vault → R
 
 ## Core Features
 
-- ✅ **ERC4626 Compliance**: Standard tokenized vault interface
-- ✅ **LayerZero Integration**: Official OVault pattern implementation  
-- ✅ **Multi-Chain Support**: 5 networks with seamless UX
-- ✅ **Enterprise Security**: Production-ready security features
-- ✅ **Gas Optimization**: Efficient cross-chain operations
-- ✅ **Vanity Addresses**: Elegant `0x47...EA91E` pattern
+-  **ERC4626 Compliance**: Standard tokenized vault interface
+-  **LayerZero Integration**: Official OVault pattern implementation  
+-  **Multi-Chain Support**: 5 networks with seamless UX
+-  **Enterprise Security**: Production-ready security features
+-  **Gas Optimization**: Efficient cross-chain operations
+-  **Vanity Addresses**: Elegant `0x47...EA91E` pattern
 
 ## Get Started
 

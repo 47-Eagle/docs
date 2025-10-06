@@ -6,7 +6,7 @@ sidebar_label: Privacy Policy
 
 # Privacy Policy
 
-*Last Updated: [Date]*
+*Effective Date: October 1, 2025*
 
 ## 1. Introduction
 

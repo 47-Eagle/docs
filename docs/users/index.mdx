@@ -1,0 +1,134 @@
+---
+id: user-home
+title: User Guide
+slug: /
+sidebar_label: Welcome
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+<style>{`
+  article h1 {
+    color: white !important;
+  }
+  article h2 {
+    color: white !important;
+  }
+  article h3 {
+    color: #d4af37 !important;
+  }
+`}</style>
+
+<div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+
+# Welcome to Eagle Finance
+
+<p style={{ fontSize: '1.5rem', color: '#d4af37', fontWeight: '300', marginTop: '1rem', marginBottom: '2rem' }}>
+  Professional DeFi yields, accessible everywhere
+</p>
+
+<p style={{ fontSize: '1.1rem', color: 'var(--ifm-font-color-base)', opacity: 0.9, maxWidth: '700px', margin: '0 auto', lineHeight: '1.8' }}>
+  Institutional-grade Uniswap V3 strategies. One vault, every chain, automated returns.
+</p>
+
+</div>
+
+---
+
+## What is Eagle Finance?
+
+Eagle Finance brings professional liquidity management to everyone. We use **Charm Finance Alpha Vaults** to optimize your positions on Uniswap V3, while **LayerZero V2** lets you deposit and withdraw from any blockchain.
+
+**The result:** Maximized trading fees, professional rebalancing, true cross-chain freedom.
+
+---
+
+## Key Features
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+
+<div style={{ padding: '1.5rem', backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+  <h3 style={{ color: '#3b82f6', marginTop: 0 }}>True Omnichain</h3>
+  <div style={{ marginTop: '0.5rem' }}>Deposit on Arbitrum, withdraw on Base. Move your vault shares between chains freely with LayerZero.</div>
+</div>
+
+<div style={{ padding: '1.5rem', backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+  <h3 style={{ color: '#10b981', marginTop: 0 }}>Professional Yield</h3>
+  <div style={{ marginTop: '0.5rem' }}>Charm Finance manages your Uniswap V3 positions with automated rebalancing and fee optimization.</div>
+</div>
+
+<div style={{ padding: '1.5rem', backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', border: '1px solid rgba(251, 191, 36, 0.3)' }}>
+  <h3 style={{ color: '#fbbf24', marginTop: 0 }}>Complete Control</h3>
+  <div style={{ marginTop: '0.5rem' }}>No lock-ups, no penalties. Withdraw anytime to any supported chain. Your capital, your choice.</div>
+</div>
+
+</div>
+
+---
+
+## Interactive Liquidity Strategy
+
+**WLFI/USD1 on Uniswap V3** — Automated by Charm Finance Alpha Vaults with 0.30% fee tier.
+
+Adjust parameters below to see how liquidity concentrates across price ranges.
+
+:::tip Interactive Controls
+**Rotate**: Click and drag • **Zoom**: Scroll wheel • **Views**: Toggle Position/Token breakdown
+:::
+
+<BrowserOnly fallback={<div style={{ padding: '2rem', textAlign: 'center', backgroundColor: 'transparent', borderRadius: '0.5rem', color: '#d4af37' }}>Loading interactive 3D visualization...</div>}>
+  {() => {
+    const VaultVisualizationWrapper = require('@site/src/components/VaultVisualizationWrapper').default;
+    return <VaultVisualizationWrapper />;
+  }}
+</BrowserOnly>
+
+---
+
+## Ready to Start?
+
+<div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+
+<a href="/user/getting-started" style={{ 
+  padding: '0.75rem 1.75rem', 
+  backgroundColor: 'rgba(37, 99, 235, 0.1)', 
+  color: '#3b82f6',
+  border: '1px solid rgba(59, 130, 246, 0.3)',
+  borderRadius: '0.5rem', 
+  textDecoration: 'none', 
+  fontWeight: '500', 
+  fontSize: '0.95rem',
+  letterSpacing: '0.01em',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  backdropFilter: 'blur(10px)',
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.5rem'
+}}>
+  Getting Started →
+</a>
+
+<a href="/dev" style={{ 
+  padding: '0.75rem 1.75rem', 
+  backgroundColor: 'rgba(212, 175, 55, 0.08)', 
+  color: '#d4af37',
+  border: '1px solid rgba(212, 175, 55, 0.25)',
+  borderRadius: '0.5rem', 
+  textDecoration: 'none', 
+  fontWeight: '500', 
+  fontSize: '0.95rem',
+  letterSpacing: '0.01em',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  backdropFilter: 'blur(10px)',
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.5rem'
+}}>
+  Developer Docs →
+</a>
+
+</div>
+
+---
+
+*Built with LayerZero V2 • Powered by Charm Finance • Secured by Uniswap V3*

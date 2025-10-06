@@ -39,7 +39,7 @@ graph TB
         AOS[AssetOFT Spokes]
     end
     
-    subgraph "🔄 LayerZero Network"
+    subgraph " LayerZero Network"
         LZ[LayerZero<br/>Protocol]
     end
     
@@ -50,9 +50,13 @@ graph TB
     OV --> OC
     AOH --> OC
     
-    style OV fill:#4f46e5,stroke:#312e81,color:#fff
-    style SA fill:#059669,stroke:#047857,color:#fff
-    style OC fill:#dc2626,stroke:#991b1b,color:#fff
+    style OV fill:#4f46e5,stroke:#312e81,stroke-width:3px,color:#fff
+    style SA fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
+    style OC fill:#dc2626,stroke:#991b1b,stroke-width:2px,color:#fff
+    style AOH fill:#fbbf24,stroke:#f59e0b,stroke-width:2px,color:#1a1a1a
+    style SO fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff
+    style AOS fill:#eab308,stroke:#ca8a04,color:#1a1a1a
+    style LZ fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#000
 ```
 
 ## OFT (Omnichain Fungible Token) Standard
@@ -92,13 +96,13 @@ contract EagleShareOFT is OFT {
 - **Accounting Integrity**: Maintains proper vault `totalSupply()` calculation
 - **Cross-Chain Access**: Enables vault management from any chain
 
-## 🔄 **Cross-Chain Message Flows**
+##  **Cross-Chain Message Flows**
 
 ### **Deposit Flow: Spoke → Hub**
 
 ```mermaid
 sequenceDiagram
-    participant User as 👤 User (BSC)
+    participant User as User (BSC)
     participant WLFI_BSC as WLFI OFT (BSC)
     participant LZ as LayerZero
     participant WLFI_ETH as WLFI OFT (ETH)
@@ -127,7 +131,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant User as 👤 User (Base)
+    participant User as User (Base)
     participant Share_BASE as Share OFT (Base)
     participant LZ as LayerZero
     participant Share_ETH as ShareAdapter (ETH)
@@ -224,7 +228,7 @@ function batchTransfer(BatchParams calldata params) external payable {
 }
 ```
 
-## 🔒 **Security Considerations**
+##  **Security Considerations**
 
 ### **Message Validation**
 ```solidity

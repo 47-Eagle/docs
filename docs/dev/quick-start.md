@@ -18,7 +18,7 @@ Before you begin, ensure you have:
 - **RPC URLs** for target chains
 - Basic understanding of **Hardhat** and **LayerZero**
 
-## 📦 **Step 1: Clone and Setup**
+##  **Step 1: Clone and Setup**
 
 ### Clone the Repository
 ```bash
@@ -71,13 +71,13 @@ npx hardhat verify:all --network ethereum
 
 ### Expected Output
 ```
-🦅 Eagle OVault Deployment Started...
+Eagle OVault Deployment Started...
 
-✅ WLFI AssetOFT deployed: 0x47...EA91E
-✅ USD1 AssetOFT deployed: 0x47...EA91F  
-✅ EagleOVault deployed: 0x47...EA920
-✅ ShareOFTAdapter deployed: 0x47...EA921
-✅ EagleComposer deployed: 0x47...EA922
+ WLFI AssetOFT deployed: 0x47...EA91E
+ USD1 AssetOFT deployed: 0x47...EA91F  
+ EagleOVault deployed: 0x47...EA920
+ ShareOFTAdapter deployed: 0x47...EA921
+ EagleComposer deployed: 0x47...EA922
 
 Deployment Complete! Total gas: 12.3 ETH
 ```
@@ -199,11 +199,11 @@ npx hardhat bridge:wlfi --amount 1000 --from ethereum --to bsc
 npx hardhat bridge:shares --amount 500 --from bsc --to arbitrum
 ```
 
-## 🐛 **Troubleshooting**
+## Troubleshooting
 
 ### Common Issues
 
-**❌ Deployment Failed**
+** Deployment Failed**
 ```bash
 # Check network configuration
 npx hardhat network:verify --network ethereum
@@ -212,7 +212,7 @@ npx hardhat network:verify --network ethereum
 npx hardhat account:balance --network ethereum
 ```
 
-**❌ Cross-Chain Message Failed**  
+** Cross-Chain Message Failed**  
 ```bash
 # Check LayerZero status
 npx hardhat layerzero:status --tx 0xabc... --network ethereum
@@ -221,7 +221,7 @@ npx hardhat layerzero:status --tx 0xabc... --network ethereum
 npx hardhat layerzero:retry --tx 0xabc... --network ethereum
 ```
 
-**❌ Insufficient Gas**
+** Insufficient Gas**
 ```bash
 # Estimate gas for operation
 npx hardhat gas:estimate --operation deposit --network ethereum
@@ -257,7 +257,7 @@ export const SLIPPAGE_CONFIG = {
 Now that you have Eagle Vault running, explore these topics:
 
 1. **[Architecture Deep Dive](./architecture)** - Understand the system design
-2. **🔒 [Security Guide](./security)** - Production security considerations  
+2. ** [Security Guide](./security)** - Production security considerations  
 3. **[API Reference](../api/overview)** - Complete function documentation
 4. **🧪 [Testing Guide](./testing)** - Comprehensive testing strategies
 

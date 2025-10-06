@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>47 EAGLE - Omnichain Liquidity Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            background: #000;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        #canvas-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        
+        #content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section {
+            height: 150vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+        
+        .final-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .docs-button {
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.8);
+            background: transparent;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .docs-button:hover {
+            color: rgba(255, 255, 255, 1);
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: scale(1.05);
+        }
+        
+        #debug {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(212, 175, 55, 0.9);
+            padding: 10px 15px;
+            border-radius: 8px;
+            z-index: 9999;
+            color: #000;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .spacer {
+            height: 5000px;
+            background: linear-gradient(to bottom, rgba(255,0,0,0.1), rgba(0,0,255,0.1));
+        }
+    </style>
+</head>
+<body>
+    <div id="debug">
+        Scroll Y: <span id="scroll-value">0</span>px<br>
+        Camera Z: <span id="camera-z">0</span>
+    </div>
+    
+    <div id="canvas-container"></div>
+    
+    <div id="content">
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        
+        <div class="final-section">
+            <button class="docs-button" onclick="window.location.href='/user'">
+                EXPLORE DOCS
+            </button>
+        </div>
+        
+        <div class="spacer"></div>
+    </div>
+    
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    
+    <script type="module">
+        import * as THREE from 'three';
+        
+        console.log('✅ Three.js loaded, initializing tunnel...');
+        
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x000000);
+        scene.fog = new THREE.Fog(0x000000, 5, 15);
+        
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 5);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+        
+        // Lights
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+        scene.add(new THREE.PointLight(0xffffff, 1, 0)).position.set(10, 10, 10);
+        scene.add(new THREE.PointLight(0xffffff, 0.5, 0)).position.set(-10, -10, -10);
+        
+        // Create tunnel
+        const tunnelGroup = new THREE.Group();
+        scene.add(tunnelGroup);
+        
+        const tunnelMaterial = new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.35,
+            shininess: 100,
+            specular: 0xffffff,
+            emissive: 0xd4af37,
+            emissiveIntensity: 0,
+            side: THREE.DoubleSide,
+            depthWrite: false
+        });
+        
+        // Tunnel segments
+        for (let i = 0; i < 240; i++) {
+            const geometry = new THREE.CylinderGeometry(4.5, 4.6, 1.5, 32, 1, true);
+            const mesh = new THREE.Mesh(geometry, tunnelMaterial.clone());
+            mesh.position.set(0, 0, -i * 0.7);
+            mesh.rotation.x = Math.PI / 2;
+            tunnelGroup.add(mesh);
+        }
+        
+        // Stars
+        for (let i = 0; i < 200; i++) {
+            const radius = 6 + Math.random() * 4;
+            const angle = Math.random() * Math.PI * 2;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            const z = -Math.random() * 150;
+            
+            const starGeometry = new THREE.SphereGeometry(0.02, 4, 4);
+            const starMaterial = new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.8
+            });
+            const star = new THREE.Mesh(starGeometry, starMaterial);
+            star.position.set(x, y, z);
+            tunnelGroup.add(star);
+        }
+        
+        // Scroll tracking
+        let scrollValue = 0;
+        let scrollRefCurrent = 0;
+        let targetCameraZ = 0;
+        
+        // Update loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Smooth scroll interpolation
+            scrollRefCurrent += (scrollValue - scrollRefCurrent) * 0.05;
+            
+            // Camera movement
+            targetCameraZ = -scrollRefCurrent * 0.05;
+            camera.position.z += (targetCameraZ - camera.position.z) * 0.1;
+            
+            // Tunnel rotation
+            tunnelGroup.rotation.z = scrollRefCurrent * 0.0001;
+            tunnelGroup.rotation.y = Math.sin(Date.now() * 0.00015) * 0.005;
+            
+            // Update debug
+            document.getElementById('camera-z').textContent = camera.position.z.toFixed(2);
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Scroll listener
+        function updateScroll() {
+            scrollValue = window.scrollY;
+            document.getElementById('scroll-value').textContent = Math.round(scrollValue);
+            requestAnimationFrame(updateScroll);
+        }
+        
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        // Start
+        animate();
+        updateScroll();
+        
+        console.log('✅ Tunnel animation started - scroll to explore!');
+    </script>
+</body>
+</html>

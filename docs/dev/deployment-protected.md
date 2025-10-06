@@ -44,12 +44,12 @@ MULTISIG_ADDRESS=0x742D35Cc69AfFbc7c72C0fD3Cd3dfC3d4fC8906C
 
 #### Deployment Phases & Timeline
 
-### Phase 1: Foundation Infrastructure ✅ **COMPLETED**
+### Phase 1: Foundation Infrastructure  **COMPLETED**
 - **EagleRegistry**: `0x472656c76f45e8a8a63fffd32ab5888898eea91e`
 - **CREATE2FactoryWithOwnership**: Deployed and verified
 - **Status**: Foundation contracts live and operational
 
-### Phase 2: Ethereum Hub Deployment 🔄 **IN PROGRESS**
+### Phase 2: Ethereum Hub Deployment  **IN PROGRESS**
 **Prerequisites:**
    ```bash
    # Security audit completed ✓

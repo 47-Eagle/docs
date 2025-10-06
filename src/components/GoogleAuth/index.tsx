@@ -165,38 +165,16 @@ export function GoogleAuthLogin() {
 
   return (
     <GoogleOAuthProvider clientId={clientId}>
-      <div className="google-login-container">
-        <div className="login-header">
-          <img 
-            src="/img/eagle-logo.svg" 
-            alt="47 Eagle Finance" 
-            className="login-logo"
-          />
-          <h1>47 Eagle Finance</h1>
-          <h2>Team Access Portal</h2>
-          <p>Sign in with your @47eagle.com Google account to access our documentation</p>
-        </div>
-        
-        <div className="google-login-wrapper">
-          <GoogleLogin
-            onSuccess={handleSuccess}
-            onError={handleError}
-            theme="filled_blue"
-            size="large"
-            text="signin_with"
-            shape="rectangular"
-            width="280"
-          />
-        </div>
-        
-        <div className="login-footer">
-          <p className="login-notice">
-            🔒 Secure access restricted to @47eagle.com domain
-          </p>
-          <p className="login-help">
-            Need help? Contact your system administrator
-          </p>
-        </div>
+      <div className="google-login-wrapper">
+        <GoogleLogin
+          onSuccess={handleSuccess}
+          onError={handleError}
+          theme="filled_blue"
+          size="large"
+          text="signin_with"
+          shape="rectangular"
+          width="280"
+        />
       </div>
     </GoogleOAuthProvider>
   );

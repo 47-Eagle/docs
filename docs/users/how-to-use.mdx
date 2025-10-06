@@ -1,0 +1,202 @@
+---
+id: how-to-use
+title: Getting Started
+sidebar_label: Getting Started
+slug: /getting-started
+---
+
+<style>{`
+  article h1 {
+    color: white !important;
+  }
+  article h2 {
+    color: white !important;
+  }
+  article h3 {
+    color: #d4af37 !important;
+  }
+`}</style>
+
+# Getting Started
+
+**Practical guide to depositing, earning, and withdrawing.**
+
+---
+
+## Quick Start
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem', marginBottom: '2rem', maxWidth: '600px' }}>
+
+<div style={{ display: 'flex', gap: '1rem', padding: '1rem', backgroundColor: 'rgba(59, 130, 246, 0.05)', borderRadius: '0.75rem', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+  <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#3b82f6', minWidth: '2rem' }}>1</div>
+  <div>
+    <strong>Connect Wallet</strong>
+    <p style={{ margin: '0.25rem 0 0 0', opacity: 0.8 }}>Any chain: Arbitrum, Base, Avalanche, BSC, or Ethereum</p>
+  </div>
+</div>
+
+<div style={{ display: 'flex', gap: '1rem', padding: '1rem', backgroundColor: 'rgba(16, 185, 129, 0.05)', borderRadius: '0.75rem', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+  <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#10b981', minWidth: '2rem' }}>2</div>
+  <div>
+    <strong>Deposit Tokens</strong>
+    <p style={{ margin: '0.25rem 0 0 0', opacity: 0.8 }}>WLFI, USD1, or both — receive vault shares instantly</p>
+  </div>
+</div>
+
+<div style={{ display: 'flex', gap: '1rem', padding: '1rem', backgroundColor: 'rgba(168, 85, 247, 0.05)', borderRadius: '0.75rem', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
+  <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#a855f7', minWidth: '2rem' }}>3</div>
+  <div>
+    <strong>Earn Automatically</strong>
+    <p style={{ margin: '0.25rem 0 0 0', opacity: 0.8 }}>Your tokens work on Uniswap V3 via Charm Finance</p>
+  </div>
+</div>
+
+<div style={{ display: 'flex', gap: '1rem', padding: '1rem', backgroundColor: 'rgba(251, 191, 36, 0.05)', borderRadius: '0.75rem', border: '1px solid rgba(251, 191, 36, 0.2)' }}>
+  <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fbbf24', minWidth: '2rem' }}>4</div>
+  <div>
+    <strong>Withdraw Anytime</strong>
+    <p style={{ margin: '0.25rem 0 0 0', opacity: 0.8 }}>On any chain, whenever you want — no lock-ups</p>
+  </div>
+</div>
+
+</div>
+
+---
+
+## Supported Networks
+
+| Chain | Role | Status |
+|-------|------|--------|
+| **Ethereum** | Hub (Strategy Execution) | ✅ Live |
+| **Arbitrum** | Deposit/Withdraw | 🔜 Coming Soon |
+| **Base** | Deposit/Withdraw | 🔜 Coming Soon |
+| **BSC** | Deposit/Withdraw | 🔜 Coming Soon |
+| **Avalanche** | Deposit/Withdraw | 🔜 Coming Soon |
+
+---
+
+## Depositing
+
+### On the Same Chain as Vault (Ethereum)
+
+1. **Connect wallet** to Ethereum
+2. **Enter amount** of WLFI/USD1 to deposit
+3. **Approve tokens** (if first time)
+4. **Submit deposit** transaction
+5. **Receive vault shares** immediately
+
+Gas cost: ~0.01-0.03 ETH
+
+### From Different Chains (Cross-Chain Deposit)
+
+1. **Connect wallet** on your source chain (e.g., Arbitrum)
+2. **Enter amount** to deposit
+3. **Approve tokens** (if first time)
+4. **Submit cross-chain deposit** (includes LayerZero fee)
+5. **Wait 1-5 minutes** for bridging
+6. **Receive vault shares** on destination chain
+
+Gas cost: Source chain gas + LayerZero messaging fee (~$1-5)
+
+:::info How Cross-Chain Works
+Your tokens bridge to Ethereum via LayerZero V2, deposit into the vault, then your shares bridge back to your chosen chain — all in one transaction.
+:::
+
+---
+
+## Understanding Vault Shares
+
+**Vault shares = Ownership receipts**
+
+When you deposit $1,000:
+- You get vault shares (e.g., 950 shares)
+- Shares represent your portion of the vault
+- As vault earns fees, each share becomes worth more
+- When you withdraw, you burn shares and get back tokens + earnings
+
+**Example:**
+- Day 1: Deposit $1,000 → Get 1,000 shares
+- Day 30: Vault earns 10% → Your shares now worth $1,100
+- Withdraw: Burn 1,000 shares → Get $1,100 back
+
+**Shares are omnichain:**
+- Work on every supported chain
+- Move freely via LayerZero
+- Same value everywhere
+
+---
+
+## Withdrawing
+
+### To the Same Chain
+
+1. **Enter amount** of shares to withdraw
+2. **Submit withdraw** transaction
+3. **Receive tokens** (WLFI, USD1, or both) + earnings
+
+Processing: Instant  
+Gas cost: ~0.01-0.02 ETH
+
+### To a Different Chain
+
+1. **Choose destination chain**
+2. **Enter amount** of shares to withdraw
+3. **Submit cross-chain withdraw** (includes LayerZero fee)
+4. **Wait 1-5 minutes** for bridging
+5. **Receive tokens** on destination chain
+
+Processing: 1-5 minutes  
+Gas cost: Source chain gas + LayerZero messaging fee (~$1-5)
+
+:::tip Withdrawal Fees
+- **Small withdrawals** (less than 1% of vault): No fees
+- **Large withdrawals** (more than 10% of vault): ~0.1-0.5% fee to cover liquidity removal costs
+- Fees go back into the vault (benefit remaining depositors)
+:::
+
+---
+
+## Gas Costs Reference
+
+Typical transaction costs:
+
+| Action | Ethereum | Layer 2s | Cross-Chain Fee |
+|--------|----------|----------|-----------------|
+| Approve tokens | $5-15 | $0.10-1 | — |
+| Deposit (same chain) | $10-30 | $0.25-2 | — |
+| Deposit (cross-chain) | $15-40 | $1-5 | +$1-5 |
+| Withdraw (same chain) | $10-30 | $0.25-2 | — |
+| Withdraw (cross-chain) | $15-40 | $1-5 | +$1-5 |
+
+*Costs vary with network congestion*
+
+---
+
+## Security Best Practices
+
+- **Verify contract addresses** before approving
+- **Start with small deposits** to test the process
+- **Keep seed phrases safe** and never share them
+- **Use hardware wallets** for large amounts
+- **Check transaction details** before signing
+- **Bookmark official app** — avoid phishing sites
+
+---
+
+## Next Steps
+
+<div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+
+<a href="/user" style={{ padding: '0.75rem 1.5rem', backgroundColor: '#10b981', color: 'white', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: '500' }}>
+  See Interactive Vault →
+</a>
+
+<a href="/user/faq" style={{ padding: '0.75rem 1.5rem', backgroundColor: '#6b7280', color: 'white', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: '500' }}>
+  View FAQ →
+</a>
+
+</div>
+
+---
+
+*Need help? Check our [FAQ](/user/faq) or reach out to the team.*
