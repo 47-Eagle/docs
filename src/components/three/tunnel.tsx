@@ -5,6 +5,34 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { Group, MathUtils, Mesh, MeshBasicMaterial, MeshPhongMaterial } from 'three'
 
+// Hook to detect theme mode
+function useTheme() {
+    const [isDark, setIsDark] = useState(true)
+    
+    useEffect(() => {
+        const checkTheme = () => {
+            // Check for Docusaurus theme
+            const htmlElement = document.documentElement
+            const theme = htmlElement.getAttribute('data-theme')
+            setIsDark(theme === 'dark')
+        }
+        
+        // Initial check
+        checkTheme()
+        
+        // Watch for theme changes
+        const observer = new MutationObserver(checkTheme)
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        })
+        
+        return () => observer.disconnect()
+    }, [])
+    
+    return { isDark }
+}
+
 type ScrollContextType = {
     scroll: number
     setScroll: (scroll: number) => void
@@ -45,7 +73,7 @@ interface TunnelProps {
     scrollValue: number;
 }
 
-function TextSection({ text, position, opacity = 1 }: { text: string, position: [number, number, number], opacity?: number }) {
+function TextSection({ text, position, opacity = 1, isDark }: { text: string, position: [number, number, number], opacity?: number, isDark: boolean }) {
     const textRef = useRef<any>(null)
     const { camera } = useThree()
     const [currentOpacity, setCurrentOpacity] = useState(0)
@@ -66,17 +94,21 @@ function TextSection({ text, position, opacity = 1 }: { text: string, position: 
         setCurrentOpacity(targetOpacity * opacity)
     })
 
+    // Theme-aware colors
+    const textColor = isDark ? "#ffffff" : "#0a0a0a"
+    const outlineColor = isDark ? "#ffffff" : "#262626"
+
     return (
         <Text
             ref={textRef}
             position={position}
             fontSize={text.length > 18 ? 1.2 : 1.8}
-            color="#ffffff"
+            color={textColor}
             anchorX="center"
             anchorY="middle"
             fillOpacity={currentOpacity}
             outlineWidth={0.2}
-            outlineColor="#ffffff"
+            outlineColor={outlineColor}
             outlineOpacity={currentOpacity * 0.9}
             outlineBlur={0.4}
             maxWidth={12}
@@ -88,6 +120,7 @@ function TextSection({ text, position, opacity = 1 }: { text: string, position: 
 }
 
 export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
+    const { isDark } = useTheme()
     const tunnelRef = useRef<Group>(null)
     const tunnelMaterialRef = useRef<MeshPhongMaterial>(null)
     const streakMaterialRef = useRef<MeshBasicMaterial>(null)
@@ -248,6 +281,12 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
         }
     })
 
+    // Theme-aware colors
+    const textColor = isDark ? "#ffffff" : "#0a0a0a"
+    const outlineColor = isDark ? "#ffffff" : "#262626"
+    const tunnelColor = isDark ? "#ffffff" : "#404040"
+    const starColor = isDark ? "#ffffff" : "#525252"
+
     return (
         <group ref={tunnelRef}>
             {/* Debug: Show scroll value in 3D - BIGGER and CLOSER */}
@@ -258,7 +297,7 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
                 anchorX="center"
                 anchorY="middle"
                 outlineWidth={0.1}
-                outlineColor="#ffffff"
+                outlineColor={outlineColor}
             >
                 SCROLL VALUE: {scrollValue.toFixed(0)}
             </Text>
@@ -277,12 +316,12 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
             <Text
                 position={[0, -2, 2]}
                 fontSize={0.6}
-                color="white"
+                color={textColor}
                 anchorX="center"
                 anchorY="middle"
                 fillOpacity={scrollHintOpacityRef.current}
                 outlineWidth={0.15}
-                outlineColor="#ffffff"
+                outlineColor={outlineColor}
                 outlineOpacity={scrollHintOpacityRef.current * 0.7}
                 outlineBlur={0.3}
                 letterSpacing={0.1}
@@ -291,15 +330,15 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
             </Text>
 
             {/* 3D Text sections */}
-            <TextSection text="DEPOSIT WLFI & USD1" position={[0, 0, -20]} />
-            <TextSection text="ERC-4626 OMNICHAIN VAULTS" position={[0, 0, -40]} />
-            <TextSection text="EARN ON ONE CHAIN" position={[0, 0, -60]} />
-            <TextSection text="EARN MORE ON ANOTHER" position={[0, 0, -80]} />
-            <TextSection text="SIMULTANEOUSLY" position={[0, 0, -100]} />
-            <TextSection text="AUTOMATED REBALANCING" position={[0, 0, -120]} />
-            <TextSection text="MAXIMIZED RETURNS" position={[0, 0, -140]} />
-            <TextSection text="INTRODUCING" position={[0, 0, -160]} />
-            <TextSection text="47 EAGLE" position={[0, 0, -180]} />
+            <TextSection text="DEPOSIT WLFI & USD1" position={[0, 0, -20]} isDark={isDark} />
+            <TextSection text="ERC-4626 OMNICHAIN VAULTS" position={[0, 0, -40]} isDark={isDark} />
+            <TextSection text="EARN ON ONE CHAIN" position={[0, 0, -60]} isDark={isDark} />
+            <TextSection text="EARN MORE ON ANOTHER" position={[0, 0, -80]} isDark={isDark} />
+            <TextSection text="SIMULTANEOUSLY" position={[0, 0, -100]} isDark={isDark} />
+            <TextSection text="AUTOMATED REBALANCING" position={[0, 0, -120]} isDark={isDark} />
+            <TextSection text="MAXIMIZED RETURNS" position={[0, 0, -140]} isDark={isDark} />
+            <TextSection text="INTRODUCING" position={[0, 0, -160]} isDark={isDark} />
+            <TextSection text="47 EAGLE" position={[0, 0, -180]} isDark={isDark} />
 
             {/* Tunnel segments */}
             <group>
@@ -321,12 +360,12 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
                         />
                         <meshPhongMaterial
                             ref={i === 0 ? tunnelMaterialRef : undefined}
-                            color="#ffffff"
+                            color={tunnelColor}
                             wireframe
                             transparent
                             opacity={0.35}
                             shininess={100}
-                            specular="#ffffff"
+                            specular={tunnelColor}
                             emissive="#d4af37"
                             emissiveIntensity={0}
                             side={2}
@@ -350,7 +389,7 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
                             <mesh>
                                 <sphereGeometry args={[0.02, 4, 4]} />
                                 <meshBasicMaterial
-                                    color="#ffffff"
+                                    color={starColor}
                                     transparent
                                     opacity={0.8}
                                 />
@@ -362,7 +401,7 @@ export default function Tunnel({ fastForward, scrollValue }: TunnelProps) {
                                 <cylinderGeometry args={[0.02, 0.02, 1, 4, 1]} />
                                 <meshBasicMaterial
                                     ref={i === 0 ? streakMaterialRef : undefined}
-                                    color="#ffffff"
+                                    color={starColor}
                                     transparent
                                     opacity={0}
                                 />
