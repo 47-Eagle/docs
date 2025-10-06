@@ -22,12 +22,6 @@ export default function Scene({ fastForward, scrollValue }: SceneProps) {
             <pointLight position={[10, 10, 10]} intensity={1} />
             <pointLight position={[-10, -10, -10]} intensity={0.5} />
             
-            {/* Simple test mesh - should always be visible */}
-            <mesh position={[0, 0, 0]}>
-                <boxGeometry args={[1, 1, 1]} />
-                <meshStandardMaterial color="#ff0000" emissive="#ff0000" emissiveIntensity={0.5} />
-            </mesh>
-            
             <Suspense fallback={null}>
                 <Tunnel fastForward={fastForward} scrollValue={scrollValue} />
             </Suspense>
