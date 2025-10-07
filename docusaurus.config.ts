@@ -149,16 +149,6 @@ const config: Config = {
         editUrl: 'https://github.com/47-Eagle/docs/tree/main/',
       },
     ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'default',
-        path: 'docs/main',
-        routeBasePath: '/',
-        sidebarPath: './sidebars-main.ts',
-        editUrl: 'https://github.com/47-Eagle/docs/tree/main/',
-      },
-    ],
   ],
 
   // Custom fields for Google OAuth
