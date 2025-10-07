@@ -22,6 +22,16 @@ const sidebars: SidebarsConfig = {
       id: 'faq',
       label: 'FAQ',
     },
+    {
+      type: 'category',
+      label: 'Legal Documentation',
+      collapsed: false,
+      items: [
+        'terms-of-service',
+        'privacy-policy',
+        'risk-disclosures',
+      ],
+    },
   ],
 };
 

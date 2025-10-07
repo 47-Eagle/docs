@@ -5,7 +5,24 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'dev-home',
-      label: 'Developer Overview',
+      label: 'Developer Home',
+    },
+    {
+      type: 'category',
+      label: 'Protocol Overview',
+      collapsed: false,
+      items: [
+        'overview',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Smart Contracts',
+      collapsed: false,
+      items: [
+        'eagle-ovault',
+        'charm-alpha-vault-strategy',
+      ],
     },
     {
       type: 'category',
@@ -14,23 +31,6 @@ const sidebars: SidebarsConfig = {
       items: [
         'quick-start',
         'architecture',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'API & Integration',
-      collapsed: false,
-      items: [
-        'overview',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Internal Resources',
-      collapsed: true,
-      items: [
-        'ci-cd-protected',
-        'deployment-protected',
       ],
     },
   ],

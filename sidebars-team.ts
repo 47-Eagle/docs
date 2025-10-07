@@ -10,9 +10,11 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Team Resources',
-      collapsed: true,
+      collapsed: false,
       items: [
         'internal-tools',
+        'ci-cd-protected',
+        'deployment-protected',
       ],
     },
   ],
