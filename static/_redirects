@@ -1,3 +1,4 @@
 # Netlify/Vercel redirects
 # Redirect root to user documentation
-/  /user  301
+/docs/  /docs/user  301
+/  /docs/user  301
