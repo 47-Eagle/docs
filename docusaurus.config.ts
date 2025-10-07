@@ -13,8 +13,7 @@ const config: Config = {
   // Set the production URL of your site here
   url: 'https://47-eagle.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config
   organizationName: '47-Eagle',
