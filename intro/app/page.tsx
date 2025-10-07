@@ -146,7 +146,7 @@ export default function HomePage() {
           <section className="h-[150vh]" />
           <section className="h-[150vh]" />
 
-          {/* Final Section with View Blog Button */}
+          {/* Final Section with Explore Docs Button */}
           <section className="h-[150vh] relative">
             <div className="fixed inset-0 flex items-center justify-center">
               <motion.div
@@ -161,15 +161,15 @@ export default function HomePage() {
                 }}
               >
                 <motion.button
-                  onClick={transitionToBlog}
+                  onClick={() => window.location.href = 'https://docs.47eagle.com'}
                   whileHover={{ scale: 1.05, filter: "brightness(1.2)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative px-8 py-3 overflow-hidden rounded-full"
+                  className="group relative px-12 py-4 overflow-hidden rounded-full"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 group-hover:opacity-100 opacity-0 transition-opacity duration-500" />
-                  <div className="absolute inset-0 border border-white/10 rounded-full group-hover:border-white/20 transition-colors duration-500" />
-                  <span className="relative text-lg font-black tracking-widest text-white/80 group-hover:text-white transition-colors duration-500">
-                    VIEW BLOG
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/20 to-[#d4af37]/10 group-hover:opacity-100 opacity-80 transition-opacity duration-500" />
+                  <div className="absolute inset-0 border-2 border-[#d4af37]/50 rounded-full group-hover:border-[#d4af37] transition-colors duration-500" />
+                  <span className="relative text-xl font-black tracking-widest text-[#d4af37] group-hover:text-[#f5e89f] transition-colors duration-500">
+                    EXPLORE DOCS
                   </span>
                 </motion.button>
               </motion.div>

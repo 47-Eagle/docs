@@ -378,13 +378,16 @@ export default function Tunnel({ fastForward }: TunnelProps) {
                 </Text>
             </group>
 
-            {/* 3D Text sections */}
-            <TextSection text="BEYOND THE NUMBERS" position={[0, 0, -15]} />
-            <TextSection text="DISCOVER" position={[0, 0, -35]} />
-            <TextSection text="ANALYZE" position={[0, 0, -55]} />
-            <TextSection text="EVOLVE" position={[0, 0, -75]} />
-            <TextSection text="TRANSCEND" position={[0, 0, -95]} />
-            <TextSection text="GODDOG" position={[0, 0, -115]} />
+            {/* 3D Text sections - Eagle Finance Marketing */}
+            <TextSection text="DEPOSIT WLFI & USD1" position={[0, 0, -20]} />
+            <TextSection text="ERC-4626 OMNICHAIN VAULTS" position={[0, 0, -40]} />
+            <TextSection text="EARN ON ONE CHAIN" position={[0, 0, -60]} />
+            <TextSection text="EARN MORE ON ANOTHER" position={[0, 0, -80]} />
+            <TextSection text="SIMULTANEOUSLY" position={[0, 0, -100]} />
+            <TextSection text="AUTOMATED REBALANCING" position={[0, 0, -120]} />
+            <TextSection text="MAXIMIZED RETURNS" position={[0, 0, -140]} />
+            <TextSection text="INTRODUCING" position={[0, 0, -160]} />
+            <TextSection text="47 EAGLE" position={[0, 0, -180]} />
 
             {/* Tunnel segments */}
             <group>
