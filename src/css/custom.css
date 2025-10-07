@@ -1278,3 +1278,177 @@ label, caption, legend, figcaption {
 [data-theme='dark'] .theme-doc-toc-mobile button {
   color: #ffffff !important;
 }
+
+/* ================================
+   ULTRA-AGGRESSIVE TITLE FIXES
+   ================================ */
+
+/* Force ALL text elements to have proper contrast */
+[data-theme='light'] * {
+  color: inherit;
+}
+
+/* Override any remaining white text in light mode */
+[data-theme='light'] {
+  color: var(--ifm-font-color-base);
+}
+
+/* Specifically target any div or span that might have titles */
+[data-theme='light'] div,
+[data-theme='light'] span,
+[data-theme='light'] section,
+[data-theme='light'] header,
+[data-theme='light'] nav {
+  color: inherit;
+}
+
+/* Force all headings with maximum specificity */
+html[data-theme='light'] h1,
+html[data-theme='light'] h2,
+html[data-theme='light'] h3,
+html[data-theme='light'] h4,
+html[data-theme='light'] h5,
+html[data-theme='light'] h6 {
+  color: #0a0a0a !important;
+}
+
+html[data-theme='dark'] h1,
+html[data-theme='dark'] h2,
+html[data-theme='dark'] h3,
+html[data-theme='dark'] h4,
+html[data-theme='dark'] h5,
+html[data-theme='dark'] h6 {
+  color: #ffffff !important;
+}
+
+/* Target Docusaurus-specific title containers */
+html[data-theme='light'] .theme-doc-markdown h1,
+html[data-theme='light'] .theme-doc-markdown h2,
+html[data-theme='light'] article h1,
+html[data-theme='light'] article h2,
+html[data-theme='light'] main h1,
+html[data-theme='light'] main h2 {
+  color: #0a0a0a !important;
+  text-shadow: none !important;
+}
+
+/* Force page title visibility */
+html[data-theme='light'] [class*='title'],
+html[data-theme='light'] [class*='Title'],
+html[data-theme='light'] [id*='title'],
+html[data-theme='light'] [id*='Title'] {
+  color: #0a0a0a !important;
+}
+
+/* Override inline styles */
+[data-theme='light'] h1[style],
+[data-theme='light'] h2[style],
+[data-theme='light'] h3[style],
+[data-theme='light'] [class*='title'][style],
+[data-theme='light'] [class*='Title'][style] {
+  color: #0a0a0a !important;
+}
+
+/* DocItemTitle specific */
+html[data-theme='light'] .docTitle,
+html[data-theme='light'] .theme-doc-markdown > header > h1,
+html[data-theme='light'] article > header > h1 {
+  color: #0a0a0a !important;
+  opacity: 1 !important;
+}
+
+/* Hero and landing page titles */
+html[data-theme='light'] .hero *,
+html[data-theme='light'] .hero__title,
+html[data-theme='light'] .hero h1 {
+  color: #0a0a0a !important;
+}
+
+/* Any container with title role */
+html[data-theme='light'] [role='heading'],
+html[data-theme='light'] [class*='header'],
+html[data-theme='light'] [class*='Header'] {
+  color: #0a0a0a !important;
+}
+
+/* Remove any text-white or light color utilities in light mode */
+html[data-theme='light'] .text-white,
+html[data-theme='light'] .text-light,
+html[data-theme='light'] [class*='white'],
+html[data-theme='light'] [class*='light'] {
+  color: #0a0a0a !important;
+}
+
+/* Ensure sidebar headings are visible */
+html[data-theme='light'] .menu__link,
+html[data-theme='light'] .menu__list-item-collapsible > .menu__link {
+  color: #262626 !important;
+}
+
+html[data-theme='light'] .menu__link:hover {
+  color: #0a0a0a !important;
+}
+
+/* Breadcrumbs should be visible */
+html[data-theme='light'] .breadcrumbs__link {
+  color: #525252 !important;
+}
+
+html[data-theme='light'] .breadcrumbs__link:hover {
+  color: #0a0a0a !important;
+}
+
+/* Doc metadata */
+html[data-theme='light'] .theme-doc-footer-edit-meta-row,
+html[data-theme='light'] .theme-last-updated {
+  color: #525252 !important;
+}
+
+/* TOC items */
+html[data-theme='light'] .table-of-contents__link {
+  color: #262626 !important;
+}
+
+html[data-theme='light'] .table-of-contents__link:hover,
+html[data-theme='light'] .table-of-contents__link--active {
+  color: #0a0a0a !important;
+}
+
+/* Pagination labels */
+html[data-theme='light'] .pagination-nav__label,
+html[data-theme='light'] .pagination-nav__sublabel {
+  color: #0a0a0a !important;
+}
+
+/* Card content */
+html[data-theme='light'] .card__header,
+html[data-theme='light'] .card__title {
+  color: #0a0a0a !important;
+}
+
+html[data-theme='light'] .card__body {
+  color: #262626 !important;
+}
+
+/* Ensure buttons have proper text color */
+html[data-theme='light'] .button--primary {
+  color: #ffffff !important;
+}
+
+html[data-theme='light'] .button--secondary {
+  color: #0a0a0a !important;
+}
+
+/* Make sure links are visible */
+html[data-theme='light'] a {
+  color: #a0800d !important;
+}
+
+html[data-theme='light'] a:hover {
+  color: #8a6f00 !important;
+}
+
+/* Admonition titles */
+html[data-theme='light'] .admonition-heading {
+  color: #0a0a0a !important;
+}

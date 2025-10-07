@@ -184,7 +184,7 @@ const config: Config = {
       logo: {
         alt: '47 Eagle Finance',
         src: 'img/eagle-logo-new.svg',
-        href: '/',
+        href: '/user',
         target: '_self',
         style: {
           height: '32px',
