@@ -2,11 +2,12 @@
 
 import { a, useSpring } from '@react-spring/three'
 import { Trail } from '@react-three/drei'
-import { Canvas, useThree } from '@react-three/fiber'
-import { Bloom, ChromaticAberration, EffectComposer } from '@react-three/postprocessing'
-import { Suspense, useEffect, useRef } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Bloom, ChromaticAberration, EffectComposer, Vignette } from '@react-three/postprocessing'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Color, Group, Vector2, Vector3 } from 'three'
-import Tunnel from './tunnel'
+import Tunnel, { useScroll } from './tunnel'
+import InteractiveParticles from './interactive-particles'
 
 function MouseTrail() {
     const { viewport } = useThree()
@@ -82,32 +83,64 @@ interface SceneProps {
     fastForward: boolean;
 }
 
+function DynamicEffects() {
+    const { scroll } = useScroll()
+    const [bloomIntensity, setBloomIntensity] = useState(1.5)
+    const [chromaticOffset, setChromaticOffset] = useState(0.002)
+    const [vignetteIntensity, setVignetteIntensity] = useState(0.3)
+    
+    useEffect(() => {
+        // Dynamic effects based on scroll position
+        const scrollPercentage = scroll / (document.documentElement.scrollHeight - window.innerHeight)
+        
+        // Increase bloom as user scrolls
+        setBloomIntensity(1.5 + scrollPercentage * 2)
+        
+        // Increase chromatic aberration for speed effect
+        setChromaticOffset(0.002 + scrollPercentage * 0.008)
+        
+        // Adjust vignette
+        setVignetteIntensity(0.3 + scrollPercentage * 0.4)
+    }, [scroll])
+    
+    return (
+        <EffectComposer>
+            <Bloom
+                luminanceThreshold={0}
+                intensity={bloomIntensity}
+                levels={9}
+                mipmapBlur
+            />
+            <ChromaticAberration
+                offset={new Vector2(chromaticOffset, chromaticOffset)}
+                radialModulation={true}
+                modulationOffset={0.3}
+            />
+            <Vignette
+                offset={0.3}
+                darkness={vignetteIntensity}
+                eskil={false}
+            />
+        </EffectComposer>
+    )
+}
+
 export default function Scene({ fastForward }: SceneProps) {
     return (
         <Canvas
             camera={{ position: [0, 0, 5], fov: 75 }}
-            gl={{ antialias: true }}
+            gl={{ antialias: true, alpha: true }}
         >
             <color attach="background" args={['#000']} />
-            <fog attach="fog" args={['#000', 5, 15]} />
-            <ambientLight intensity={0.2} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.5} />
+            <fog attach="fog" args={['#000', 5, 20]} />
+            <ambientLight intensity={0.3} />
+            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.8} castShadow />
+            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#d4af37" />
             <Suspense fallback={null}>
                 <MouseTrail />
+                <InteractiveParticles count={1500} />
                 <Tunnel fastForward={fastForward} />
-                <EffectComposer>
-                    <Bloom
-                        luminanceThreshold={0}
-                        intensity={2}
-                        levels={5}
-                        mipmapBlur
-                    />
-                    <ChromaticAberration
-                        offset={new Vector2(0.002, 0.002)}
-                        radialModulation={false}
-                        modulationOffset={0}
-                    />
-                </EffectComposer>
+                <DynamicEffects />
             </Suspense>
         </Canvas>
     )

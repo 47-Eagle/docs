@@ -6,6 +6,10 @@ import { useEffect, useState } from 'react'
 import Scene from './components/three/scene'
 import { useScroll } from './components/three/tunnel'
 import MouseTrail from './components/ui/mouse-trail'
+import ScrollProgress from './components/ui/scroll-progress'
+import KeyboardControls from './components/ui/keyboard-controls'
+import MobileGestures from './components/ui/mobile-gestures'
+import SectionTransitions from './components/ui/section-transitions'
 
 function isWebGLAvailable() {
   if (typeof window === 'undefined') return true; // SSR check
@@ -82,6 +86,16 @@ export default function HomePage() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+  
+  useEffect(() => {
+    // Listen for keyboard fast forward events
+    const handleFastForward = (e: CustomEvent) => {
+      setIsFastForwarding(e.detail)
+    }
+    
+    window.addEventListener('fastforward', handleFastForward as EventListener)
+    return () => window.removeEventListener('fastforward', handleFastForward as EventListener)
+  }, [])
 
   const transitionToBlog = () => {
     setIsFastForwarding(true)
@@ -121,6 +135,10 @@ export default function HomePage() {
   return (
     <>
       <MouseTrail />
+      <ScrollProgress />
+      <KeyboardControls />
+      <MobileGestures />
+      <SectionTransitions />
       <div className="fixed inset-0 z-0">
         {hasWebGL && <Scene fastForward={isFastForwarding} />}
       </div>

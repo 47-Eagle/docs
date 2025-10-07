@@ -54,13 +54,16 @@ interface TunnelProps {
 function TextSection({ text, position, opacity = 1 }: { text: string, position: [number, number, number], opacity?: number }) {
     const groupRef = useRef<Group>(null)
     const { camera } = useThree()
+    const [hovered, setHovered] = useState(false)
+    const hoverScaleRef = useRef(1)
+    const parallaxOffsetRef = useRef({ x: 0, y: 0 })
 
-    useFrame(() => {
+    useFrame((state) => {
         if (!groupRef.current?.children[0]?.children[0]) return
 
         const distance = Math.abs(camera.position.z - position[2])
-        const visibilityRange = 8 // Shorter range for better separation
-        const fadeStart = 4 // Start fading earlier
+        const visibilityRange = 8
+        const fadeStart = 4
 
         // Calculate opacity with a sharper falloff
         let targetOpacity = 0
@@ -68,20 +71,46 @@ function TextSection({ text, position, opacity = 1 }: { text: string, position: 
             targetOpacity = 1
         } else if (distance < visibilityRange) {
             const fadeProgress = (distance - fadeStart) / (visibilityRange - fadeStart)
-            targetOpacity = Math.pow(1 - fadeProgress, 3) // Sharper falloff
+            targetOpacity = Math.pow(1 - fadeProgress, 3)
         }
 
-        // Apply visibility and transform effects
+        // Hover effect
+        const targetScale = hovered ? 1.15 : 1
+        hoverScaleRef.current = MathUtils.lerp(hoverScaleRef.current, targetScale, 0.1)
+
+        // Parallax effect based on camera position
+        const parallaxStrength = 0.5
+        parallaxOffsetRef.current.x = MathUtils.lerp(
+            parallaxOffsetRef.current.x,
+            camera.position.x * parallaxStrength,
+            0.05
+        )
+        parallaxOffsetRef.current.y = MathUtils.lerp(
+            parallaxOffsetRef.current.y,
+            camera.position.y * parallaxStrength,
+            0.05
+        )
+
+        // Apply effects to the text mesh
         const mesh = groupRef.current.children[0].children[0] as Mesh
         if (mesh && mesh.material) {
             const material = mesh.material as MeshPhongMaterial
             material.opacity = targetOpacity * opacity
             material.transparent = true
-            material.depthWrite = targetOpacity > 0.5 // Prevent transparency artifacts
-            material.emissiveIntensity = targetOpacity * 2 // Brighter when closer
-
-            // Hide when nearly invisible
+            material.depthWrite = targetOpacity > 0.5
+            material.emissiveIntensity = (targetOpacity * 2) + (hovered ? 1 : 0)
             mesh.visible = targetOpacity > 0.01
+            
+            // Apply scale for hover
+            mesh.scale.setScalar(hoverScaleRef.current)
+            
+            // Apply parallax offset
+            groupRef.current.position.x = position[0] + parallaxOffsetRef.current.x
+            groupRef.current.position.y = position[1] + parallaxOffsetRef.current.y
+            
+            // Gentle floating animation
+            const floatOffset = Math.sin(state.clock.elapsedTime * 0.5 + position[2]) * 0.1
+            groupRef.current.position.y += floatOffset * targetOpacity
         }
     })
 
@@ -93,11 +122,13 @@ function TextSection({ text, position, opacity = 1 }: { text: string, position: 
                     size={1.5}
                     height={0.2}
                     curveSegments={12}
+                    onPointerOver={() => setHovered(true)}
+                    onPointerOut={() => setHovered(false)}
                 >
                     {text}
                     <meshPhongMaterial
-                        color="white"
-                        emissive="white"
+                        color={hovered ? "#f5e89f" : "white"}
+                        emissive={hovered ? "#d4af37" : "white"}
                         shininess={100}
                         transparent
                         opacity={1}
