@@ -1625,3 +1625,83 @@ html[data-theme='light'] h6 {
 html[data-theme='light'] * {
   --ifm-heading-color: #0a0a0a;
 }
+
+/* ================================
+   SIDEBAR MENU ITEMS - CRITICAL FIX
+   ================================ */
+
+/* Force all sidebar menu links to be dark and visible in light mode */
+html[data-theme='light'] .menu__link,
+html[data-theme='light'] .theme-doc-sidebar-item-link a,
+html[data-theme='light'] .menu__list-item a,
+html[data-theme='light'] aside a,
+html[data-theme='light'] nav.menu a,
+html[data-theme='light'] .theme-doc-sidebar-container a {
+  color: #262626 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* Sidebar menu hover state */
+html[data-theme='light'] .menu__link:hover,
+html[data-theme='light'] .theme-doc-sidebar-item-link a:hover {
+  color: #0a0a0a !important;
+  background: var(--eagle-gray-100) !important;
+}
+
+/* Active/selected menu item */
+html[data-theme='light'] .menu__link--active,
+html[data-theme='light'] .theme-doc-sidebar-item-link-level-1.menu__list-item--active a,
+html[data-theme='light'] .menu__list-item--active .menu__link {
+  color: #ffffff !important;
+  background: var(--ifm-color-primary-darker) !important;
+  font-weight: 600 !important;
+}
+
+/* Category headers in sidebar */
+html[data-theme='light'] .menu__list-item-collapsible > .menu__link,
+html[data-theme='light'] .theme-doc-sidebar-item-category > .menu__link {
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+}
+
+/* Sidebar labels and text */
+html[data-theme='light'] .sidebar,
+html[data-theme='light'] aside,
+html[data-theme='light'] .theme-doc-sidebar-container,
+html[data-theme='light'] nav.menu {
+  color: #262626 !important;
+}
+
+/* Menu list items */
+html[data-theme='light'] .menu__list-item {
+  color: #262626 !important;
+}
+
+/* Caret icon for collapsible items */
+html[data-theme='light'] .menu__caret {
+  color: #525252 !important;
+}
+
+html[data-theme='light'] .menu__caret:hover {
+  color: #0a0a0a !important;
+}
+
+/* Ensure sidebar background has enough contrast */
+html[data-theme='light'] .sidebar,
+html[data-theme='light'] aside.theme-doc-sidebar-container {
+  background: #fafafa !important;
+  border-right: 1px solid #e5e5e5 !important;
+}
+
+/* Fix any nested links */
+html[data-theme='light'] .menu__list-item a span,
+html[data-theme='light'] .menu__link span {
+  color: inherit !important;
+}
+
+/* Mobile sidebar toggle button */
+html[data-theme='light'] .navbar__toggle,
+html[data-theme='light'] button[class*='sidebarToggle'] {
+  color: #0a0a0a !important;
+}
