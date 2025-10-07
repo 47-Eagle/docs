@@ -1452,3 +1452,176 @@ html[data-theme='light'] a:hover {
 html[data-theme='light'] .admonition-heading {
   color: #0a0a0a !important;
 }
+
+/* ================================
+   NUCLEAR OPTION - MAXIMUM SPECIFICITY
+   ================================ */
+
+/* Force every possible title element */
+html body[data-theme='light'] h1,
+html body[data-theme='light'] h2,
+html body[data-theme='light'] h3,
+html body[data-theme='light'] h4,
+html body[data-theme='light'] h5,
+html body[data-theme='light'] h6,
+html body[data-theme='light'] .h1,
+html body[data-theme='light'] .h2,
+html body[data-theme='light'] .h3,
+html body[data-theme='light'] .h4,
+html body[data-theme='light'] .h5,
+html body[data-theme='light'] .h6 {
+  color: #0a0a0a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Target every container with title-like content */
+html body[data-theme='light'] header *,
+html body[data-theme='light'] [class*='title'] *,
+html body[data-theme='light'] [class*='Title'] *,
+html body[data-theme='light'] [class*='heading'] *,
+html body[data-theme='light'] [class*='Heading'] * {
+  color: inherit !important;
+}
+
+/* Force doc page titles */
+html body[data-theme='light'] .theme-doc-markdown > header h1,
+html body[data-theme='light'] article > header h1,
+html body[data-theme='light'] .markdown > h1:first-child {
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+}
+
+/* Force all markdown headings */
+html body[data-theme='light'] .markdown h1,
+html body[data-theme='light'] .markdown h2,
+html body[data-theme='light'] .markdown h3,
+html body[data-theme='light'] .markdown h4,
+html body[data-theme='light'] .markdown h5,
+html body[data-theme='light'] .markdown h6 {
+  color: #0a0a0a !important;
+}
+
+/* Override any color style attributes in light mode */
+html[data-theme='light'] h1[style*='color'],
+html[data-theme='light'] h2[style*='color'],
+html[data-theme='light'] h3[style*='color'],
+html[data-theme='light'] h4[style*='color'],
+html[data-theme='light'] h5[style*='color'],
+html[data-theme='light'] h6[style*='color'] {
+  color: #0a0a0a !important;
+}
+
+/* Target Docusaurus page title component */
+html[data-theme='light'] .docTitle_node_modules,
+html[data-theme='light'] [class^='docTitle'],
+html[data-theme='light'] [class*='docTitle'],
+html[data-theme='light'] .theme-doc-markdown header {
+  color: #0a0a0a !important;
+}
+
+html[data-theme='light'] .theme-doc-markdown header * {
+  color: #0a0a0a !important;
+}
+
+/* Sidebar category labels */
+html[data-theme='light'] .menu__list-item-collapsible .menu__link,
+html[data-theme='light'] .theme-doc-sidebar-item-category .menu__link {
+  color: #262626 !important;
+  font-weight: 600 !important;
+}
+
+/* Page intro and hero sections */
+html[data-theme='light'] .hero,
+html[data-theme='light'] .hero *,
+html[data-theme='light'] .hero__title,
+html[data-theme='light'] [class*='intro'],
+html[data-theme='light'] [class*='Intro'] {
+  color: #0a0a0a !important;
+}
+
+/* Feature boxes and cards */
+html[data-theme='light'] .card,
+html[data-theme='light'] .card *,
+html[data-theme='light'] [class*='feature'],
+html[data-theme='light'] [class*='Feature'] {
+  color: inherit !important;
+}
+
+html[data-theme='light'] .card h1,
+html[data-theme='light'] .card h2,
+html[data-theme='light'] .card h3,
+html[data-theme='light'] .card .card__title,
+html[data-theme='light'] .card .card__header {
+  color: #0a0a0a !important;
+}
+
+/* Footer headings */
+html[data-theme='light'] .footer h1,
+html[data-theme='light'] .footer h2,
+html[data-theme='light'] .footer h3,
+html[data-theme='light'] .footer .footer__title {
+  color: #0a0a0a !important;
+}
+
+/* Any div with role="heading" */
+html[data-theme='light'] [role='heading'],
+html[data-theme='light'] [role='banner'] h1,
+html[data-theme='light'] [role='banner'] h2 {
+  color: #0a0a0a !important;
+}
+
+/* Blog and article titles */
+html[data-theme='light'] article h1,
+html[data-theme='light'] article h2,
+html[data-theme='light'] .blog-post h1,
+html[data-theme='light'] .blog-post h2,
+html[data-theme='light'] [class*='post'] h1,
+html[data-theme='light'] [class*='post'] h2 {
+  color: #0a0a0a !important;
+}
+
+/* Main content area */
+html[data-theme='light'] main h1,
+html[data-theme='light'] main h2,
+html[data-theme='light'] main h3,
+html[data-theme='light'] .main-wrapper h1,
+html[data-theme='light'] .main-wrapper h2,
+html[data-theme='light'] .main-wrapper h3 {
+  color: #0a0a0a !important;
+}
+
+/* Document wrapper */
+html[data-theme='light'] .docMainContainer h1,
+html[data-theme='light'] .docMainContainer h2,
+html[data-theme='light'] .docItemContainer h1,
+html[data-theme='light'] .docItemContainer h2 {
+  color: #0a0a0a !important;
+}
+
+/* Any text with font size suggesting it's a title */
+html[data-theme='light'] [style*='font-size: 2'],
+html[data-theme='light'] [style*='font-size:2'],
+html[data-theme='light'] [class*='large'],
+html[data-theme='light'] [class*='Large'],
+html[data-theme='light'] [class*='big'],
+html[data-theme='light'] [class*='Big'] {
+  color: var(--ifm-heading-color) !important;
+}
+
+/* Remove any filters that might hide text */
+html[data-theme='light'] h1,
+html[data-theme='light'] h2,
+html[data-theme='light'] h3,
+html[data-theme='light'] h4,
+html[data-theme='light'] h5,
+html[data-theme='light'] h6 {
+  filter: none !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Ensure no transparent headings */
+html[data-theme='light'] * {
+  --ifm-heading-color: #0a0a0a;
+}
