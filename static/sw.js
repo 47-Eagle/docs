@@ -1,12 +1,12 @@
 // Service Worker for 47 Eagle Finance Docs
 // Optimized caching and offline support
 
-const CACHE_NAME = 'eagle-docs-v1';
-const RUNTIME_CACHE = 'eagle-runtime-v1';
+const CACHE_NAME = 'eagle-docs-v2'; // Bumped version to clear old cache
+const RUNTIME_CACHE = 'eagle-runtime-v2'; // Bumped version to clear old cache
 
 // Assets to cache immediately
 const PRECACHE_URLS = [
-  '/',
+  '/user', // Changed from / to /user since we redirect there
   '/manifest.json',
   '/img/eagle-logo-new.svg',
 ];

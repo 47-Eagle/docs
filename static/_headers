@@ -14,6 +14,12 @@
   # CORS for fonts and assets
   Access-Control-Allow-Origin: *
 
+# Root path - no cache to ensure redirect works
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
