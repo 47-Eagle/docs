@@ -16,8 +16,8 @@ export default function Nav() {
                         href="/"
                         className="text-white/90 font-medium text-lg tracking-wider hover:text-white transition-colors"
                     >
-                        GODDOG
-                        <span className="text-violet-400 ml-1.5">Insights</span>
+                        EAGLE
+                        <span className="text-[#d4af37] ml-1.5">Insights</span>
                     </Link>
 
                     <div className="flex items-center space-x-12">
@@ -40,17 +40,17 @@ export default function Nav() {
                             Blog
                         </Link>
                         <a
-                            href="https://uni.goddog.io"
+                            href="https://docs.47eagle.com"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative inline-flex items-center"
                         >
-                            <div className="relative flex items-center gap-2 px-4 py-2 rounded-md bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200">
-                                <span className="text-[13px] text-white/90 font-medium">
-                                    Launch App
+                            <div className="relative flex items-center gap-2 px-4 py-2 rounded-md bg-[#d4af37]/10 border border-[#d4af37]/30 hover:border-[#d4af37]/50 transition-all duration-200">
+                                <span className="text-[13px] text-[#d4af37] font-medium">
+                                    Documentation
                                 </span>
                                 <svg
-                                    className="w-3.5 h-3.5 text-white/70 group-hover:translate-x-0.5 transition-transform duration-200"
+                                    className="w-3.5 h-3.5 text-[#d4af37]/70 group-hover:translate-x-0.5 transition-transform duration-200"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
