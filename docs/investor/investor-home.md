@@ -5,11 +5,6 @@ sidebar_label: Investor Relations
 slug: /
 ---
 
-import React from 'react';
-import InvestorAuth from '@site/src/components/InvestorAuth';
-
-<InvestorAuth />
-
 # Investor Relations
 
 **47 Eagle Finance** - Omnichain DeFi infrastructure with institutional-grade yield optimization.

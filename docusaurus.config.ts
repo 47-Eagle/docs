@@ -132,16 +132,6 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'partners',
-        path: 'docs/partner',
-        routeBasePath: 'partner',
-        sidebarPath: './sidebars-partner.ts',
-        editUrl: 'https://github.com/47-Eagle/docs/tree/main/',
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
         id: 'team',
         path: 'docs/team',
         routeBasePath: 'team',
@@ -200,12 +190,6 @@ const config: Config = {
           to: '/investor',
           position: 'left', 
           label: 'Investors',
-          className: 'navbar-section-link',
-        },
-        {
-          to: '/partner',
-          position: 'left',
-          label: 'Partners', 
           className: 'navbar-section-link',
         },
         
