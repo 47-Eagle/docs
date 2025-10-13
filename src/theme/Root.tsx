@@ -36,17 +36,11 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <div className="eagle-loading-content">
           {/* Eagle Logo Animation */}
           <div className="eagle-logo-container">
-            <svg
+            <img
+              src="https://tomato-abundant-urial-204.mypinata.cloud/ipfs/bafybeigzyatm2pgrkqbnskyvflnagtqli6rgh7wv7t2znaywkm2pixmkxy"
+              alt="Eagle Finance Logo"
               className="eagle-logo"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M50 20 L30 40 L40 40 L40 60 L30 60 L50 80 L70 60 L60 60 L60 40 L70 40 Z"
-                fill="currentColor"
-                className="eagle-path"
-              />
-            </svg>
+            />
           </div>
 
           {/* Progress Percentage */}
