@@ -228,11 +228,11 @@ const config: Config = {
           items: [
             {
               label: 'Eagle OVault',
-              to: '/contracts/eagle-ovault',
+              to: '/dev/eagle-ovault',
             },
             {
               label: 'Charm Alpha Vault Strategy',
-              to: '/contracts/charm-alpha-vault-strategy',
+              to: '/dev/charm-alpha-vault-strategy',
             },
           ],
         },
