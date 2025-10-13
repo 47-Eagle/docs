@@ -638,7 +638,7 @@ article {
   <div class="eagle-loading-content">
     <!-- Eagle Logo -->
     <div class="eagle-logo-container">
-      <img src="/img/eagle-logo-new.svg" alt="Eagle" class="eagle-logo" />
+      <img src="https://tomato-abundant-urial-204.mypinata.cloud/ipfs/bafybeigzyatm2pgrkqbnskyvflnagtqli6rgh7wv7t2znaywkm2pixmkxy" alt="Eagle" class="eagle-logo" />
     </div>
     
     <!-- Progress Percentage -->
