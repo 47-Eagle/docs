@@ -52,7 +52,7 @@ graph TB
 | Component | Technology | Repository | Status |
 |-----------|------------|------------|--------|
 | Landing Page | React + Vite | `47-eagle/landing-page` | ✅ Deployed |
-| DeFi App | React + Vite | `wenakita/EagleOVaultV2/frontend` | ✅ Deployed |
+| DeFi App | React + Vite | `47-eagle/v1` | ✅ Deployed |
 | Documentation | Docusaurus | `47-eagle/docs` | ✅ Deployed |
 | Smart Contracts | Solidity + Foundry | `wenakita/EagleOVaultV2` | ✅ Deployed |
 
