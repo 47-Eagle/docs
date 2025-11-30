@@ -4,6 +4,23 @@
 .main-wrapper {
   animation: none !important;
   transition: none !important;
+  z-index: 1;
+  position: relative;
+}
+
+/* CRITICAL FIX: Mobile Navigation Z-Index */
+/* Ensure mobile sidebar appears ABOVE main content */
+.navbar-sidebar {
+  z-index: 1000 !important;
+}
+
+.navbar-sidebar__backdrop {
+  z-index: 999 !important;
+}
+
+/* Prevent scroll when mobile menu is open */
+body.navbar-sidebar--show {
+  overflow: hidden;
 }
 
 /* Prevent layout shifts on navigation */
