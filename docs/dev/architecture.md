@@ -133,7 +133,7 @@ graph TB
 | Contract | Address | Status |
 |----------|---------|--------|
 | **Eagle Registry** | `0x472656c76f45e8a8a63fffd32ab5888898eea91e` |  Live |
-| **CREATE2 Factory** | `0x695d6B3628B4701E7eAfC0bc511CbAF23f6003eE` |  Live |
+| **CREATE2 Factory** | `0x4e59b44847b379578588920ca78fbf26c0b4956c` |  Live |
 | **Ethereum Hub** | `0x47...EA91E` (Target) |  In Progress |
 
 ---
@@ -368,7 +368,7 @@ gantt
 ## Technical Resources
 
 - **Registry**: `0x472656c76f45e8a8a63fffd32ab5888898eea91e`
-- **Factory**: `0x695d6B3628B4701E7eAfC0bc511CbAF23f6003eE`
+- **Factory**: `0x4e59b44847b379578588920ca78fbf26c0b4956c`
 - **GitHub**: [47-Eagle Organization](https://github.com/47-Eagle)
 - **LayerZero**: [V2 Documentation](https://docs.layerzero.network)
 - **Charm**: [Alpha Vaults](https://alpha.charm.fi)

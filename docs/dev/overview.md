@@ -56,6 +56,49 @@ graph TB
 | Documentation | Docusaurus | `47-eagle/docs` | ✅ Deployed |
 | Smart Contracts | Solidity + Foundry | `wenakita/EagleOVaultV2` | ✅ Deployed |
 
+### 📋 **Ethereum Mainnet Deployments**
+
+#### **Core Protocol Contracts**
+| Contract | Address | Status |
+|----------|---------|--------|
+| **Eagle Vault** | `0x47b3ef629D9cB8DFcF8A6c61058338f4e99d7953` | ✅ Live |
+| **Eagle Share OFT** | `0x474eD38C256A7FA0f3B8c48496CE1102ab0eA91E` | ✅ Live |
+| **Eagle Vault Wrapper** | `0x47dAc5063c526dBc6f157093DD1D62d9DE8891c5` | ✅ Live |
+| **Eagle Registry** | `0x47c81c9a70CA7518d3b911bC8C8b11000e92F59e` | ✅ Live |
+
+#### **Strategy Contracts**
+| Contract | Address | Status |
+|----------|---------|--------|
+| **Charm USD1/WLFI Strategy** | `0x47B2659747d6A7E00c8251c3C3f7e92625a8cf6f` | ✅ Live |
+| **Charm WETH/WLFI Strategy** | `0x5c525Af4153B1c43f9C06c31D32a84637c617FfE` | ✅ Live |
+
+#### **External Protocol Contracts**
+| Contract | Address | Protocol |
+|----------|---------|----------|
+| **Charm USD1/WLFI Vault** | `0x22828Dbf15f5FBa2394Ba7Cf8fA9A96BdB444B71` | Charm Finance |
+| **Charm WETH/WLFI Vault** | `0x3314e248F3F752Cd16939773D83bEb3a362F0AEF` | Charm Finance |
+
+#### **Infrastructure Contracts**
+| Contract | Address | Purpose |
+|----------|---------|---------|
+| **CREATE2 Factory** | `0x4e59b44847b379578588920ca78fbf26c0b4956c` | Deterministic Deployment |
+| **OVault Composer** | `0x3A91B3e863C0bd6948088e8A0A9B1D22d6D05da9` | Cross-chain Composition |
+
+#### **Token Contracts**
+| Token | Address | Symbol |
+|-------|---------|--------|
+| **WLFI** | `0xdA5e1988097297dCdc1f90D4dFE7909e847CBeF6` | WLFI |
+| **USD1** | `0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d` | USD1 |
+| **WETH** | `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2` | WETH |
+
+#### **Uniswap V3 Pools**
+| Pool | Address | Fee Tier |
+|------|---------|----------|
+| **WLFI/USD1 (1%)** | `0xf9f5E6f7A44Ee10c72E67Bded6654afAf4D0c85d` | 1.00% |
+| **WLFI/USD1 (0.3%)** | `0x4637ea6ecf7e16c99e67e941ab4d7d52eac7c73d` | 0.30% |
+| **WETH/WLFI (1%)** | `0xCa2e972f081764c30Ae5F012A29D5277EEf33838` | 1.00% |
+| **WETH/WLFI (0.3%)** | `0xcdf9f50519eb0a9995730ddb6e7d3a8b1d8ffa07` | 0.30% |
+
 ### 🔗 **Repository Links**
 - **Main Repository**: https://github.com/wenakita/EagleOVaultV2
 - **Landing Page**: https://github.com/47-Eagle/landing-page
@@ -216,7 +259,7 @@ sequenceDiagram
 | Component | Status | Address |
 |-----------|--------|---------|
 | **Eagle Registry** |  Live | `0x472656c76f45e8a8a63fffd32ab5888898eea91e` |
-| **CREATE2 Factory** |  Live | `0x695d6B3628B4701E7eAfC0bc511CbAF23f6003eE` |
+| **CREATE2 Factory** |  Live | `0x4e59b44847b379578588920ca78fbf26c0b4956c` |
 | **Ethereum Hub** |  In Progress | Target: `0x47...EA91E` |
 | **Charm Integration** |  Active | WLFI/USD1 Strategies |
 

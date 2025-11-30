@@ -140,7 +140,7 @@ export default function KonamiCode() {
                     <span className="code-comment">//  Either way, welcome. Coffee's in the break room."</span><br/>
                     <br/>
                     <span className="code-comment">// Our CREATE2 factory address isn't random:</span><br/>
-                    <span className="code-keyword">address</span> <span className="code-const">FACTORY</span> = <span className="code-string">0x695d6B3628B4701E7eAfC0bc511CbAF23f6003eE</span>;<br/>
+                    <span className="code-keyword">address</span> <span className="code-const">FACTORY</span> = <span className="code-string">0x4e59b44847b379578588920ca78fbf26c0b4956c</span>;<br/>
                     <span className="code-comment">// Read the hex carefully... 😉</span>
                   </code>
                 </div>
