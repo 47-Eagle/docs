@@ -13,24 +13,76 @@ Eagle OVault delivers institutional-grade yield optimization across multiple blo
 
 ---
 
-## What Makes Eagle Different
+## Current Architecture
 
 ```mermaid
-graph LR
-    A[Traditional<br/>Single-Chain<br/>Vaults] -->|Limited| B[Fragmented<br/>Liquidity]
-    C[Eagle<br/>Omnichain<br/>Vault] -->|Unified| D[Cross-Chain<br/>Optimization]
-    
-    style A fill:#ef4444,stroke:#dc2626,color:#fff
-    style B fill:#f87171,stroke:#ef4444,color:#fff
-    style C fill:#f6d55c,stroke:#fbbf24,color:#1a1a1a
-    style D fill:#eab308,stroke:#f59e0b,color:#1a1a1a
+graph TB
+    A[47eagle.com<br/>Landing Page<br/>GitHub Pages] -->|Launch App| B[app.47eagle.com<br/>DeFi Application<br/>Vercel]
+    C[docs.47eagle.com<br/>Documentation<br/>GitHub Pages] --> B
+
+    B --> D[LayerZero V2<br/>Cross-Chain]
+    D --> E[Charm Finance<br/>Alpha Vaults]
+    E --> F[Uniswap V3<br/>Liquidity Pools]
+
+    style A fill:#fbbf24,stroke:#d97706,color:#1a1a1a
+    style B fill:#3b82f6,stroke:#2563eb,color:#fff
+    style C fill:#10b981,stroke:#059669,color:#fff
+    style D fill:#8b5cf6,stroke:#7c3aed,color:#fff
+    style E fill:#f59e0b,stroke:#d97706,color:#1a1a1a
+    style F fill:#ef4444,stroke:#dc2626,color:#fff
 ```
 
 ### Core Innovation
-- **True Omnichain**: Native LayerZero V2 integration, not bridges
+- **Multi-Domain Deployment**: Separate landing page, app, and docs
+- **True Omnichain**: Native LayerZero V2 integration
 - **Automated Strategies**: Charm Finance Alpha Vaults for Uniswap V3
-- **Deterministic Deployment**: Same addresses across all chains
-- **ERC-4626 Standard**: Universal vault compatibility
+- **Modern Stack**: React, TypeScript, Tailwind CSS
+
+---
+
+## Live Deployments
+
+### 🌐 **Production URLs**
+- **[47eagle.com](https://47eagle.com)** - Marketing landing page (GitHub Pages)
+- **[app.47eagle.com](https://app.47eagle.com)** - DeFi application (Vercel)
+- **[docs.47eagle.com](https://docs.47eagle.com)** - Documentation (GitHub Pages)
+
+### 🏗️ **Deployment Architecture**
+
+| Component | Technology | Repository | Status |
+|-----------|------------|------------|--------|
+| Landing Page | React + Vite | `47-eagle/landing-page` | ✅ Deployed |
+| DeFi App | React + Vite | `wenakita/EagleOVaultV2/frontend` | ✅ Deployed |
+| Documentation | Docusaurus | `47-eagle/docs` | ✅ Deployed |
+| Smart Contracts | Solidity + Foundry | `wenakita/EagleOVaultV2` | ✅ Deployed |
+
+### 🔗 **Repository Links**
+- **Main Repository**: https://github.com/wenakita/EagleOVaultV2
+- **Landing Page**: https://github.com/47-Eagle/landing-page
+- **Documentation**: https://github.com/47-Eagle/docs
+
+### 📋 **Deployment Checklist**
+
+#### ✅ **Landing Page (47eagle.com)**
+- [x] Repository: `47-eagle/landing-page`
+- [x] Platform: GitHub Pages
+- [x] Domain: 47eagle.com
+- [x] Status: Live
+- [x] "Launch App" button redirects to app.47eagle.com
+
+#### ✅ **DeFi Application (app.47eagle.com)**
+- [x] Repository: `wenakita/EagleOVaultV2/frontend`
+- [x] Platform: Vercel
+- [x] Domain: app.47eagle.com
+- [x] Status: Live
+- [x] Full DeFi functionality with wallet integration
+
+#### ✅ **Documentation (docs.47eagle.com)**
+- [x] Repository: `47-eagle/docs`
+- [x] Platform: GitHub Pages
+- [x] Domain: docs.47eagle.com
+- [x] Status: Live
+- [x] Docusaurus documentation site
 
 ---
 
@@ -42,7 +94,7 @@ graph LR
     <p>Access cross-chain yield optimization with institutional-grade security and automated strategies.</p>
     <a href="/user" className="resource-link">Explore User Docs →</a>
   </div>
-  
+
   <div className="resource-card">
     <h3>Developers</h3>
     <p>Build with LayerZero V2, ERC-4626 vaults, and comprehensive smart contract integrations.</p>
