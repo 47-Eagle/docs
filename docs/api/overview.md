@@ -195,17 +195,16 @@ const performance = await vault.getVaultPerformance();
 ### **Environment Setup**
 ```bash
 # Required environment variables
-PRIVATE_KEY=0x...           # Deployment private key
 ETHEREUM_RPC=https://...    # Ethereum RPC URL
 BSC_RPC=https://...         # BSC RPC URL
 ARBITRUM_RPC=https://...    # Arbitrum RPC URL
 BASE_RPC=https://...        # Base RPC URL
 AVALANCHE_RPC=https://...   # Avalanche RPC URL
 
-# Optional API keys
-ETHERSCAN_API_KEY=...       # Contract verification
-BSCSCAN_API_KEY=...         # Contract verification  
-ARBISCAN_API_KEY=...        # Contract verification
+# Optional API keys (for contract verification)
+ETHERSCAN_API_KEY=...       # Etherscan API key
+BSCSCAN_API_KEY=...         # BscScan API key
+ARBISCAN_API_KEY=...        # Arbiscan API key
 ```
 
 ## Response Formats

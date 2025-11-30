@@ -41,21 +41,17 @@ nano .env
 
 **Required Environment Variables:**
 ```bash
-# Private Keys
-PRIVATE_KEY=0x1234...  # Your deployment private key
-MNEMONIC=your twelve word mnemonic phrase here
-
-# RPC URLs  
-ETHEREUM_RPC=https://eth-mainnet.g.alchemy.com/v2/YOUR-KEY
+# RPC URLs (get from providers like Alchemy, Infura, etc.)
+ETHEREUM_RPC=https://eth-mainnet.g.alchemy.com/v2/YOUR-API-KEY
 BSC_RPC=https://bsc-dataseed1.binance.org/
 ARBITRUM_RPC=https://arb1.arbitrum.io/rpc
 BASE_RPC=https://mainnet.base.org
 AVALANCHE_RPC=https://api.avax.network/ext/bc/C/rpc
 
-# API Keys (optional, for verification)
-ETHERSCAN_API_KEY=ABC123
-BSCSCAN_API_KEY=DEF456
-ARBISCAN_API_KEY=GHI789
+# API Keys (optional, for contract verification on block explorers)
+ETHERSCAN_API_KEY=your-etherscan-api-key
+BSCSCAN_API_KEY=your-bscscan-api-key
+ARBISCAN_API_KEY=your-arbiscan-api-key
 ```
 
 ## Step 2: Deploy Hub Chain (Ethereum)
